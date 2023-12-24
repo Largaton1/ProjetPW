@@ -70,7 +70,7 @@ class ContactDAO
     public function deleteById($id)
     {
         try {
-            $query = "DELETE FROM Contact WHERE id = ?";
+            $query  = "DELETE FROM Contact WHERE id = ?";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$id]);
             return true;
