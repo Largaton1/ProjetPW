@@ -69,7 +69,7 @@ class EducateurDAO
     public function deleteById($id)
     {
         try {
-            $query = "DELETE FROM educateurs WHERE id = ?";
+            $query  = "DELETE FROM educateurs WHERE educateur_id = ?";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$id]);
             return true;
