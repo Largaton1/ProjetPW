@@ -1,6 +1,8 @@
 <?php
 
 class CategorieDAO
+
+
 {
 
     private $pdo;
@@ -14,7 +16,8 @@ class CategorieDAO
     public function create(CategorieModel $categorie)
     {
         try {
-            $query ="INSERT INTO Categories (nom, code) VALUES (?, ?)";
+
+            $query ="INSERT INTO categories (nom, code_raccourci) VALUES (?, ?)";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$categorie->getNom(), $categorie->getCode()]);
             return true;
@@ -27,14 +30,16 @@ class CategorieDAO
 
     public function getById($id)
     {
+        
         try {
-            $query = "SELECT * FROM Categories WHERE id = ?";
+           
+            $query = "SELECT * FROM Categories WHERE categorie_id = ?";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$id]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($row) {
-                return new CategorieModel($row['id'], $row['nom'], $row['code']);
+                return new CategorieModel($row['nom'], $row['code']);
             } else {
                 return null;
             }
@@ -53,7 +58,7 @@ class CategorieDAO
             $categorie = [];
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $categorie[] = new CategorieModel($row['id'], $row['nom'], $row['code']);
+                $categorie[] = new CategorieModel($row['nom'], $row['code']);
             }
 
             return $categorie;

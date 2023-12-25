@@ -10,10 +10,10 @@ class CategorieModel
     private $code;
 
 
-    public function __construct($id, $nom, $code)
+    public function __construct($nom, $code)
     {
 
-        $this->id = $id;
+        $this->id = uniqid(); // Utilisation d'une fonction pour générer un ID aléatoire
 
         $this->nom = $nom;
 

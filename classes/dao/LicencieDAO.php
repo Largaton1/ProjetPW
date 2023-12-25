@@ -11,7 +11,7 @@ class LicencieDAO
     public function create(LicencieModel $licencie)
     {
         try {
-            $query = "INSERT INTO Licencies (numero_licence, nom, prenom, contact_id, categorie_id) VALUES (?, ?, ?, ?, ?)";
+            $query = "INSERT INTO licencies (numero_licence, nom, prenom, contact_id, categorie_id) VALUES (?, ?, ?, ?, ?)";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$licencie->getNumeroLicence(), $licencie->getNom(), $licencie->getPrenom(), $licencie->getContactId(), $licencie->getCategorieId()]);
             return true;

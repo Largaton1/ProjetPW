@@ -11,9 +11,9 @@ class ContactDAO
     public function create(ContactModel $contact)
     {
         try {
-            $query = "INSERT INTO Educateurs (id,nom, prenom,mail,telephone) VALUES (:id,:nom, :prenom,:mail,:telephone)";
+            $query = "INSERT INTO contacts (nom, prenom,email,tel) VALUES (?,?,?,?)";
             $stmt = $this->pdo->prepare($query);
-            $stmt->execute([$contact->getId(),$contact->getMail(), $contact->getprenom(), $contact->getNom(), $contact->getTelephone()]);
+            $stmt->execute([$contact->getEmail(), $contact->getprenom(), $contact->getNom(), $contact->getTelephone()]);
             return true;
         } catch (PDOException $e) {
             return false;
@@ -29,7 +29,7 @@ class ContactDAO
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($row) {
-                return new ContactModel($row['id'],$row['mail'], $row['nom'], $row['prenom'], $row['telephone']);
+                return new ContactModel($row['mail'], $row['nom'], $row['prenom'], $row['telephone']);
             } else {
                 return null;
             }
@@ -46,7 +46,7 @@ class ContactDAO
             $contact = [];
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $contact[] = new ContactModel($row['id'],$row['mail'], $row['nom'], $row['prenom'], $row['telephone']);
+                $contact[] = new ContactModel($row['mail'], $row['nom'], $row['prenom'], $row['telephone']);
             }
 
             return $contact;
@@ -60,7 +60,7 @@ class ContactDAO
         try {
             $query = "UPDATE Licencies SET numero_licence = ?, nom = ?, prenom = ?, contact_id = ?, categorie_id = ? WHERE id = ?";
             $stmt = $this->pdo->prepare($query);
-            $stmt->execute([$contact->getId(),$contact->getMail(), $contact->getprenom(), $contact->getNom(), $contact->getTelephone()]);
+            $stmt->execute([$contact->getId(),$contact->getEmail(), $contact->getprenom(), $contact->getNom(), $contact->getTelephone()]);
             return true;
         } catch (PDOException $e) {
             return false;
