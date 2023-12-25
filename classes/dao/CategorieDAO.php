@@ -39,7 +39,7 @@ class CategorieDAO
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($row) {
-                return new CategorieModel($row['nom'], $row['code']);
+                return new CategorieModel($row['nom'], $row['code_raccourci']);
             } else {
                 return null;
             }
@@ -58,7 +58,7 @@ class CategorieDAO
             $categorie = [];
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $categorie[] = new CategorieModel($row['nom'], $row['code']);
+                $categorie[] = new CategorieModel($row['nom'], $row['code_raccourci']);
             }
 
             return $categorie;
@@ -72,7 +72,7 @@ class CategorieDAO
     public function update(CategorieModel $categorie)
     {
         try {
-            $query = "UPDATE Categories SET nom = ?, code = ? WHERE id = ?";
+            $query = "UPDATE Categories SET nom = ?, code_raccourci = ? WHERE categorie_id = ?";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$categorie->getNom(), $categorie->getCode(), $categorie->getId()]);
             return true;
@@ -86,7 +86,7 @@ class CategorieDAO
     public function deleteById($id)
     {
         try {
-            $query = "DELETE FROM Categories WHERE id = ?";
+            $query = "DELETE FROM Categories WHERE categorie_id = ?";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$id]);
             return true;

@@ -23,13 +23,13 @@ class ContactDAO
     public function getById($id)
     {
         try {
-            $query = "SELECT * FROM Contact WHERE id = :id";
+            $query = "SELECT * FROM Contact WHERE contact_id = :id";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$id]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($row) {
-                return new ContactModel($row['mail'], $row['nom'], $row['prenom'], $row['telephone']);
+                return new ContactModel($row['email'], $row['nom'], $row['prenom'], $row['tel']);
             } else {
                 return null;
             }
@@ -46,7 +46,7 @@ class ContactDAO
             $contact = [];
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $contact[] = new ContactModel($row['mail'], $row['nom'], $row['prenom'], $row['telephone']);
+                $contact[] = new ContactModel($row['email'], $row['nom'], $row['prenom'], $row['tel']);
             }
 
             return $contact;
@@ -58,7 +58,7 @@ class ContactDAO
     public function update(contactModel $contact)
     {
         try {
-            $query = "UPDATE Licencies SET numero_licence = ?, nom = ?, prenom = ?, contact_id = ?, categorie_id = ? WHERE id = ?";
+            $query = "UPDATE Licencies SET numero_licence = ?, nom = ?, prenom = ?, contact_id = ?, categorie_id = ? WHERE contact_id = ?";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$contact->getId(),$contact->getEmail(), $contact->getprenom(), $contact->getNom(), $contact->getTelephone()]);
             return true;
@@ -70,7 +70,7 @@ class ContactDAO
     public function deleteById($id)
     {
         try {
-            $query  = "DELETE FROM Contact WHERE id = ?";
+            $query  = "DELETE FROM Contact WHERE contact_id = ?";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$id]);
             return true;

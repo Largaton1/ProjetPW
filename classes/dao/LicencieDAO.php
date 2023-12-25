@@ -23,7 +23,7 @@ class LicencieDAO
     public function getById($id)
     {
         try {
-            $query = "SELECT * FROM licencies WHERE id = ?";
+            $query = "SELECT * FROM licencies WHERE licencie_id = ?";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$id]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -58,7 +58,7 @@ class LicencieDAO
     public function update(LicencieModel $licencie)
     {
         try {
-            $query = "UPDATE Licencies SET numero_licence = ?, nom = ?, prenom = ?, contact_id = ?, categorie_id = ? WHERE id = ?";
+            $query = "UPDATE Licencies SET numero_licence = ?, nom = ?, prenom = ?, contact_id = ?, categorie_id = ? WHERE licencie_id = ?";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$licencie->getNumeroLicence(), $licencie->getNom(), $licencie->getPrenom(), $licencie->getContactId(), $licencie->getCategorieId(), $licencie->getId()]);
             return true;
@@ -70,7 +70,7 @@ class LicencieDAO
     public function deleteById($id)
     {
         try {
-            $query = "DELETE FROM Licencies WHERE id = ?";
+            $query = "DELETE FROM Licencies WHERE licencie_id = ?";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$id]);
             return true;

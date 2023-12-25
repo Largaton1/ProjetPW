@@ -23,7 +23,7 @@ class EducateurDAO
     public function getById($id)
     {
         try {
-            $query = "SELECT * FROM educateurs WHERE id = ?";
+            $query = "SELECT * FROM educateurs WHERE educateur_id = ?";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$id]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -57,7 +57,7 @@ class EducateurDAO
     public function update(EducateurModel $educateur)
     {
         try {
-            $query = "UPDATE Licencies SET licencie_id  = ?, email = ?, password = ?, est_administrateur = ? WHERE id = ?";
+            $query = "UPDATE Licencies SET licencie_id  = ?, email = ?, password = ?, est_administrateur = ? WHERE educateur_id = ?";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$educateur->getId(), $educateur->getLicenceID(), $educateur->getemail(), $educateur->getpassword(), $educateur->getAdmin()]);
             return true;
