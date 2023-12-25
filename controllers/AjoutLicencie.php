@@ -20,6 +20,7 @@ session_start();
 require '../classes/dao/LicencieDAO.php';
 require '../classes/dao/ContactDAO.php';
 require '../classes/dao/CategorieDAO.php';
+require '../classes/models/CategorieModel.php';
 require '../classes/models/ContactModel.php';
 require '../classes/models/LicencieModel.php';
 require '../config/config.php';

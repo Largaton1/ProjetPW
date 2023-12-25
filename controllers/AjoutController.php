@@ -16,7 +16,7 @@ class AddCategorieController {
             $nom = $_POST['nom'];
             $code = $_POST['code'];
 
-            $nouvelleCategorie = new CategorieModel(0,$nom, $code,);
+            $nouvelleCategorie = new CategorieModel($nom, $code,);
             if ($this->categorieDAO->create($nouvelleCategorie)) {
                 header('Location:index.php?page=home');
                 exit();

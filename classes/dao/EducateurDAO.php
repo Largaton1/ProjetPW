@@ -1,5 +1,5 @@
 <?php
-class LicencieDAO
+class EducateurDAO
 {
     private $pdo;
 
@@ -8,12 +8,12 @@ class LicencieDAO
         $this->pdo = $pdo;
     }
 
-    public function create(LicencieModel $licencie)
+    public function create(EducateurModel $educateur)
     {
         try {
-            $query = "INSERT INTO licencies (numero_licence, nom, prenom, contact_id, categorie_id) VALUES (?, ?, ?, ?, ?)";
+            $query = "INSERT INTO educateurs (licencie_id , email, password, est_administrateur) VALUES (?, ?, ?, ?)";
             $stmt = $this->pdo->prepare($query);
-            $stmt->execute([$licencie->getNumeroLicence(), $licencie->getNom(), $licencie->getPrenom(), $licencie->getContactId(), $licencie->getCategorieId()]);
+            $stmt->execute([$educateur->getLicenceID(), $educateur->getemail(), $educateur->getpassword(), $educateur->getAdmin()]);
             return true;
         } catch (PDOException $e) {
             return false;
@@ -23,13 +23,13 @@ class LicencieDAO
     public function getById($id)
     {
         try {
-            $query = "SELECT * FROM licencies WHERE id = ?";
+            $query = "SELECT * FROM educateurs WHERE id = ?";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$id]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($row) {
-                return new LicencieModel($row['numero_licence'], $row['nom'], $row['prenom'], $row['contact_id'], $row['categorie_id']);
+                return new EducateurModel($row['licencie_id'], $row['email'], $row['password'], $row['est_administrateur']);
             } else {
                 return null;
             }
@@ -41,26 +41,25 @@ class LicencieDAO
     public function getAll()
     {
         try {
-            $query = "SELECT * FROM Licencies";
+            $query = "SELECT * FROM educateurs";
             $stmt = $this->pdo->query($query);
-            $licencies = [];
+            $educateur = [];
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $licencies[] = new LicencieModel($row['numero_licence'], $row['nom'], $row['prenom'], $row['contact_id'], $row['categorie_id']);
+                $educateur[] = new EducateurModel($row['licencie_id'], $row['email'], $row['password'], $row['est_administrateur']);
             }
-
-            return $licencies;
+            return $educateur;
         } catch (PDOException $e) {
             return [];
         }
     }
 
-    public function update(LicencieModel $licencie)
+    public function update(EducateurModel $educateur)
     {
         try {
-            $query = "UPDATE Licencies SET numero_licence = ?, nom = ?, prenom = ?, contact_id = ?, categorie_id = ? WHERE id = ?";
+            $query = "UPDATE Licencies SET licencie_id  = ?, email = ?, password = ?, est_administrateur = ? WHERE id = ?";
             $stmt = $this->pdo->prepare($query);
-            $stmt->execute([$licencie->getNumeroLicence(), $licencie->getNom(), $licencie->getPrenom(), $licencie->getContactId(), $licencie->getCategorieId(), $licencie->getId()]);
+            $stmt->execute([$educateur->getId(), $educateur->getLicenceID(), $educateur->getemail(), $educateur->getpassword(), $educateur->getAdmin()]);
             return true;
         } catch (PDOException $e) {
             return false;
@@ -70,7 +69,7 @@ class LicencieDAO
     public function deleteById($id)
     {
         try {
-            $query = "DELETE FROM Licencies WHERE id = ?";
+            $query = "DELETE FROM educateurs WHERE id = ?";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$id]);
             return true;
