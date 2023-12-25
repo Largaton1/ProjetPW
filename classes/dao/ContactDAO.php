@@ -29,7 +29,7 @@ class ContactDAO
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($row) {
-                return new ContactModel($row['email'], $row['nom'], $row['prenom'], $row['tel']);
+                return new ContactModel( $row['nom'], $row['prenom'], $row['email'],$row['tel']);
             } else {
                 return null;
             }

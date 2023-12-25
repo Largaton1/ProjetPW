@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-<title>modification de categorie</title>
+<title>modification de contact</title>
 <link href="../css/v2.css" rel="stylesheet">
 </head>
 
@@ -18,11 +19,11 @@ session_start();
 <a href="../view/acceuil.php">Accueil</a>
 
 
-<form action="../../controllers/editCategorie.php" method="post">
+<form action="../../controllers/editContact.php" method="post">
   <table name="">
 
   <tr>
-  <td> Id de la categorie a modifier</td>
+  <td> Id du contact a modifier</td>
   <td> <input  type='number' id='keyw' placeholder='Tapez ici' name="id"> </td>
   </tr>
  
@@ -32,8 +33,18 @@ session_start();
   </tr>
 
   <tr>
-  <td> code_raccourcie </td>
-  <td> <input  type='text' id='keyw' placeholder='Tapez ici' name="code_raccourci"> </td>
+  <td> prenom </td>
+  <td> <input  type='text' id='keyw' placeholder='Tapez ici' name="prenom"> </td>
+  </tr>
+
+  <tr>
+  <td> email </td>
+  <td> <input  type='text' id='keyw' placeholder='Tapez ici' name="email"> </td>
+  </tr>
+
+  <tr>
+  <td> tel </td>
+  <td> <input  type='text' id='keyw' placeholder='Tapez ici' name="tel"> </td>
   </tr>
   
 
