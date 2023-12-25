@@ -13,10 +13,10 @@ class ContactModel
 
 
 
-    public function __construct($id, $nom, $prenom, $email, $telephone)
+    public function __construct($nom, $prenom, $email, $telephone)
     {
 
-        $this->id = $id;
+        $this->id = uniqid();
 
         $this->nom = $nom;
 

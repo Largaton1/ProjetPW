@@ -11,6 +11,7 @@ class LicencieModel
     // Constructeur
     public function __construct($numeroLicence, $nom, $prenom, $contactId, $categorieId)
     {
+        $this->id = uniqid();
         $this->numeroLicence = $numeroLicence;
         $this->nom = $nom;
         $this->prenom = $prenom;

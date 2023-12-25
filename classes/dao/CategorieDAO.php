@@ -1,6 +1,8 @@
 <?php
 
 class CategorieDAO
+
+
 {
 
     private $pdo;
@@ -28,8 +30,10 @@ class CategorieDAO
 
     public function getById($id)
     {
+        
         try {
-            $query = "SELECT * FROM Categories WHERE id = ?";
+           
+            $query = "SELECT * FROM Categories WHERE categorie_id = ?";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$id]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);

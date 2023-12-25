@@ -17,7 +17,7 @@ error_reporting(E_ALL);
 // Debut du code
 
 session_start();
-require '../classes/dao/CategorieDAOphp';
+require '../classes/dao/CategorieDAO.php';
 require '../classes/models/CategorieModel.php';
 require '../config/config.php';
 
