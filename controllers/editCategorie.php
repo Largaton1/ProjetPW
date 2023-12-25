@@ -35,21 +35,13 @@ $code_raccourci=htmlspecialchars($_POST['code_raccourci']);
 $id=htmlspecialchars($_POST['id']);
 
 
+$ajoutcategorieDAO = new CategorieModel($nom, $code_raccourci);
+
 $categorieDAO = new CategorieDAO($pdo);
 // Appeler la méthode create pour ajouter la catégorie dans la base de données
+$success = $categorieDAO->update($ajoutcategorieDAO, $id);
 
-if (!empty($nom)) {
-    // Modifier la localisation de l'annonce
-    $success = $categorieDAO->updateNom($nom, $id);
-}else { $success = true;}
-
-if (!empty($code_raccourci)) {
-    // Modifier la localisation de l'annonce
-    $success1 = $categorieDAO->updateCode($code_raccourci, $id);
-} else { $success1 = true;}
-
-
-if ($success && $success1){
+if ($success) {
     echo "Insertion réussie avec un ID aléatoire.";
 } else {
     echo "Échec de l'insertion dans la base de données.";

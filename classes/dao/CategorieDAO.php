@@ -69,35 +69,33 @@ class CategorieDAO
     }
 
 
-    public function updateNom($nom, $id)
+    public function update(CategorieModel $categorie, $id)
     {
         try {
-            $query = "UPDATE Categories SET nom = :nom WHERE categorie_id = :id";
+            
+            if (($categorie->getNom() !="")  &&($categorie->getCode() !="")){
+            $query = "UPDATE Categories SET nom = ?, code_raccourci = ? WHERE categorie_id = $id";
             $stmt = $this->pdo->prepare($query);
-            $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->execute();
+            $stmt->execute([$categorie->getNom(),$categorie->getCode()]);
+            echo $categorie->getNom();
+            }
+            else if ($categorie->getCode() !=""){
+                $query = "UPDATE Categories SET code_raccourci = ? WHERE categorie_id = $id";
+                $stmt = $this->pdo->prepare($query);
+                $stmt->execute([$categorie->getCode()]);
+                }
+            else if ($categorie->getNom()!=""){
+                $query = "UPDATE Categories SET nom = ? WHERE categorie_id = $id";
+                $stmt = $this->pdo->prepare($query);
+                $stmt->execute([$categorie->getNom()]);
+                }
+           
             return true;
         } catch (PDOException $e) {
+
             return false;
         }
     }
-    
-
-    public function updateCode($code, $id)
-{
-    try {
-        $query = "UPDATE Categories SET code_raccourci = :code WHERE categorie_id = :id";
-        $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(':code', $code, PDO::PARAM_STR);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        return true;
-    } catch (PDOException $e) {
-        return false;
-    }
-}
-
 
 
     public function deleteById($id)
