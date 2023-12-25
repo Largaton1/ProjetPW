@@ -55,12 +55,29 @@ class ContactDAO
         }
     }
 
-    public function update(contactModel $contact)
+    public function update(contactModel $contact,$id)
     {
         try {
-            $query = "UPDATE Licencies SET numero_licence = ?, nom = ?, prenom = ?, contact_id = ?, categorie_id = ? WHERE contact_id = ?";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->execute([$contact->getId(),$contact->getEmail(), $contact->getprenom(), $contact->getNom(), $contact->getTelephone()]);
+            if ($contact->getNom() !=""){
+                $query = "UPDATE contacts SET nom = ? WHERE contact_id = $id";
+                $stmt = $this->pdo->prepare($query);
+                $stmt->execute([$contact->getNom()]);
+                }
+            if ($contact->getPrenom() !=""){
+                $query = "UPDATE contacts SET prenom = ? WHERE contact_id = $id";
+                $stmt = $this->pdo->prepare($query);
+                $stmt->execute([$contact->getPrenom()]);
+                } 
+            if ($contact->getEmail() !=""){
+                $query = "UPDATE contacts SET email = ? WHERE contact_id = $id";
+                $stmt = $this->pdo->prepare($query);
+                $stmt->execute([$contact->getEmail()]);
+                }
+            if ($contact->getTelephone() !=""){
+                $query = "UPDATE contacts SET tel = ? WHERE contact_id = $id";
+                $stmt = $this->pdo->prepare($query);
+                $stmt->execute([$contact->getTelephone()]);
+                }            
             return true;
         } catch (PDOException $e) {
             return false;

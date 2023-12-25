@@ -54,12 +54,29 @@ class EducateurDAO
         }
     }
 
-    public function update(EducateurModel $educateur)
+    public function update(EducateurModel $educateur,$id)
     {
         try {
-            $query = "UPDATE Licencies SET licencie_id  = ?, email = ?, password = ?, est_administrateur = ? WHERE educateur_id = ?";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->execute([$educateur->getId(), $educateur->getLicenceID(), $educateur->getemail(), $educateur->getpassword(), $educateur->getAdmin()]);
+            if ($educateur->getLicenceID() !=""){
+                $query = "UPDATE educateurs SET licencie_id = ? WHERE educateur_id = $id";
+                $stmt = $this->pdo->prepare($query);
+                $stmt->execute([$educateur->getLicenceID()]);
+                }
+            if ($educateur->getemail() !=""){
+                $query = "UPDATE educateurs SET email = ? WHERE educateur_id = $id";
+                $stmt = $this->pdo->prepare($query);
+                $stmt->execute([$educateur->getemail()]);
+                } 
+            if ($educateur->getpassword() !=""){
+                $query = "UPDATE educateurs SET password = ? WHERE educateur_id = $id";
+                $stmt = $this->pdo->prepare($query);
+                $stmt->execute([$educateur->getpassword()]);
+                } 
+            if ($educateur->getAdmin() !=""){
+                $query = "UPDATE educateurs SET est_administrateur = ? WHERE educateur_id = $id";
+                $stmt = $this->pdo->prepare($query);
+                $stmt->execute([$educateur->getAdmin()]);
+                }       
             return true;
         } catch (PDOException $e) {
             return false;

@@ -72,19 +72,12 @@ class CategorieDAO
     public function update(CategorieModel $categorie, $id)
     {
         try {
-            
-            if (($categorie->getNom() !="")  &&($categorie->getCode() !="")){
-            $query = "UPDATE Categories SET nom = ?, code_raccourci = ? WHERE categorie_id = $id";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->execute([$categorie->getNom(),$categorie->getCode()]);
-            echo $categorie->getNom();
-            }
-            else if ($categorie->getCode() !=""){
+             if ($categorie->getCode() !=""){
                 $query = "UPDATE Categories SET code_raccourci = ? WHERE categorie_id = $id";
                 $stmt = $this->pdo->prepare($query);
                 $stmt->execute([$categorie->getCode()]);
                 }
-            else if ($categorie->getNom()!=""){
+                if ($categorie->getNom()!=""){
                 $query = "UPDATE Categories SET nom = ? WHERE categorie_id = $id";
                 $stmt = $this->pdo->prepare($query);
                 $stmt->execute([$categorie->getNom()]);
