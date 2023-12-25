@@ -69,18 +69,35 @@ class CategorieDAO
     }
 
 
-    public function update(CategorieModel $categorie)
+    public function updateNom($nom, $id)
     {
         try {
-            $query = "UPDATE Categories SET nom = ?, code_raccourci = ? WHERE categorie_id = ?";
+            $query = "UPDATE Categories SET nom = :nom WHERE categorie_id = :id";
             $stmt = $this->pdo->prepare($query);
-            $stmt->execute([$categorie->getNom(), $categorie->getCode(), $categorie->getId()]);
+            $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
             return true;
         } catch (PDOException $e) {
-
             return false;
         }
     }
+    
+
+    public function updateCode($code, $id)
+{
+    try {
+        $query = "UPDATE Categories SET code_raccourci = :code WHERE categorie_id = :id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':code', $code, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return true;
+    } catch (PDOException $e) {
+        return false;
+    }
+}
+
 
 
     public function deleteById($id)
