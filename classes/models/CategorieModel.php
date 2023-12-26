@@ -7,17 +7,17 @@ class CategorieModel
 
     private $nom;
 
-    private $code;
+    private $code_raccourci;
 
 
-    public function __construct($nom, $code)
+    public function __construct($nom, $code_raccourci)
     {
 
         $this->id = uniqid(); // Utilisation d'une fonction pour générer un ID aléatoire
 
         $this->nom = $nom;
 
-        $this->code = $code;
+        $this->code_raccourci = $code_raccourci;
     }
 
 
@@ -37,7 +37,7 @@ class CategorieModel
     public function getCode()
     {
 
-        return $this->code;
+        return $this->code_raccourci;
     }
 
 
@@ -57,7 +57,7 @@ class CategorieModel
     public function setCode($code)
     {
 
-        $this->code = $code;
+        $this->code_raccourci = $code;
     }
 }
 ?>
