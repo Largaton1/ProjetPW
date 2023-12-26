@@ -18,14 +18,10 @@ error_reporting(E_ALL);
 
 session_start();
 require '../classes/dao/CategorieDAO.php';
+require '../classes/dao/LicencieDAO.php';
 require '../classes/models/CategorieModel.php';
+require '../classes/models/LicencieModel.php';
 require '../config/config.php';
-
-// $userDAO = new UserDAO($pdo);
-// $errorMessage = ""; // Initialisation de la variable d'erreur
-// $log = $_SESSION['username'];
-// $user = $userDAO->getUserByUsername($log);
-// require_once '../modele/ajoutpersonneDAO.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

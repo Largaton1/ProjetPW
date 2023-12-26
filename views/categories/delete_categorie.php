@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Supprimer La categorie</title>
+  <title>Supprimer une categorie</title>
   <link href="../css/v2.css" rel="stylesheet">
 </head>
 

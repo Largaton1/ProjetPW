@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Ajout de personne</title>
-<link href="../css/v2.css" rel="stylesheet">
+<title>Ajout de catégorie</title>
 </head>
 
 <body>

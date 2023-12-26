@@ -97,6 +97,11 @@ class CategorieDAO
             $query = "DELETE FROM Categories WHERE categorie_id = ?";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$id]);
+
+            $queryUpdateLicencies = "UPDATE Licencies SET categorie_id = '' WHERE categorie_id = :id";
+            $stmtUpdateLicencies = $this->pdo->prepare($queryUpdateLicencies);
+            $stmtUpdateLicencies->bindParam(':id', $id);
+            $stmtUpdateLicencies->execute();
             return true;
         } catch (PDOException $e) {
 

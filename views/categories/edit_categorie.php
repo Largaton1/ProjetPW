@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>modification de categorie</title>
-<link href="../css/v2.css" rel="stylesheet">
+<title>modification d'une categorie</title>
 </head>
 
 <body>
 
 <?php
 session_start();
-
-
-
-// Le reste du code pour la page 2
 ?>
 
 <a href="../view/acceuil.php">Accueil</a>
