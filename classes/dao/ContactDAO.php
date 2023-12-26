@@ -41,7 +41,7 @@ class ContactDAO
     public function getAll()
     {
         try {
-            $query = "SELECT * FROM Contact";
+            $query = "SELECT * FROM Contacts";
             $stmt = $this->pdo->query($query);
             $contact = [];
 
