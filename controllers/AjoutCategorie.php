@@ -21,11 +21,6 @@ require '../classes/dao/CategorieDAO.php';
 require '../classes/models/CategorieModel.php';
 require '../config/config.php';
 
-// $userDAO = new UserDAO($pdo);
-// $errorMessage = ""; // Initialisation de la variable d'erreur
-// $log = $_SESSION['username'];
-// $user = $userDAO->getUserByUsername($log);
-// require_once '../modele/ajoutpersonneDAO.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -37,14 +32,22 @@ $code_raccourci=htmlspecialchars($_POST['code_raccourci']);
 $ajoutcategorieDAO = new CategorieModel($nom, $code_raccourci);
 
 $categorieDAO = new CategorieDAO($pdo);
+
+$verifCode = $categorieDAO->getByCode($code_raccourci);
 // Appeler la méthode create pour ajouter la catégorie dans la base de données
-$success = $categorieDAO->create($ajoutcategorieDAO);
+
+if ($verifCode==null){
+  $success = $categorieDAO->create($ajoutcategorieDAO);
 
 if ($success) {
-    echo "Insertion réussie avec un ID aléatoire.";
+    echo "Insertion réussie ";
 } else {
     echo "Échec de l'insertion dans la base de données.";
     // Ajouter d'autres détails sur l'erreur si nécessaire
+}
+
+} else {
+  echo "Code existant";
 }
 
 

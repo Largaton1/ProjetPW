@@ -103,5 +103,25 @@ class CategorieDAO
             return false;
         }
     }
+    public function getByCode($code)
+    {
+        
+        try {
+           
+            $query = "SELECT * FROM Categories WHERE code_raccourci = ?";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->execute([$code]);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($row) {
+                return new CategorieModel($row['nom'], $row['code_raccourci']);
+            } else {
+                return null;
+            }
+        } catch (PDOException $e) {
+
+            return null;
+        }
+    }
 }
 ?>
