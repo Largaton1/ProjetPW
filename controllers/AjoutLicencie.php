@@ -55,31 +55,48 @@ $contactDAO = new ContactDAO($pdo);
 // Appeler la méthode create pour ajouter la catégorie dans la base de données
 $successContact = $contactDAO->create($ajoutcontactDAO);
 
+$categorieExiste = $categorieDAO -> getById($id_cat);
+
+if ($categorieExiste == null) {
+
+    echo "cette categorie n'existe pas";
+} else { 
+
 if ($successContact != false)  {
     // Récupérer l'ID du contact fraîchement créé
-    echo 'contact créer';
+    echo 'contact créer ';
     $contactId = $contactDAO->create($ajoutcontactDAO);
 
     // Créer une instance de LicencieModel avec les données du formulaire et l'ID du contact
-    $ajoutlicencieDAO = new LicencieModel($numero_de_licencie, $nom, $prenom, $contactId,$id_cat);
-
-    // Créer une instance de LicencieDAO avec l'instance de PDO déjà configurée
+    
     $licencieDAO = new LicencieDAO($pdo);
 
-    // Appeler la méthode create pour ajouter le licencié dans la base de données
-    $successLicencie = $licencieDAO->create($ajoutlicencieDAO);
+    $licencierexiste = $licencieDAO->getByNum($numero_de_licencie);
 
-    if ($successLicencie) {
+    if ($licencierexiste != null){ 
+
+        echo "numeros de licencie deja attribue"; 
+    } else { 
+        $ajoutlicencieDAO = new LicencieModel($numero_de_licencie, $nom, $prenom, $contactId,$id_cat);
+
+    // Créer une instance de LicencieDAO avec l'instance de PDO déjà configurée
+
+    // Appeler la méthode create pour ajouter le licencié dans la base de données
+         $successLicencie = $licencieDAO->create($ajoutlicencieDAO);
+
+        if ($successLicencie) {
         echo "Insertion réussie avec un ID aléatoire." .$contactId;
-    } else {
-        echo "Échec de l'insertion du licencié dans la base de données.". $contactId . $nom;
+        } else {
+        echo "Échec de l'insertion du licencié dans la base de données.". $numero_de_licencie . $nom;
         // Ajouter d'autres détails sur l'erreur si nécessaire
+        }
+
     }
-} else {
-    echo "Échec de l'insertion du contact dans la base de données.";
+    } else {
+     echo "Échec de l'insertion du contact dans la base de données.";
     // Ajouter d'autres détails sur l'erreur si nécessaire
 }
-
+}
 
 }
 ?>

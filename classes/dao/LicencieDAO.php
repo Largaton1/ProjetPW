@@ -38,6 +38,25 @@ class LicencieDAO
         }
     }
 
+    public function getByNum($num)
+    {
+        try {
+            $query = "SELECT * FROM licencies WHERE numero_licence= ?";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->execute([$num]);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($row) {
+                return new LicencieModel($row['numero_licence'], $row['nom'], $row['prenom'], $row['contact_id'], $row['categorie_id']);
+            } else {
+                return null;
+            }
+        } catch (PDOException $e) {
+            return null;
+        }
+    }
+
+
     public function getAll()
     {
         try {

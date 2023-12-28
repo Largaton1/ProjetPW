@@ -34,10 +34,17 @@ $nom =htmlspecialchars($_POST['nom']); // htmlspecialchars permet de prevenir de
 $code_raccourci=htmlspecialchars($_POST['code_raccourci']);
 $id=htmlspecialchars($_POST['id']);
 
+$categorieDAO = new CategorieDAO($pdo);
+$verifCode = $categorieDAO->getByCode($code_raccourci);
+// Appeler la méthode create pour ajouter la catégorie dans la base de données
+
+if ($verifCode==null){
+
+
 
 $ajoutcategorieDAO = new CategorieModel($nom, $code_raccourci);
 
-$categorieDAO = new CategorieDAO($pdo);
+
 // Appeler la méthode create pour modifier la catégorie dans la base de données
 $success = $categorieDAO->update($ajoutcategorieDAO, $id);
 
@@ -48,7 +55,8 @@ if ($success) {
     // Ajouter d'autres détails sur l'erreur si nécessaire
 }
 
-
+} else { echo "code existant";
+}
 }
 ?>
 </body>
