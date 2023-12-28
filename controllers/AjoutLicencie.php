@@ -55,10 +55,10 @@ $contactDAO = new ContactDAO($pdo);
 // Appeler la méthode create pour ajouter la catégorie dans la base de données
 $successContact = $contactDAO->create($ajoutcontactDAO);
 
-if ($successContact) {
+if ($successContact != false)  {
     // Récupérer l'ID du contact fraîchement créé
     echo 'contact créer';
-    $contactId = $ajoutcontactDAO->getId();
+    $contactId = $contactDAO->create($ajoutcontactDAO);
 
     // Créer une instance de LicencieModel avec les données du formulaire et l'ID du contact
     $ajoutlicencieDAO = new LicencieModel($numero_de_licencie, $nom, $prenom, $contactId,$id_cat);

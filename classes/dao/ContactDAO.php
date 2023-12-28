@@ -14,7 +14,9 @@ class ContactDAO
             $query = "INSERT INTO contacts (nom, prenom,email,tel) VALUES (?,?,?,?)";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$contact->getEmail(), $contact->getprenom(), $contact->getNom(), $contact->getTelephone()]);
-            return true;
+            // Récupérer l'ID généré automatiquement
+        $contactId = $this->pdo->lastInsertId();
+            return $contactId;
         } catch (PDOException $e) {
             return false;
         }

@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $successLicencie = $licencieDAO->update($licencieToUpdate, $id);
  
         if ($successLicencie) {
-            echo "yay";
+            echo "yay". $id_contact;
         } else {
             echo "Échec de la mise à jour du licencié dans la base de données.";
         }

@@ -1,7 +1,7 @@
 <?php
 class ContactModel
 {
-    private $id;
+    private  $id;
     private $nom;
     private $prenom;
     private $email;

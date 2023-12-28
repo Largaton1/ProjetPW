@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> ajout de categorie controlleur </title>
+  <title> modif de categorie controlleur </title>
 </head>
 
 
@@ -38,13 +38,13 @@ $id=htmlspecialchars($_POST['id']);
 $ajoutcategorieDAO = new CategorieModel($nom, $code_raccourci);
 
 $categorieDAO = new CategorieDAO($pdo);
-// Appeler la méthode create pour ajouter la catégorie dans la base de données
+// Appeler la méthode create pour modifier la catégorie dans la base de données
 $success = $categorieDAO->update($ajoutcategorieDAO, $id);
 
 if ($success) {
-    echo "Insertion réussie avec un ID aléatoire.";
+    echo "Modification réussie avec un ID aléatoire.";
 } else {
-    echo "Échec de l'insertion dans la base de données.";
+    echo "Échec de la modification dans la base de données.";
     // Ajouter d'autres détails sur l'erreur si nécessaire
 }
 
