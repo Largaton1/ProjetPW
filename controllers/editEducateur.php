@@ -30,7 +30,7 @@ require '../config/config.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Récupérer les données du formulaire
-$licencie_id =htmlspecialchars($_POST['licencie_id']); // htmlspecialchars permet de prevenir des attaques XSS (vu sur Google)
+$licencie_id =""; // htmlspecialchars permet de prevenir des attaques XSS (vu sur Google)
 $email=htmlspecialchars($_POST['email']);
 $password=htmlspecialchars($_POST['password']);
 $est_administrateur=htmlspecialchars($_POST['est_administrateur']);
@@ -40,8 +40,15 @@ $id=htmlspecialchars($_POST['id']);
 $ajouteducateurDAO = new EducateurModel($licencie_id,$email, $password, $est_administrateur);
 
 $educateurDAO = new EducateurDAO($pdo);
+
+$isEducateur= $educateurDAO->getById($id);
+
+if ($isEducateur ==null) {
+  echo "Cette ID d'éducateur n'est pas enregistrer dans notre base de donée";
+} else { 
 // Appeler la méthode create pour ajouter la catégorie dans la base de données
 $success = $educateurDAO->update($ajouteducateurDAO, $id);
+
 
 if ($success) {
     echo "Insertion réussie avec un ID aléatoire.";
@@ -49,7 +56,7 @@ if ($success) {
     echo "Échec de l'insertion dans la base de données.";
     // Ajouter d'autres détails sur l'erreur si nécessaire
 }
-
+}
 
 }
 ?>

@@ -27,11 +27,6 @@ session_start();
   <td> <input  type='number' id='keyw' placeholder='Tapez ici' name="id"> </td>
   </tr>
  
-  
-  <tr>
-  <td> Id de Licence </td>
-  <td> <input  type='text' id='keyw' placeholder='Tapez ici' name="licencie_id"> </td>
-  </tr>
 
   <tr>
   <td> email </td>

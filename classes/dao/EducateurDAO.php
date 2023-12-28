@@ -58,7 +58,7 @@ class EducateurDAO
     {
         try {
             if ($educateur->getLicenceID() !=""){
-                $query = "UPDATE educateurs SET licencie_id = ? WHERE educateur_id = $id";
+                $query = "UPDATE educateurs,licencies SET licencie_id = ? WHERE educateur_id = $id";
                 $stmt = $this->pdo->prepare($query);
                 $stmt->execute([$educateur->getLicenceID()]);
                 }
