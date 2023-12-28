@@ -18,6 +18,8 @@ error_reporting(E_ALL);
 
 session_start();
 require '../classes/dao/EducateurDAO.php';
+require '../classes/dao/LicencieDAO.php';
+require '../classes/models/LicencieModel.php';
 require '../classes/models/EducateurModel.php';
 require '../config/config.php';
 
@@ -33,6 +35,15 @@ $id=htmlspecialchars($_POST['id']);
 $ajouteducateurDAO = new EducateurModel($id,$email, $password,0);
 
 $educateurDAO = new EducateurDAO($pdo);
+
+$licencieDAO = new LicencieDAO($pdo);
+
+$estLicencie = $licencieDAO ->getById($id);
+
+if ($estLicencie == null) {
+ 
+  echo "ID de licencie non inscrit dans la base de donnée";
+}  else {  
 // Appeler la méthode create pour ajouter la catégorie dans la base de données
 $success = $educateurDAO->create($ajouteducateurDAO);
 
@@ -43,7 +54,7 @@ if ($success) {
     // Ajouter d'autres détails sur l'erreur si nécessaire
 }
 
-
+}
 }
 ?>
 </body>
