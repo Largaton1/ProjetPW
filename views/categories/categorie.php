@@ -25,7 +25,7 @@ if (!empty($categories)) {
     echo '<h1>Liste des Catégories</h1>';
     echo '<ul>';
     foreach ($categories as $categorie) {
-        echo '<li>' . htmlspecialchars($categorie->getNom()) . ' - ' . htmlspecialchars($categorie->getCode()) . '</li>';
+        echo '<li>' . htmlspecialchars($categorie->getId()) . htmlspecialchars($categorie->getNom()) . ' - ' . htmlspecialchars($categorie->getCode()) . '</li>';
     }
     echo '</ul>';
 } else {
