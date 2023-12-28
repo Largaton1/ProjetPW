@@ -18,6 +18,10 @@ error_reporting(E_ALL);
 
 session_start();
 require '../classes/dao/LicencieDAO.php';
+require '../classes/dao/ContactDAO.php';
+require '../classes/dao/CategorieDAO.php';
+require '../classes/models/CategorieModel.php';
+require '../classes/models/ContactModel.php';
 require '../classes/models/LicencieModel.php';
 require '../config/config.php';
 
@@ -41,6 +45,32 @@ $id=htmlspecialchars($_POST['id']);
 $ajoutlicencieDAO = new LicencieModel($num_licence,$nom, $prenom, $id_contactl, $id_categorie);
 
 $licencieDAO = new LicencieDAO($pdo);
+
+$contactDAO = new ContactDAO($pdo);
+
+$categorieDAO = new CategorieDAO($pdo);
+$categorieExiste = $categorieDAO -> getById($id_categorie);
+
+if ($categorieExiste == null && $id_categorie != null) {
+
+    echo "cette categorie n'existe pas";
+} else { 
+  $licencieDAO = new LicencieDAO($pdo);
+
+    $licencierexiste = $licencieDAO->getByNum($num_licence);
+
+    if ($licencierexiste != null && $num_licence !=null){ 
+
+        echo "numeros de licencie deja attribue"; 
+    } else { 
+
+      $contactDAO = new ContactDAO($pdo);
+
+      $contactexiste = $contactDAO->getById($id_contactl);
+
+      if ($contactexiste == null && $id_contactl != null){
+        echo "ce contacte n'existe pas". $id_contactl . "" . $contactexiste ;
+      }else { 
 // Appeler la méthode create pour ajouter la catégorie dans la base de données
 $success = $licencieDAO->update($ajoutlicencieDAO, $id);
 
@@ -50,8 +80,9 @@ if ($success) {
     echo "Échec de l'insertion dans la base de données.";
     // Ajouter d'autres détails sur l'erreur si nécessaire
 }
-
-
+}
+}
+}
 }
 ?>
 </body>

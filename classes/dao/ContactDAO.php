@@ -25,7 +25,7 @@ class ContactDAO
     public function getById($id)
     {
         try {
-            $query = "SELECT * FROM Contact WHERE contact_id = :id";
+            $query = "SELECT * FROM contacts WHERE contact_id = ?";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([$id]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);

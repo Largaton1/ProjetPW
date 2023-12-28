@@ -52,7 +52,7 @@ $ajoutcontactDAO = new ContactModel($nom_contact, $prenom_contact,$mail_contact,
 // $ajoutlicencieDAO = new LicencieModel($numero_de_licencie,$nom,$prenom,);
 
 $contactDAO = new ContactDAO($pdo);
-// Appeler la méthode create pour ajouter la catégorie dans la base de données
+
 $successContact = $contactDAO->create($ajoutcontactDAO);
 
 $categorieExiste = $categorieDAO -> getById($id_cat);
