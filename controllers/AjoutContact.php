@@ -37,12 +37,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $licencie = $licencieDAO ->getById($id);
 
-        $id_contactbis = $licencieToUpdate->getid();
 
         if ($licencie == null) {
             echo "pas de licencie";
         } else {
-            echo $id_contactbis ;
+            echo $id_contact ;
         }
         $successLicencie = $licencieDAO->update($licencieToUpdate, $id);
  

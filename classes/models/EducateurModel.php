@@ -10,7 +10,6 @@ class EducateurModel
     // Constructeur
     public function __construct($licencie_id, $email, $password, $est_administrateur)
     {
-        $this->id = uniqid();
         $this->licencie_id = $licencie_id;
         $this->email = $email;
         $this->password = $password;
@@ -58,10 +57,9 @@ class EducateurModel
         return $this->est_administrateur;
     }
 
-    public function setContactId($est_administrateur)
+    public function setAdmin($est_administrateur)
     {
         $this->est_administrateur = $est_administrateur;
     }
-
 }
 ?>

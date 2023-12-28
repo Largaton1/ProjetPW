@@ -45,7 +45,7 @@ $categorieDAO = new categorieDAO($pdo);
 
 $categorieModel = $categorieDAO->getById($id_cat);
 
-$categorieId = $categorieModel->getId();
+// $categorieId = $categorieModel->getId();
 
 $ajoutcontactDAO = new ContactModel($nom_contact, $prenom_contact,$mail_contact,$tel_contact);
 
@@ -57,10 +57,11 @@ $successContact = $contactDAO->create($ajoutcontactDAO);
 
 if ($successContact) {
     // Récupérer l'ID du contact fraîchement créé
+    echo 'contact créer';
     $contactId = $ajoutcontactDAO->getId();
 
     // Créer une instance de LicencieModel avec les données du formulaire et l'ID du contact
-    $ajoutlicencieDAO = new LicencieModel($numero_de_licencie, $nom, $prenom, $contactId,$categorieId);
+    $ajoutlicencieDAO = new LicencieModel($numero_de_licencie, $nom, $prenom, $contactId,$id_cat);
 
     // Créer une instance de LicencieDAO avec l'instance de PDO déjà configurée
     $licencieDAO = new LicencieDAO($pdo);
@@ -69,9 +70,9 @@ if ($successContact) {
     $successLicencie = $licencieDAO->create($ajoutlicencieDAO);
 
     if ($successLicencie) {
-        echo "Insertion réussie avec un ID aléatoire.";
+        echo "Insertion réussie avec un ID aléatoire." .$contactId;
     } else {
-        echo "Échec de l'insertion du licencié dans la base de données.";
+        echo "Échec de l'insertion du licencié dans la base de données.". $contactId . $nom;
         // Ajouter d'autres détails sur l'erreur si nécessaire
     }
 } else {
