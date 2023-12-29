@@ -17,37 +17,37 @@ error_reporting(E_ALL);
 // Debut du code
 
 session_start();
-require '../classes/dao/CategorieDAO.php';
-require '../classes/models/CategorieModel.php';
+require '../classes/dao/ContactDAO.php';
+require '../classes/models/ContactModel.php';
 require '../config/config.php';
 
+// $userDAO = new UserDAO($pdo);
+// $errorMessage = ""; // Initialisation de la variable d'erreur
+// $log = $_SESSION['username'];
+// $user = $userDAO->getUserByUsername($log);
+// require_once '../modele/ajoutpersonneDAO.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Récupérer les données du formulaire
 $nom =htmlspecialchars($_POST['nom']); // htmlspecialchars permet de prevenir des attaques XSS (vu sur Google)
-$code_raccourci=htmlspecialchars($_POST['code_raccourci']);
+$prenom=htmlspecialchars($_POST['prenom']);
+$email=htmlspecialchars($_POST['email']);
+$tel=htmlspecialchars($_POST['tel']);
+$id=htmlspecialchars($_POST['id']);
 
 
-$ajoutcategorieDAO = new CategorieModel($nom, $code_raccourci);
+$ajoutcontactDAO = new ContactModel($nom, $prenom, $email, $tel);
 
-$categorieDAO = new CategorieDAO($pdo);
-
-$verifCode = $categorieDAO->getByCode($code_raccourci);
+$contactDAO = new ContactDAO($pdo);
 // Appeler la méthode create pour ajouter la catégorie dans la base de données
-
-if ($verifCode==null){
-  $success = $categorieDAO->create($ajoutcategorieDAO);
+$success = $contactDAO->update($ajoutcontactDAO, $id);
 
 if ($success) {
-    echo "Insertion réussie ";
+    echo "Insertion réussie avec un ID aléatoire.";
 } else {
     echo "Échec de l'insertion dans la base de données.";
     // Ajouter d'autres détails sur l'erreur si nécessaire
-}
-
-} else {
-  echo "Code existant";
 }
 
 

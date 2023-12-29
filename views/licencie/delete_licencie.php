@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Supprimer une categorie</title>
+  <title>Supprimer licencie </title>
   <link href="../css/v2.css" rel="stylesheet">
 </head>
 
@@ -11,10 +11,10 @@
 session_start();
 ?>
 
-<form action="../../controllers/suppcategorie.php" method="post">
+<form action="../../controllers/supplicencie.php" method="post">
   <table>
   <tr>
-  <td>Id de la categorie a supprimer</td>
+  <td>Id du licencie a supprimer</td>
   <td> <input  type='number' id='keyw' placeholder='Tapez ici' name="id"> </td>
   </tr>
     <tr>

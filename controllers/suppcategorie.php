@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> ajout de categorie controlleur </title>
+  <title> Supp de categorie controlleur </title>
 </head>
 
 
@@ -18,36 +18,28 @@ error_reporting(E_ALL);
 
 session_start();
 require '../classes/dao/CategorieDAO.php';
+require '../classes/dao/LicencieDAO.php';
 require '../classes/models/CategorieModel.php';
+require '../classes/models/LicencieModel.php';
 require '../config/config.php';
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Récupérer les données du formulaire
-$nom =htmlspecialchars($_POST['nom']); // htmlspecialchars permet de prevenir des attaques XSS (vu sur Google)
-$code_raccourci=htmlspecialchars($_POST['code_raccourci']);
-
-
-$ajoutcategorieDAO = new CategorieModel($nom, $code_raccourci);
+$id =htmlspecialchars($_POST['id']); // htmlspecialchars permet de prevenir des attaques XSS (vu sur Google)
 
 $categorieDAO = new CategorieDAO($pdo);
 
-$verifCode = $categorieDAO->getByCode($code_raccourci);
-// Appeler la méthode create pour ajouter la catégorie dans la base de données
 
-if ($verifCode==null){
-  $success = $categorieDAO->create($ajoutcategorieDAO);
+
+// Appeler la méthode create pour ajouter la catégorie dans la base de données
+$success = $categorieDAO->deleteById($id);
 
 if ($success) {
-    echo "Insertion réussie ";
+    echo "suppression réussie .";
 } else {
-    echo "Échec de l'insertion dans la base de données.";
+    echo "Échec de la suppression dans la base de données.";
     // Ajouter d'autres détails sur l'erreur si nécessaire
-}
-
-} else {
-  echo "Code existant";
 }
 
 
