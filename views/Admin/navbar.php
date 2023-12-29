@@ -131,5 +131,13 @@
           <i class="fas fa-th-large"></i>
         </a>
       </li>
+      
+
+      <li class="nav-item">
+          <a href="deconnexion.php">
+            <input type="button" value="Deconnexion" class="btn btn-danger">
+          </a>
+        </li>
+
     </ul>
   </nav>
