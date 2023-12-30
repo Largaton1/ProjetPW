@@ -35,7 +35,7 @@ class AddContactController
                 $contact = new Contact("", $nom, $prenom, $email, $telephone);
                 if ($this->contactDAO->create($contact)) {
                     // Redirection
-                    header('Location:ListContactController.php');
+                    header('Location:HomeContactController.php');
                     exit();
                 } else {
                     // En cas d'erreur
@@ -61,9 +61,9 @@ if(!isset($_POST['action'])){
 
 require_once("../../config/config.php");
 require_once("../../config/connexion.php");
-require_once("../../classes/models/contact.php");
-require_once("../../classes/models/licencie.php");
-require_once("../../classes/dao/contactDAO.php");
-require_once("../../classes/dao/licencieDAO.php");
+require_once("../../classes/models/Contact.php");
+require_once("../../classes/models/Licencie.php");
+require_once("../../classes/dao/ContactDAO.php");
+require_once("../../classes/dao/LicencieDAO.php");
 
 ?>
