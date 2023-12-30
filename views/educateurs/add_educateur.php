@@ -1,48 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-<title>Ajout de personne</title>
-<link href="../css/v2.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Ajouter un Contact</title>
+    <link rel="stylesheet" href="../css/styles.css">
+
 </head>
-
 <body>
+<h1>Ajouter un Educateur</h1>
+<a href="HomeEducateurController.php">Retour à la liste des educateurs</a>
 
-<?php
-session_start();
+    <form action="AddEducateurController.php" method="post">
+        <label for="password">Mot de passe :</label>
+        <input type="text" id="password" name="password" required><br>
 
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email"><br>
 
-
-// Le reste du code pour la page 2
-?>
-
-<a href="../view/acceuil.php">Accueil</a>
-
-
-<form action="../../controllers/AjoutEducateur.php" method="post">
-  <table>
-
-  <tr>
-  <td> Id de licencié </td>
-  <td> <input  type='text' id='keyw' placeholder='Tapez ici' name="id"> </td>
-  </tr>
-
-  <tr>
-  <td> mail </td>
-  <td> <input  type='mail' id='keyw' placeholder='Tapez ici' name="email"> </td>
-  </tr>
-
-  <tr>
-  <td> mot de passe </td>
-  <td> <input  type='password' id='keyw' placeholder='Tapez ici' name="password"> </td>
-  </tr>
-  
-
-  <tr>
-  <td></td>
-  <td> <input class='form-control' class='btn btn-success btn-lg' type='submit'> </td>
-  </tr>
-  
-  </table>
-  </form>
+        <label for="est_administrateur">Administrateur</label>
+        <select name="est_administrateur" id="est_administrateur">
+            <option value="non">Non</option>
+            <option value="oui">Oui</option>
+        </select>
+        <br><br>
+        <label for="numero_licence">Licencié :</label>
+        <select name="numero_licence" id="numero_licence">
+            <?php
+            foreach ($licence as $number) {
+                echo "<option value='{$number->getNumeroLicence()}'>{$number->getNom()}</option>";
+            }
+            ?>
+        </select>
+        <br><br>
+        <input type="submit" name="action" value="Ajouter">
+    </form>
 </body>
 </html>
