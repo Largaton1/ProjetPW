@@ -5,21 +5,21 @@ class CategorieDAO
 
 {
 
-    private $pdo;
+    private $connexion;
 
-    public function __construct(PDO $pdo)
+    public function __construct(Connexion $connexion)
     {
-        $this->pdo = $pdo;
+        $this->connexion = $connexion;
     }
 
 
-    public function create(CategorieModel $categorie)
+    public function create(Categorie $categorie)
     {
         try {
 
-            $query ="INSERT INTO categories (nom, code_raccourci) VALUES (?, ?)";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->execute([$categorie->getNom(), $categorie->getCode()]);
+            $query ="INSERT INTO Categories (nom, code_raccourci) VALUES (?, ?)";
+            $stmt = $this->connexion->pdo->prepare($query);
+            $stmt->execute([$categorie->getNom(), $categorie->getCodeRaccourci()]);
             return true;
         } catch (PDOException $e) {
 
@@ -33,13 +33,13 @@ class CategorieDAO
         
         try {
            
-            $query = "SELECT * FROM Categories WHERE categorie_id = ?";
-            $stmt = $this->pdo->prepare($query);
+            $query = "SELECT * FROM Categories WHERE id = ?";
+            $stmt = $this->connexion->pdo->prepare($query);
             $stmt->execute([$id]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($row) {
-                return new CategorieModel($row['nom'], $row['code_raccourci']);
+                return new Categorie($row['id'], $row['nom'], $row['code_raccourci']);
             } else {
                 return null;
             }
@@ -54,11 +54,11 @@ class CategorieDAO
     {
         try {
             $query = "SELECT * FROM Categories";
-            $stmt = $this->pdo->query($query);
+            $stmt = $this->connexion->pdo->prepare($query);
             $categorie = [];
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $categorie[] = new CategorieModel($row['nom'], $row['code_raccourci']);
+                $categorie[] = new Categorie($row ['id_categorie'],$row['nom'], $row['code_raccourci']);
             }
 
             return $categorie;
@@ -68,21 +68,12 @@ class CategorieDAO
         }
     }
 
-
-    public function update(CategorieModel $categorie, $id)
+    public function update(Categorie $categorie)
     {
         try {
-             if ($categorie->getCode() !=""){
-                $query = "UPDATE Categories SET code_raccourci = ? WHERE categorie_id = $id";
-                $stmt = $this->pdo->prepare($query);
-                $stmt->execute([$categorie->getCode()]);
-                }
-                if ($categorie->getNom()!=""){
-                $query = "UPDATE Categories SET nom = ? WHERE categorie_id = $id";
-                $stmt = $this->pdo->prepare($query);
-                $stmt->execute([$categorie->getNom()]);
-                }
-           
+            $query = "UPDATE Categories SET nom = ?, code = ? WHERE id = ?";
+            $stmt = $this->connexion->pdo->prepare($query);
+            $stmt->execute([$categorie->getNom(), $categorie->getCodeRaccourci(), $categorie->getIdCategorie()]);
             return true;
         } catch (PDOException $e) {
 
@@ -94,12 +85,12 @@ class CategorieDAO
     public function deleteById($id)
     {
         try {
-            $query = "DELETE FROM Categories WHERE categorie_id = ?";
-            $stmt = $this->pdo->prepare($query);
+            $query = "DELETE FROM Categories WHERE id = ?";
+            $stmt = $this->connexion->pdo->prepare($query);
             $stmt->execute([$id]);
 
-            $queryUpdateLicencies = "UPDATE Licencies SET categorie_id = '' WHERE categorie_id = :id";
-            $stmtUpdateLicencies = $this->pdo->prepare($queryUpdateLicencies);
+            $queryUpdateLicencies = "UPDATE Licencies SET id = '' WHERE id = :id";
+            $stmtUpdateLicencies = $this->connexion->pdo->prepare($queryUpdateLicencies);
             $stmtUpdateLicencies->bindParam(':id', $id);
             $stmtUpdateLicencies->execute();
             return true;
@@ -108,25 +99,7 @@ class CategorieDAO
             return false;
         }
     }
-    public function getByCode($code)
-    {
-        
-        try {
-           
-            $query = "SELECT * FROM Categories WHERE code_raccourci = ?";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->execute([$code]);
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            if ($row) {
-                return new CategorieModel($row['nom'], $row['code_raccourci']);
-            } else {
-                return null;
-            }
-        } catch (PDOException $e) {
-
-            return null;
-        }
+  
     }
-}
+
 ?>

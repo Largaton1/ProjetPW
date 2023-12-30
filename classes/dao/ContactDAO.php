@@ -1,37 +1,30 @@
 <?php
-class ContactDAO
-{
-    private $pdo;
+class ContactDAO {
+    private $connexion;
 
-    public function __construct(PDO $pdo)
-    {
-        $this->pdo = $pdo;
+    public function __construct(Connexion $connexion) {
+        $this->connexion = $connexion;
     }
 
-    public function create(ContactModel $contact)
-    {
+    public function create(Contact $contact) {
         try {
-            $query = "INSERT INTO contacts (nom, prenom,email,tel) VALUES (?,?,?,?)";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->execute([$contact->getEmail(), $contact->getprenom(), $contact->getNom(), $contact->getTelephone()]);
-            // Récupérer l'ID généré automatiquement
-        $contactId = $this->pdo->lastInsertId();
-            return $contactId;
+            $stmt = $this->connexion->pdo->prepare("INSERT INTO contact (nom, prenom, email, numero_tel) VALUES (?, ?, ?, ?)");
+            $stmt->execute([$contact->getNom(), $contact->getPrenom(), $contact->getEmail(), $contact->getTelephone()]);
+            return true;
         } catch (PDOException $e) {
+            print_r($e->getMessage());
             return false;
         }
     }
 
-    public function getById($id)
-    {
+    public function getById($id) {
         try {
-            $query = "SELECT * FROM contacts WHERE contact_id = ?";
-            $stmt = $this->pdo->prepare($query);
+            $stmt = $this->connexion->pdo->prepare("SELECT * FROM contact WHERE id = ?");
             $stmt->execute([$id]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($row) {
-                return new ContactModel( $row['nom'], $row['prenom'], $row['email'],$row['tel']);
+                return new Contact($row['id'], $row['nom'], $row['prenom'], $row['email'], $row['numero_tel']);
             } else {
                 return null;
             }
@@ -40,62 +33,56 @@ class ContactDAO
         }
     }
 
-    public function getAll()
-    {
+    public function getByEmail($email) {
         try {
-            $query = "SELECT * FROM Contacts";
-            $stmt = $this->pdo->query($query);
-            $contact = [];
+            $stmt = $this->connexion->pdo->prepare("SELECT * FROM contact WHERE email = ?");
+            $stmt->execute([$email]);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($row) {
+                return new Contact($row['id'], $row['nom'], $row['prenom'], $row['email'], $row['telephone']);
+            } else {
+                return null;
+            }
+        } catch (PDOException $e) {
+            return null;
+        }
+    }
+
+
+    public function getAll() {
+        try {
+            $stmt = $this->connexion->pdo->query("SELECT * FROM contact");
+            $contacts = [];
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $contact[] = new ContactModel($row['email'], $row['nom'], $row['prenom'], $row['tel']);
+                $contacts[] = new Contact($row['id'], $row['nom'], $row['prenom'], $row['email'], $row['telephone']);
             }
 
-            return $contact;
+            return $contacts;
         } catch (PDOException $e) {
             return [];
         }
     }
 
-    public function update(contactModel $contact,$id)
-    {
+    public function update(Contact $contact) {
         try {
-            if ($contact->getNom() !=""){
-                $query = "UPDATE contacts SET nom = ? WHERE contact_id = $id";
-                $stmt = $this->pdo->prepare($query);
-                $stmt->execute([$contact->getNom()]);
-                }
-            if ($contact->getPrenom() !=""){
-                $query = "UPDATE contacts SET prenom = ? WHERE contact_id = $id";
-                $stmt = $this->pdo->prepare($query);
-                $stmt->execute([$contact->getPrenom()]);
-                } 
-            if ($contact->getEmail() !=""){
-                $query = "UPDATE contacts SET email = ? WHERE contact_id = $id";
-                $stmt = $this->pdo->prepare($query);
-                $stmt->execute([$contact->getEmail()]);
-                }
-            if ($contact->getTelephone() !=""){
-                $query = "UPDATE contacts SET tel = ? WHERE contact_id = $id";
-                $stmt = $this->pdo->prepare($query);
-                $stmt->execute([$contact->getTelephone()]);
-                }            
+            $stmt = $this->connexion->pdo->prepare("UPDATE contact SET nom = ?, prenom = ?, email = ?, numero_tel = ? WHERE id = ?");
+            $stmt->execute([$contact->getNom(), $contact->getPrenom(), $contact->getEmail(), $contact->getTelephone(), $contact->getIdContact()]);
             return true;
         } catch (PDOException $e) {
             return false;
         }
     }
 
-    public function deleteById($id)
-    {
+    public function deleteById($id) {
         try {
-            $query  = "DELETE FROM contacts WHERE contact_id = ?";
-            $stmt = $this->pdo->prepare($query);
+            $stmt = $this->connexion->pdo->prepare("DELETE FROM contact WHERE id = ?");
             $stmt->execute([$id]);
             return true;
         } catch (PDOException $e) {
+            print_r($e->getMessage());
             return false;
         }
     }
 }
-?>

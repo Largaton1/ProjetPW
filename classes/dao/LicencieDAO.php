@@ -1,35 +1,30 @@
 <?php
-class LicencieDAO
-{
-    private $pdo;
+class LicencieDAO {
+    private $connexion;
 
-    public function __construct(PDO $pdo)
-    {
-        $this->pdo = $pdo;
+    public function __construct(Connexion $connexion) {
+        $this->connexion = $connexion;
     }
 
-    public function create(LicencieModel $licencie)
-    {
+    public function create(Licencie $licencie) {
         try {
-            $query = "INSERT INTO licencies (numero_licence, nom, prenom, contact_id, categorie_id) VALUES (?, ?, ?, ?, ?)";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->execute([$licencie->getNumeroLicence(), $licencie->getNom(), $licencie->getPrenom(), $licencie->getContactId(), $licencie->getCategorieId()]);
+            $stmt = $this->connexion->pdo->prepare("INSERT INTO licencie (nom, prenom, id_contact, id_categorie) VALUES (?, ?, ?, ?)");
+            $stmt->execute([$licencie->getNom(), $licencie->getPrenom(), $licencie->getIdContact(), $licencie->getIdCategorie()]);
             return true;
         } catch (PDOException $e) {
+            print_r($e->getMessage());
             return false;
         }
     }
 
-    public function getById($id)
-    {
+    public function getById($id) {
         try {
-            $query = "SELECT * FROM licencies WHERE licencie_id = ?";
-            $stmt = $this->pdo->prepare($query);
+            $stmt = $this->connexion->pdo->prepare("SELECT * FROM licencie WHERE numero_licence = ?");
             $stmt->execute([$id]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($row) {
-                return new LicencieModel($row['numero_licence'], $row['nom'], $row['prenom'], $row['contact_id'], $row['categorie_id']);
+                return new Licencie($row['numero_licence'], $row['nom'], $row['prenom'], $row['id_contact'], $row['id_categorie']);
             } else {
                 return null;
             }
@@ -38,34 +33,13 @@ class LicencieDAO
         }
     }
 
-    public function getByNum($num)
-    {
+    public function getAll() {
         try {
-            $query = "SELECT * FROM licencies WHERE numero_licence= ?";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->execute([$num]);
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            if ($row) {
-                return new LicencieModel($row['numero_licence'], $row['nom'], $row['prenom'], $row['contact_id'], $row['categorie_id']);
-            } else {
-                return null;
-            }
-        } catch (PDOException $e) {
-            return null;
-        }
-    }
-
-
-    public function getAll()
-    {
-        try {
-            $query = "SELECT * FROM Licencies";
-            $stmt = $this->pdo->query($query);
+            $stmt = $this->connexion->pdo->query("SELECT * FROM licencie");
             $licencies = [];
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $licencies[] = new LicencieModel($row['numero_licence'], $row['nom'], $row['prenom'], $row['contact_id'], $row['categorie_id']);
+                $licencies[] = new Licencie($row['numero_licence'], $row['nom'], $row['prenom'], $row['id_contact'], $row['id_categorie']);
             }
 
             return $licencies;
@@ -74,50 +48,24 @@ class LicencieDAO
         }
     }
 
-    public function update(LicencieModel $licencie,$id)
-    {
+    public function update(Licencie $licencie) {
         try {
-        if ($licencie->getNumeroLicence() !=""){
-                $query = "UPDATE licencies SET numero_licence = ? WHERE licencie_id = $id";
-                $stmt = $this->pdo->prepare($query);
-                $stmt->execute([$licencie->getNumeroLicence()]);
-                }
-        if ($licencie->getNom() !=""){
-                $query = "UPDATE licencies SET nom = ? WHERE licencie_id = $id";
-                $stmt = $this->pdo->prepare($query);
-                $stmt->execute([$licencie->getNom()]);
-                }
-        if ($licencie->getPrenom() !=""){
-                $query = "UPDATE licencies SET prenom = ? WHERE licencie_id = $id";
-                $stmt = $this->pdo->prepare($query);
-                $stmt->execute([$licencie->getPrenom()]);
-                }
-        if ($licencie->getContactId() !=""){
-                $query = "UPDATE licencies SET contact_id = ? WHERE licencie_id = $id";
-                $stmt = $this->pdo->prepare($query);
-                $stmt->execute([$licencie->getContactId()]);
-                }
-        if ($licencie->getCategorieId() !=""){
-                $query = "UPDATE licencies SET categorie_id = ? WHERE licencie_id = $id";
-                $stmt = $this->pdo->prepare($query);
-                $stmt->execute([$licencie->getCategorieId()]);
-                }                                
-           return true;
+            $stmt = $this->connexion->pdo->prepare("UPDATE licencie SET nom = ?, prenom = ?, id_contact = ?, id_categorie = ? WHERE numero_licence = ?");
+            $stmt->execute([$licencie->getNom(), $licencie->getPrenom(), $licencie->getIdContact(), $licencie->getIdCategorie(), $licencie->getNumeroLicence()]);
+            return true;
         } catch (PDOException $e) {
             return false;
         }
     }
 
-    public function deleteById($id)
-    {
+    public function deleteById($id) {
         try {
-            $query = "DELETE FROM Licencies WHERE licencie_id = ?";
-            $stmt = $this->pdo->prepare($query);
+            $stmt = $this->connexion->pdo->prepare("DELETE FROM licencie WHERE numero_licence = ?");
             $stmt->execute([$id]);
             return true;
         } catch (PDOException $e) {
             return false;
         }
     }
+    
 }
-?>

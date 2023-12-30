@@ -15,7 +15,6 @@
         header('Location: index.php'); // Redirection vers la page dédiée à l'administrateur
         exit();
     } else {
-        // Informations incorrectes, rediriger vers la page de connexion avec un message d'erreur
         header('Location: login.php?error=1');
         exit();
     }
