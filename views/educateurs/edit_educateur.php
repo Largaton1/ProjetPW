@@ -1,54 +1,38 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-<title>modification de educateur</title>
-<link href="../css/v2.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Modifier un éducateur</title>
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
-
 <body>
+    <h1>Modifier un Éducateur</h1>
+    <a href="HomeEducateurController.php">Retour à la liste des éducateurs</a>
 
-<?php
-session_start();
+    <form action="EditEducateurController.php" method="post">
+        <input type="hidden" name="id" value="<?= htmlspecialchars($_GET["id"]) ?>" />
+        
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" value="<?= htmlspecialchars($educateur->getEmail()) ?>"><br>
 
+        <label for="est_administrateur">Administrateur</label>
+        <select name="est_administrateur" id="est_administrateur">
+            <option value="non" <?= $educateur->getEstAdministrateur() == 0 ? 'selected' : '' ?>>Non</option>
+            <option value="oui" <?= $educateur->getEstAdministrateur() == 1 ? 'selected' : '' ?>>Oui</option>
+        </select>
+        <br><br>
 
-
-// Le reste du code pour la page 2
-?>
-
-<a href="../view/acceuil.php">Accueil</a>
-
-
-<form action="../../controllers/editEducateur.php" method="post">
-  <table name="">
-
-  <tr>
-  <td> Id du educateur a modifier</td>
-  <td> <input  type='number' id='keyw' placeholder='Tapez ici' name="id"> </td>
-  </tr>
- 
-
-  <tr>
-  <td> email </td>
-  <td> <input  type='text' id='keyw' placeholder='Tapez ici' name="email"> </td>
-  </tr>
-
-  <tr>
-  <td> password </td>
-  <td> <input  type='password' id='keyw' placeholder='Tapez ici' name="password"> </td>
-  </tr>
-
-  <tr>
-  <td> Admin ? </td>
-  <td> <input  type='text' id='keyw' placeholder='Tapez ici' name="est_administrateur"> </td>
-  </tr>
-
-  <tr>
-  <td></td>
-  <td> <input class='form-control' class='btn btn-success btn-lg' type='submit'> </td>
-  </tr>
-  
-  </table>
-  </form>
+        <label for="numero_licence">Licencié :</label>
+        <select name="numero_licence" id="numero_licence">
+            <?php foreach ($licence as $number): ?>
+                <option value="<?= htmlspecialchars($number->getNumeroLicence()) ?>" <?= ($number->getNumeroLicence() === $educateur->getNumeroLicence()) ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($number->getNom()) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+        <br><br>
+        
+        <input type="submit" name="action" value="Modifier">
+    </form>
 </body>
 </html>
