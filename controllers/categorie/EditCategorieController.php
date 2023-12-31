@@ -14,7 +14,7 @@ class EditContactController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Récupérer les données du formulaire
             $nom = $_POST['nom'];
-            $code = $_POST['code'];
+            $code = $_POST['code_raccourci'];
 
             // Mettre à jour les détails du contact
             $categorie->setNom($nom);
@@ -38,9 +38,10 @@ class EditContactController {
         // Inclure la vue pour afficher le formulaire de modification du contact
         include('../../views/categorie/edit_categorie.php');
     }
+    
 }
-
 require '../classes/dao/CategorieDAO.php';
 require '../classes/models/CategorieModel.php';
 require '../config/config.php';
+
 ?>

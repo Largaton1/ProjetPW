@@ -38,7 +38,7 @@ class EditEducateurController {
                 $educateur->setEstAdministrateur($est_administrateur  == 'oui' ? 1 : 0);
                 if ($this->educateurDAO->update($educateur)) {
                     // Rediriger vers la page de détails après la modification
-                    header('Location:ListEducateurController.php');
+                    header('Location:HomeEducateurController.php');
                     exit();
                 } else {
                     // Gérer les erreurs de mise à jour

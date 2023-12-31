@@ -30,7 +30,7 @@ class AddCategorieController {
             } else {
                 // Gérer les erreurs d'ajout de contact
                 echo "Erreur lors de l'ajout du contact.";
-                header('Location: ../categorie/HomeCategorieController.php');
+                header('Location: ../categorie/IndexCategorieController.php');
                 exit();
             }
         }

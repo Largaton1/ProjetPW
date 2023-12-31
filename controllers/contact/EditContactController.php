@@ -35,7 +35,7 @@ class EditContactController {
 
                 if ($this->contactDAO->update($contact)) {
                     
-                    header('Location:HomeContactController.php');
+                    header('Location:IndexContactController.php');
                     exit();
                 } else {
                   

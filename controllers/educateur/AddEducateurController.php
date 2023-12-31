@@ -40,7 +40,7 @@ class AddEducateurController
                 $educateur = new Educateur("", $numero_licence, $email, $hpassword, $est_administrateur  == "oui" ? 1 : 0);
                 if ($this->educateurDAO->create($educateur)) {
                     // Rediriger vers la page d'accueil après l'ajout
-                    header('Location:ListEducateurController.php');
+                    header('Location:IndexEducateurController.php');
                     exit();
                 } else {
                     // Gérer les erreurs d'ajout de l'educateur

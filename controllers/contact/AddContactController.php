@@ -35,7 +35,7 @@ class AddContactController
                 $contact = new Contact("", $nom, $prenom, $email, $telephone);
                 if ($this->contactDAO->create($contact)) {
                     // Redirection
-                    header('Location:HomeContactController.php');
+                    header('Location:IndexContactController.php');
                     exit();
                 } else {
                     // En cas d'erreur

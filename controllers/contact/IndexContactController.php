@@ -1,5 +1,5 @@
 <?php
-class HomeContactController
+class IndexContactController
 {
         private $contactDAO;
 
@@ -9,7 +9,7 @@ class HomeContactController
 
         public function index() {
             $contacts = $this->contactDAO->getAll();
-            include('../../views/contact/home_contact.php');
+            include('../../views/contact/index_contact.php');
         }
     }
 
@@ -18,5 +18,5 @@ require_once("../../config/connexion.php");
 require_once("../../classes/models/Contact.php");
 require_once("../../classes/dao/ContactDAO.php");
 $contactDAO = new ContactDAO(new Connexion());
-$controller = new HomeContactController($contactDAO);
+$controller = new IndexContactController($contactDAO);
 $controller->index();

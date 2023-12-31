@@ -17,7 +17,7 @@ class DeleteContactController
         }
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             if ($this->contactDAO->deleteById($contactId)) {
-                header('Location:ListContactController.php');
+                header('Location:IndexContactController.php');
                 exit();
             } else {
              
