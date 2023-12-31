@@ -18,7 +18,7 @@ class EditContactController {
 
             // Mettre à jour les détails du contact
             $categorie->setNom($nom);
-            $categorie->setCode($code);
+            $categorie->setCodeRaccourci($code);
 
             // Appeler la méthode du modèle (ContactDAO) pour mettre à jour le contact
             if ($this->categorieDAO->update($categorie)) {
