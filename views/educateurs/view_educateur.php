@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Détails educateur</h1>
-<a href="HomeEducateurController.php">Retour à la liste des educateurs</a>
+<a href="IndexEducateurController.php">Retour à la liste des educateurs</a>
 
 <?php if ($educateur): ?>
     <p><strong>Numero de licence :</strong> <?php echo $licencie->getNom(); ?></p>

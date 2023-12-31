@@ -67,5 +67,24 @@ class LicencieDAO {
             return false;
         }
     }
+    public function delete($id) {
+        // Supprimer d'abord le contact associé
+        $stmt = $this->connexion->pdo->prepare('SELECT contact_id FROM licencies WHERE id = ?');
+        $stmt->execute([$id]);
+        $contactId = $stmt->fetchColumn();
+
+        $contactDAO = new ContactDAO($this->connexion);
+        $contactDAO->delete($contactId);
+        //supprimer la categorie associé
+        $stmt = $this->connexion->pdo->prepare('SELECT categorie_id FROM categories WHERE id = ?');
+        $stmt->execute([$id]);
+        $categorieId = $stmt->fetchColumn();
+
+        $categorieDAO = new CategorieDAO($this->connexion);
+        $categorieDAO->deleteById($categorieId);
+        // Ensuite, supprimer le licencié
+        $stmt = $this->connexion->pdo->prepare('DELETE FROM licencies WHERE id = ?');
+        $stmt->execute([$id]);
+    }
     
 }

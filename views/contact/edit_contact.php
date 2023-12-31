@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>Modifier un contact</h1>
-<a href="HomeEducateurController.php">Retour à la liste des contacts</a>
+<a href="IndexEducateurController.php">Retour à la liste des contacts</a>
     <form action="EditContactController.php" method="post">
         <input type="hidden" id="id" name="id" value="<?php echo $_GET["id"]?>" />
         <label for="nom">Email :</label>

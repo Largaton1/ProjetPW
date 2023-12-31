@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Modifier un Éducateur</h1>
-    <a href="HomeEducateurController.php">Retour à la liste des éducateurs</a>
+    <a href="IndexEducateurController.php">Retour à la liste des éducateurs</a>
 
     <form action="EditEducateurController.php" method="post">
         <input type="hidden" name="id" value="<?= htmlspecialchars($_GET["id"]) ?>" />

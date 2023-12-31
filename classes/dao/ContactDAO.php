@@ -85,4 +85,13 @@ class ContactDAO {
             return false;
         }
     }
+    public function delete( $id)
+    {
+        $query = "DELETE FROM contacts WHERE id = :id";
+        $stmt = $this->connexion->pdo->prepare($query);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+ 
+        return $stmt->rowCount();
+    }
 }
