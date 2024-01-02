@@ -86,7 +86,7 @@
         }
         public function isAdmin($email) {
             try {
-                $stmt = $this->connexion->pdo->prepare("SELECT COUNT(*) FROM educateur WHERE email = ? AND est_administrateur = '1'");
+                $stmt = $this->connexion->pdo->prepare("SELECT COUNT(*) FROM educateurs WHERE email = ? AND est_administrateur = 1");
                 $stmt->execute([$email]);
                 $resultat = $stmt->fetchColumn();
                 return $resultat > 0;

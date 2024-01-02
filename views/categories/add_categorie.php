@@ -17,7 +17,7 @@ $database = "projetpw";
 // Vérifier si la session est active
 if (!isset($_SESSION['username'])) {
     echo "Session non active";
-    header("Location: ../login.php"); // Redirigez vers la page de connexion si l'utilisateur n'est pas connecté
+    header("Location: ../../views/login.php"); // Redirigez vers la page de connexion si l'utilisateur n'est pas connecté
     exit();
 }
 
