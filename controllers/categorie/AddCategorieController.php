@@ -8,7 +8,7 @@ class AddCategorieController {
 
     public function index() {
     // Inclure la vue pour afficher le formulaire d'ajout de categorie
-        include('../../views/categorie/create_categorie.php'); 
+        include('../../views/categories/add_categorie.php'); 
     }
     
     public function addCategorie() {
@@ -40,18 +40,15 @@ class AddCategorieController {
     }
 }
 
-
 require_once("../../config/config.php");
-require_once("../../config/connexion.php");
-require_once("../../models/Categorie.php");
-require_once("../../models/dao/CategorieDAO.php");
-$categorieDAO=new CategorieDAO(new Connexion());
-$controller=new AddCategorieController($categorieDAO);
-if(!isset($_POST['action'])){
-$controller->index();
-}else{
-$controller->addCategorie();
+require_once("../../config/connexion.php");  // Utiliser include_once ici
+require_once("../../classes/models/Categorie.php");
+require_once("../../classes/dao/CategorieDAO.php");
+$categorieDAO = new CategorieDAO(new Connexion());
+$controller = new AddCategorieController($categorieDAO);
+if (!isset($_POST['action'])) {
+    $controller->index();
+} else {
+    $controller->addCategorie();
 }
-
-
 ?>

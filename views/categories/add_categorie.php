@@ -36,7 +36,7 @@ if ($educateurDAO->isAdmin($login)==true) {
 <a href="../view/acceuil.php">Accueil</a>
 
 
-<form action="../../controllers/AjoutCategorie.php" method="post">
+<form action="../../controllers/categorie/AddCategorieController.php" method="post">
   <table>
 
   <tr>
