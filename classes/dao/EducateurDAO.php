@@ -84,4 +84,14 @@
                 return false;
             }
         }
+        public function isAdmin($email) {
+            try {
+                $stmt = $this->connexion->pdo->prepare("SELECT COUNT(*) FROM educateur WHERE email = ? AND est_administrateur = '1'");
+                $stmt->execute([$email]);
+                $resultat = $stmt->fetchColumn();
+                return $resultat > 0;
+            } catch (PDOException $e) {
+                return false;
+            }
+        }
     }
