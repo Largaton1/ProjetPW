@@ -31,8 +31,6 @@ $login=$_SESSION['username'];
 
 if ($educateurDAO->isAdmin($login)==true) {
    
-
-
 ?>
 
 <a href="../view/acceuil.php">Accueil</a>
@@ -66,3 +64,4 @@ if ($educateurDAO->isAdmin($login)==true) {
 } else {
   echo "Action reserver au admin";
 }
+?>
