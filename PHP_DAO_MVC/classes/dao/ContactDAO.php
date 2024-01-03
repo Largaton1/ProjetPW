@@ -8,7 +8,7 @@ class ContactDAO {
 
     public function create(Contact $contact) {
         try {
-            $stmt = $this->connexion->pdo->prepare("INSERT INTO contact (nom, prenom, email, numero_tel) VALUES (?, ?, ?, ?)");
+            $stmt = $this->connexion->pdo->prepare("INSERT INTO contact (nom, prenom, email, telephone) VALUES (?, ?, ?, ?)");
             $stmt->execute([$contact->getNom(), $contact->getPrenom(), $contact->getEmail(), $contact->getTelephone()]);
             return true;
         } catch (PDOException $e) {
@@ -24,7 +24,7 @@ class ContactDAO {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($row) {
-                return new Contact($row['id'], $row['nom'], $row['prenom'], $row['email'], $row['numero_tel']);
+                return new Contact($row['id'], $row['nom'], $row['prenom'], $row['email'], $row['telephone']);
             } else {
                 return null;
             }

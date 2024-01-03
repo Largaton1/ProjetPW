@@ -1,7 +1,7 @@
 <?php
 class Contact
 {
-    private  $id_contact;
+    private  $id;
     private $nom;
     private $prenom;
     private $email;
@@ -19,7 +19,7 @@ class Contact
     // Getters and setters
     public function getIdContact()
     {
-        return $this->id_contact;
+        return $this->id;
     }
 
     public function getNom()
@@ -44,7 +44,7 @@ class Contact
 
     public function setId($id)
     {
-        $this->id_contact = $id;
+        $this->id = $id;
     }
 
     public function setNom($nom)
