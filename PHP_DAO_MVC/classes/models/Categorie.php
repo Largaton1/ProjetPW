@@ -12,17 +12,27 @@
 
         // Getters
         public function getIdCategorie() { 
-            return $this->id_categorie; }
-        public function getNom() { 
-            return $this->nom; }
+
+            return $this->id_categorie; 
+        }
+        public function getNom() {
+
+            return $this->nom; 
+        }
         public function getCodeRaccourci() { 
-            return $this->code_raccourci; }
+
+            return $this->code_raccourci;
+         }
 
         // Setters
         public function setIdCategorie($id_categorie) {
-             $this->id_categorie = $id_categorie; }
+             $this->id_categorie = $id_categorie; 
+            }
         public function setNom($nom) { 
-            $this->nom = $nom; }
+            $this->nom = $nom;
+         }
         public function setCodeRaccourci($code_raccourci) {
-             $this->code_raccourci = $code_raccourci; }
+             $this->code_raccourci = 
+             $code_raccourci;
+             }
     }
