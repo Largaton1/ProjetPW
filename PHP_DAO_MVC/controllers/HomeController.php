@@ -21,18 +21,18 @@ class HomeController {
         $educateur = $this->EducateurDAO->getAll();
 
         // Inclure la vue pour afficher la liste des categories
-        // include('../views/categories/home.php');
+        include('../views/categories/home_categorie.php');
           // Inclure la vue pour afficher la liste des contacts
 
-        //  include('../views/contact/home.php');
+         include('../views/contact/home_contact.php');
 
           // Inclure la vue pour afficher la liste des licencies
 
-        //   include('../views/licencies/home.php');
+        //   include('../views/licencie/home.php');
 
              // Inclure la vue pour afficher la liste des educateurs
 
-            //  include('../views/educateur/home.php');
+              include('../views/educateurs/home_educateur.php');
 
 
     }

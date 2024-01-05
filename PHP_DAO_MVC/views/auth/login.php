@@ -1,21 +1,20 @@
-<?php
-   
-    session_start();
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Se connecter</title>
+    <!-- <link rel="stylesheet" href="../css/styles.css"> -->
 
-    if ($_POST['email'] == 'test@example.com' && $_POST['password'] == 'mdp') {
-      
-        $_SESSION['user'] = [
-            'id' => 1,
-            'nom' => 'Cyril',
-            'prenom' => 'KONE',
-            'email' => 'largaton95@gmail.com',
-            'est_administrateur' => true
-        ];
+</head>
+<body>
+<h1>WELCOME</h1>
 
-        header('Location: index.php'); // Redirection vers la page dédiée à l'administrateur
-        exit();
-    } else {
-        header('Location: login.php?error=1');
-        exit();
-    }
-?>
+<form action="../../controllers/LoginController.php" method="post">
+    <label for="mot_de_passe">Mot de passe :</label>
+    <input type="text" id="mot_de_passe" name="mot_de_passe" required><br>
+    <label for="email">Email :</label>
+    <input type="email" id="email" name="email"><br>
+    <input type="submit" name="action" value="Ajouter">
+</form>
+</body>
+</html>

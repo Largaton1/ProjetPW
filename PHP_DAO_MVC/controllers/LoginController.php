@@ -8,7 +8,7 @@
         }
 
         public function index(){
-             header("Location:index.php");
+             header("Location:../app");
         }
 
         public function connect(){
@@ -34,17 +34,17 @@
                     // Creer une session et redireger l'utilisateur vers la page d'acceuil
                     session_start();
                     $_SESSION['loggedin'] = true;
-                     header("Location:../../views/home.php");
+                     header("Location:../app");
                 }
 
             }
         }
     }
 
-require_once("config/config.php");
-require_once("config/connexion.php");
-require_once("classes/models/Educateur.php");
-require_once("classes/dao/EducateurDAO.php");
+require_once("../config/config.php");
+require_once("../config/connexion.php");
+require_once("../classes/models/Educateur.php");
+require_once("../classes/dao/EducateurDAO.php");
 
 $educateurDAO = new EducateurDAO(new Connexion());
 $controller = new LoginController($educateurDAO);
