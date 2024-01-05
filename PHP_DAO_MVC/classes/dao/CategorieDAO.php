@@ -1,10 +1,6 @@
 <?php
-
 class CategorieDAO
-
-
 {
-
     private $connexion;
 
     public function __construct(Connexion $connexion)
@@ -12,94 +8,63 @@ class CategorieDAO
         $this->connexion = $connexion;
     }
 
-
-    public function create(Categorie $categorie)
-    {
-        try {
-
-            $query ="INSERT INTO Categories (nom, code_raccourci) VALUES (?, ?)";
-            $stmt = $this->connexion->pdo->prepare($query);
-            $stmt->execute([$categorie->getNom(), $categorie->getCodeRaccourci()]);
-            return true;
-        } catch (PDOException $e) {
-
-            return false;
-        }
-    }
-
-
-    public function getById($id)
-    {
-        
-        try {
-           
-            $query = "SELECT * FROM Categories WHERE id = ?";
-            $stmt = $this->connexion->pdo->prepare($query);
-            $stmt->execute([$id]);
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            if ($row) {
-                return new Categorie($row['id'], $row['nom'], $row['code_raccourci']);
-            } else {
-                return null;
-            }
-        } catch (PDOException $e) {
-
-            return null;
-        }
-    }
-
-
     public function getAll()
     {
         try {
-            $query = "SELECT * FROM Categories";
-            $stmt = $this->connexion->pdo->prepare($query);
-            $categorie = [];
-
+            $sql = "SELECT * FROM categories";
+            $stmt = $this->connexion->pdo->query($sql);
+            $categories = [];
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $categorie[] = new Categorie($row ['id_categorie'],$row['nom'], $row['code_raccourci']);
+                $categories[] = new Categorie($row['id'], $row['nom'], $row['code']);
             }
-
-            return $categorie;
+            return $categories;
         } catch (PDOException $e) {
-
+            // Gérer les erreurs de récupération ici
             return [];
         }
     }
 
-    public function update(Categorie $categorie)
+    public function getById($id)
     {
-        try {
-            $query = "UPDATE Categories SET nom = ?, code = ? WHERE id = ?";
-            $stmt = $this->connexion->pdo->prepare($query);
-            $stmt->execute([$categorie->getNom(), $categorie->getCodeRaccourci(), $categorie->getIdCategorie()]);
-            return true;
-        } catch (PDOException $e) {
+        $sql = "SELECT * FROM categories WHERE id = :id";
+        $stmt = $this->connexion->pdo->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
 
-            return false;
+        if ($stmt->rowCount() === 1) {
+            $row = $stmt->fetch();
+            return new Categorie($row['id'], $row['nom'], $row['code']);
+        } else {
+            return null;
         }
     }
 
+    public function create(Categorie $categorie)
+    {
+        $sql = "INSERT INTO categories (nom, code) VALUES (:nom, :code)";
+        $stmt = $this->connexion->pdo->prepare($sql);
+        $stmt->bindValue(':nom', $categorie->getNom());
+        $stmt->bindValue(':code', $categorie->getCodeRaccourci());
+        $stmt->execute();
+
+        return $this->connexion->pdo->lastInsertId();
+    }
+
+    public function update(Categorie $categorie)
+    {
+        $sql = "UPDATE categories SET nom = :nom, code = :code WHERE id = :id";
+        $stmt = $this->connexion->pdo->prepare($sql);
+        $stmt->bindParam(':id', $categorie->getIdCategorie());
+        $stmt->bindParam(':nom', $categorie->getNom());
+        $stmt->bindParam(':code', $categorie->getCodeRaccourci());
+        $stmt->execute();
+    }
 
     public function deleteById($id)
     {
-        try {
-            $query = "DELETE FROM Categories WHERE id = ?";
-            $stmt = $this->connexion->pdo->prepare($query);
-            $stmt->execute([$id]);
-
-            $queryUpdateLicencies = "UPDATE Licencies SET id = '' WHERE id = :id";
-            $stmtUpdateLicencies = $this->connexion->pdo->prepare($queryUpdateLicencies);
-            $stmtUpdateLicencies->bindParam(':id', $id);
-            $stmtUpdateLicencies->execute();
-            return true;
-        } catch (PDOException $e) {
-
-            return false;
-        }
+        $sql = "DELETE FROM categories WHERE id = :id";
+        $stmt = $this->connexion->pdo->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
     }
-  
-    }
-
-?>
+}
