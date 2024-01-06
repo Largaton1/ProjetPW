@@ -8,7 +8,7 @@
         }
 
         public function index(){
-             header("Location:../app");
+             header("Location:../PHP_DAO_MVC");
         }
 
         public function connect(){
@@ -34,7 +34,7 @@
                     // Creer une session et redireger l'utilisateur vers la page d'acceuil
                     session_start();
                     $_SESSION['loggedin'] = true;
-                     header("Location:../app");
+                     header("Location:../PHP_DAO_MVC");
                 }
 
             }

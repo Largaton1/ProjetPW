@@ -9,6 +9,7 @@ class Connexion {
         global $username;
         global $password;
         try {
+         
             $this->pdo = new PDO("mysql:host=$host;dbname=$database", $username, $password);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {

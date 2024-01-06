@@ -15,7 +15,7 @@ class AddLicencieController {
         $contacts =$this->contactDAO->getAll();
         $categories =$this->categorieDAO->getAll();
         // Inclure la vue pour afficher le formulaire d'ajout de contact
-        include('../../views/licencie/create_licencie.php'); 
+        include('/PHP_DAO_MVC/views/licencie/add_licencie.php');
     }
     
    
@@ -55,7 +55,7 @@ class AddLicencieController {
                     header('Location: ../licencie/IndexLicencieController.php');
                     exit();
                 } else {
-                    // Gérer les erreurs d'ajout de contact
+                    // Gérer les erreurs d'ajout 
                     echo "Erreur lors de l'ajout du licencié.";
                     header('Location: ../licencie/IndexLicencieController.php');
                     exit();
@@ -66,8 +66,8 @@ class AddLicencieController {
           $contacts = $this->contactDAO->getAll();
           $categories = $this->categorieDAO->getAll();
     
-        // Inclure la vue pour afficher le formulaire d'ajout de contact
-        include('../../views/licencie/create_licencie.php');
+        // Inclure la vue pour afficher le formulaire d'ajout
+        include('/PHP_DAO_MVC/views/licencie/add_licencie.php');
     }
     
 }

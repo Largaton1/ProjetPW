@@ -17,7 +17,7 @@ class Contact
     }
 
     // Getters and setters
-    public function getIdContact()
+    public function getId()
     {
         return $this->id;
     }

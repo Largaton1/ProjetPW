@@ -17,12 +17,12 @@ class IndexLicencieController {
  
 require_once("../../config/config.php");
 require_once("../../config/connexion.php");
-require_once("../../models/Licencie.php");
-require_once("../../models/dao/LicencieDAO.php");
-require_once("../../models/Contact.php");
-require_once("../../models/dao/ContactDAO.php");
-require_once("../../models/Categorie.php");
-require_once("../../models/dao/CategorieDAO.php");
+require_once("../../classes/models/Licencie.php");
+require_once("../../classes/dao/LicencieDAO.php");
+require_once("../../classes/models/Contact.php");
+require_once("../../classes/dao/ContactDAO.php");
+require_once("../../classes/models/Categorie.php");
+require_once("../../classes/dao/CategorieDAO.php");
 $licencieDAO=new LicencieDAO(new Connexion());
 $controller=new IndexLicencieController($licencieDAO);
 $controller->index();

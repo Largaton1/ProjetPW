@@ -26,10 +26,7 @@ class AddContactController
                     return;
                 }
 
-                if($this->contactDAO->getByEmail($email)){
-                    echo 'Cet contact existe déjà !';
-                    return;
-                }
+               
 
                 // Creation de nouveau contact
                 $contact = new Contact("", $nom, $prenom, $email, $telephone);
