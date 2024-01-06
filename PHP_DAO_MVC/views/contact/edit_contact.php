@@ -1,70 +1,123 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Modifier un contact</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Dashboard</title>
 
-    <link rel="stylesheet" href="../css/styles.css">
-
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="../../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="../../plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.min.css">
 </head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+  <?php include("../../sections/navbar.php") ?>
+  <!-- /.navbar -->
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>Ajout de catégorie</title>
-</head>
+  <!-- Main Sidebar Container -->
+  <?php include("../../sections/aside.php") ?>
 
-<body>
+  <!-- Content Wrapper. Contains page content -->
+ 
+    <a href="../../controllers/contact/IndexContactController.php">Retour à la liste des licenciés</a>
 
-<?php
-session_start();
+    <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Ajout d'un nouveau contact</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form action="../../controllers/contact/AddContactController.php" method="post">
+                <div class="card-body">
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "projetpw";
+                <div class="form-group row">
+                <input type="hidden" name="id" value="<?php echo $contact->getId(); ?>">
 
-// Vérifier si la session est active
-if (!isset($_SESSION['username'])) {
-    echo "Session non active";
-    header("Location: ../../views/login.php"); // Redirigez vers la page de connexion si l'utilisateur n'est pas connecté
-    exit();
-}
+            </div>
+                  <div class="form-group">
+                    <label for="nom">Nom</label>
+                    <input type="text" class="form-control" id="nom"  value="<?php echo $contact->getNom(); ?> ">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="prenom">Prenom</label>
+                    <input type="text" class="form-control" id="prenom" value="<?php echo $contact->getPrenom(); ?> ">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email </label>
+                    <input type="text" class="form-control" id="email" value="<?php echo $contact->getEmail(); ?> ">
+                  </div>
+                  <div class="form-group">
+                    <label for="telephone">Telephone </label>
+                    <input type="text" class="form-control" id="telephone" value="<?php echo $contact->getTelephone(); ?> " >
+                  </div>
+                  
+                  
+                </div>
+                <!-- /.card-body -->
 
-require_once '../../classes/dao/EducateurDAO.php';
-require '../../config/connexion.php';
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary" name="action">Ajouter</button>
+                </div>
+              </form>
+            </div>
 
-$conn = new Connexion();
-$educateurDAO = new EducateurDAO($conn);
+    <?php
+    
+    ?>
+  <!-- /.content-wrapper -->
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
 
-$login=$_SESSION['username'];
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="../../plugins/jszip/jszip.min.js"></script>
+<script src="../../plugins/pdfmake/pdfmake.min.js"></script>
+<script src="../../plugins/pdfmake/vfs_fonts.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<!-- Page specific script -->
 
-if ($educateurDAO->isAdmin($login)==true) {
-   
-?>
-<body>
-<h1>Modifier un contact</h1>
-<a href="IndexEducateurController.php">Retour à la liste des contacts</a>
-    <form action="EditContactController.php" method="post">
-        <input type="hidden" id="id" name="id" value="<?php echo $_GET["id"]?>" />
-        <label for="nom">Email :</label>
-        <input type="nom" id="nom" name="nom" value="<?php echo htmlspecialchars($contact->getNom()); ?>"><br>
 
-        <label for="prenom">Email :</label>
-        <input type="prenom" id="prenom" name="prenom" value="<?php echo htmlspecialchars($contact->getPrenom()); ?>"><br>
-
-        <label for="email">Email :</label>
-        <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($contact->getEmail()); ?>"><br>
-
-        <label for="telephone">Email :</label>
-        <input type="telephone" id="telephone" name="telephone" value="<?php echo htmlspecialchars($contact->getTelephone()); ?>"><br>
-
-        <input type="submit" name="action" value="Modifier">
-    </form>
 </body>
 </html>
-<?php
-} else {
-  echo "Action reserver au admin";
-}
-?>

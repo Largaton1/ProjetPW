@@ -1,7 +1,7 @@
 <?php
 // Inclure le contrôleur pour récupérer les données des licenciés
-require_once("../../controllers/licencie/IndexLicencieController.php");
-require_once("../../classes/models/Contact.php");
+require_once("../../controllers/categorie/IndexCategorieController.php");
+require_once("../../classes/models/Categorie.php");
 
 ?>
 
@@ -39,12 +39,12 @@ require_once("../../classes/models/Contact.php");
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Liste des contacts</h1>
+            <h1>Liste des categories</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Contacts</li>
+              <li class="breadcrumb-item active">   Categories</li>
             </ol>
           </div>
         </div>
@@ -69,29 +69,25 @@ require_once("../../classes/models/Contact.php");
               <table id="example1" class="table table-bordered table-striped">
     <thead>
       <tr>
-        
        
-        <th>Nom</th>
-        <th>Prenom</th>
-        <th>Email</th>
-        <th>Telephone</th>
+        <th>Nom </th>
+        <th>Code categorie</th>
        
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($contacts as $contact): ?>
+      <?php foreach ($categories as $categorie): ?>
         <tr>
     
         
-          <td><?php echo $contact->getNom(); ?></td>
-          <td><?php echo $contact->getPrenom(); ?></td>
-          <td><?php echo $contact->getEmail(); ?></td>
-          <td><?php echo $contact->getTelephone(); ?></td>
+          <td><?php echo $categorie->getNom(); ?></td>
+          <td><?php echo $categorie->getCodeRaccourci(); ?></td>
+          
           
       
-          <td><a class="tooltips" href="delete-contact.php?Id=<?php echo $contact->getId();  ?>"><i class="fa fa-trash" style="color:orangered"></i></a>
-          <a class="tooltips" href="edit-contact.php?Id=<?php $contact->getId();  ?>"><i class="fa fa-edit" style="color:rgb(18, 219, 18);"></i></a>
+          <td><a class="tooltips" href="delete-categorie.php?Id=<?php echo $categorie->getId();  ?>"><i class="fa fa-trash" style="color:orangered"></i></a>
+          <a class="tooltips" href="edit-categorie.php?Id=<?php $categorie->getId();  ?>"><i class="fa fa-edit" style="color:rgb(18, 219, 18);"></i></a>
           </td>
         </tr>
       <?php endforeach; ?>
