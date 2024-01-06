@@ -39,7 +39,7 @@
   <?php include("../../sections/aside.php") ?>
 
   <!-- Content Wrapper. Contains page content -->
- 
+  <div class="content-wrapper">
     <a href="../../controllers/contact/IndexContactController.php">Retour à la liste des licenciés</a>
 
     <div class="card card-primary">

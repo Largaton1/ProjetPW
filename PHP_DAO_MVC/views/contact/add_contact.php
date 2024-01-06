@@ -39,12 +39,12 @@
   <?php include("../../sections/aside.php") ?>
 
   <!-- Content Wrapper. Contains page content -->
- 
+  <div class="content-wrapper">
     <a href="../../controllers/licencie/IndexLicencieController.php">Retour à la liste des licenciés</a>
 
     <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Ajout d'un nouveau licencié</h3>
+                <h3 class="card-title">Ajout d'un nouveau contact</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -64,7 +64,7 @@
                     <input type="text" class="form-control" id="email" >
                   </div>
                   <div class="form-group">
-                    <label for="telephone">Telephone </label>
+                    <label for="telephone">Téléphone </label>
                     <input type="text" class="form-control" id="telephone" >
                   </div>
                   
@@ -78,9 +78,7 @@
               </form>
             </div>
 
-    <?php
-    
-    ?>
+   
   <!-- /.content-wrapper -->
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
