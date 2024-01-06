@@ -8,7 +8,7 @@
 
         public function create(Educateur $educateur) {
             try {
-                $stmt = $this->connexion->pdo->prepare("INSERT INTO educateur (numero_licence, email, mot_de_passe, est_administrateur) VALUES (?, ?, ?, ?)");
+                $stmt = $this->connexion->pdo->prepare("INSERT INTO educateurs (licencie_id, email, mot_de_passe, est_administrateur) VALUES (?, ?, ?, ?)");
                 $stmt->execute([$educateur->getNumeroLicence(), $educateur->getEmail(), $educateur->getMotDePasse(), $educateur->getEstAdministrateur()]);
                 return true;
             } catch (PDOException $e) {
@@ -19,12 +19,12 @@
 
         public function getById($id) {
             try {
-                $stmt = $this->connexion->pdo->prepare("SELECT * FROM educateur WHERE id_educateur = ?");
+                $stmt = $this->connexion->pdo->prepare("SELECT * FROM educateur WHERE educateur_id = ?");
                 $stmt->execute([$id]);
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
                 if ($row) {
-                    return new Educateur($row['id_educateur'], $row['numero_licence'], $row['email'], $row['mot_de_passe'], $row['est_administrateur']);
+                    return new Educateur($row['educateur_id'], $row['licencie_id'], $row['email'], $row['mot_de_passe'], $row['est_administrateur']);
                 } else {
                     return null;
                 }
@@ -35,12 +35,12 @@
 
         public function getByEmail($email) {
             try {
-                $stmt = $this->connexion->pdo->prepare("SELECT * FROM educateur WHERE email = ?");
+                $stmt = $this->connexion->pdo->prepare("SELECT * FROM educateurs WHERE email = ?");
                 $stmt->execute([$email]);
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
                 if ($row) {
-                    return new Educateur($row['id_educateur'], $row['numero_licence'], $row['email'], $row['mot_de_passe'], $row['est_administrateur']);
+                    return new Educateur($row['educateur_id'], $row['licencie_id'], $row['email'], $row['mot_de_passe'], $row['est_administrateur']);
                 } else {
                     return null;
                 }
@@ -51,11 +51,11 @@
 
         public function getAll() {
             try {
-                $stmt = $this->connexion->pdo->query("SELECT * FROM educateur");
+                $stmt = $this->connexion->pdo->query("SELECT * FROM educateurs");
                 $educateurs = [];
 
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $educateurs[] = new Educateur($row['id_educateur'], $row['numero_licence'], $row['email'], $row['mot_de_passe'], $row['est_administrateur']);
+                    $educateurs[] = new Educateur($row['educateur_id'], $row['licencie_id'], $row['email'], $row['mot_de_passe'], $row['est_administrateur']);
                 }
 
                 return $educateurs;
@@ -66,7 +66,7 @@
 
         public function update(Educateur $educateur) {
             try {
-                $stmt = $this->connexion->pdo->prepare("UPDATE educateur SET id_educateur = ?, numero_licence = ?, email = ?, mot_de_passe = ?, est_administrateur = ? WHERE id_educateur = ?");
+                $stmt = $this->connexion->pdo->prepare("UPDATE educateurs SET id_educateur = ?, licencie_id = ?, email = ?, mot_de_passe = ?, est_administrateur = ? WHERE educateur_id = ?");
                 $stmt->execute([$educateur->getIdEducateur(), $educateur->getNumeroLicence(), $educateur->getEmail(), $educateur->getMotDePasse(), $educateur->getEstAdministrateur(), $educateur->getIdEducateur()]);
                 return true;
             } catch (PDOException $e) {
@@ -77,7 +77,7 @@
 
         public function deleteById($id) {
             try {
-                $stmt = $this->connexion->pdo->prepare("DELETE FROM educateur WHERE id_educateur = ?");
+                $stmt = $this->connexion->pdo->prepare("DELETE FROM educateurs WHERE educateur_id = ?");
                 $stmt->execute([$id]);
                 return true;
             } catch (PDOException $e) {
@@ -94,4 +94,20 @@
                 return false;
             }
         }
-    }
+        
+        public function getConnexion($email,$password) {
+            try {
+                $stmt = $this->connexion->pdo->prepare("SELECT * FROM educateurs WHERE email = ? AND mot_de_passe = ? AND est_administrateur=1 ");
+                $stmt->execute([$email,$password]);
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+                if ($row) {
+                    return new Educateur($row['educateur_id'], $row['licencie_id'], $row['email'], $row['mot_de_passe'], $row['est_administrateur']);
+                } else {
+                    return null; 
+                }
+            } catch (PDOException $e) {
+                // GÃ©rer les erreurs de rÃ©cupÃ©ration ici
+                return null;
+            }
+    }}

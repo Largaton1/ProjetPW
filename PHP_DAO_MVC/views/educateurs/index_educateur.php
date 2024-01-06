@@ -10,7 +10,7 @@ require_once("../../classes/models/Contact.php");
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | DataTables</title>
+  <title>Liste des educateurs</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -72,11 +72,10 @@ require_once("../../classes/models/Contact.php");
       <tr>
         
         <th>Numero licence</th>
-        <th>Nom</th>
         <th>Email</th>
-        <th>Password</th>
+     
         <th>Administrateur</th>
-      
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -84,13 +83,13 @@ require_once("../../classes/models/Contact.php");
         <tr>
     
           <td><?php echo $educateur->getNumeroLicence(); ?></td>
-          <td><?php echo $educateur->getNom(); ?></td>
+          
           <td><?php echo $educateur->getEmail(); ?></td>
 
           <td><?php echo $educateur->getEstAdministrateur()  == 1 ? 'oui' : 'non'; ?></td>
       
-          <td><a class="tooltips" href="delete-educateur.php?Id=<?php echo $educateur->getId();  ?>"><i class="fa fa-trash" style="color:orangered"></i></a>
-          <a class="tooltips" href="edit-educateur.php?Id=<?php $educateur->getId();  ?>"><i class="fa fa-edit" style="color:rgb(18, 219, 18);"></i></a>
+          <td><a class="tooltips" href="delete-educateur.php?Id=<?php echo $educateur->getIdEducateur();  ?>"><i class="fa fa-trash" style="color:orangered"></i></a>
+          <a class="tooltips" href="edit-educateur.php?Id=<?php $educateur->getIdEducateur();  ?>"><i class="fa fa-edit" style="color:rgb(18, 219, 18);"></i></a>
           </td>
         </tr>
       <?php endforeach; ?>

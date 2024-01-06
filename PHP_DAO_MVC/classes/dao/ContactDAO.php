@@ -28,7 +28,7 @@ class ContactDAO
             $contacts = [];
  
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $contacts[] = new Contact($row['id'],$row['nom'], $row['prenom'], $row['email'], $row['telephone']);
+                $contacts[] = new Contact($row['contact_id'],$row['nom'], $row['prenom'], $row['email'], $row['telephone']);
             }
             return $contacts;
         } catch (PDOException $e) {

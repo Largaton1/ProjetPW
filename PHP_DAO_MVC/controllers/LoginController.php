@@ -1,9 +1,9 @@
 <?php
 // Import des fichiers requis
-require_once("config/config.php");
-require_once("config/connexion.php");
-require_once("classes/models/Educateur.php");
-require_once("classes/dao/EducateurDAO.php");
+require_once("../config/config.php");
+require_once("../config/connexion.php");
+require_once("../classes/models/Educateur.php");
+require_once("../classes/dao/EducateurDAO.php");
 
 // Début de la définition de la classe LoginController
 class LoginController
@@ -16,8 +16,8 @@ class LoginController
 
     public function index(){
         // Redirection vers la page de login
-        // header("Location:views/login.php");  
-        include "views/login.php";
+         header("Location:index.php");  
+        
     }
 
     public function connect(){
@@ -41,7 +41,8 @@ class LoginController
                 // Création d'une session et redirection vers la page d'accueil
                 session_start();
                 $_SESSION['loggedin'] = true;
-                header("Location:index.php");
+                echo"bj";
+                // header("Location:");
             }
         }
     }
