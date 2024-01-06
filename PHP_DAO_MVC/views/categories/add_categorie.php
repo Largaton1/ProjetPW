@@ -24,9 +24,7 @@
   <!-- Daterange picker -->
   <link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
   <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
@@ -34,13 +32,15 @@
   <!-- Navbar -->
   <?php include("../../sections/navbar.php") ?>
   <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
   <?php include("../../sections/aside.php") ?>
+  <!-- Main Sidebar Container -->
+  
 
   <!-- Content Wrapper. Contains page content -->
  
-    <a href="../../controllers/categorie/IndexCategorieController.php">Retour à la liste des licenciés</a>
+ 
+  <div class="content-wrapper">
+    <a href="../../controllers/categorie/IndexCategorieController.php">Retour à la liste des categories</a>
 
     <div class="card card-primary">
               <div class="card-header">
@@ -50,13 +50,13 @@
               <!-- form start -->
               <form action="../../controllers/categorie/AddCategorieController.php" method="post">
                 <div class="card-body">
+                
                   <div class="form-group">
                     <label for="nom">Nom </label>
-                    <input type="text" class="form-control" id="nom" > 
+                    <input type="text" class="form-control" id="nom" >
                   </div>
-                  
                   <div class="form-group">
-                    <label for="code">Code raccourci</label>
+                    <label for="code">Code Raccourci</label>
                     <input type="text" class="form-control" id="code" >
                   </div>
                   
@@ -69,15 +69,10 @@
                 </div>
               </form>
             </div>
-
-    <?php
-    
-    ?>
+</div>
   <!-- /.content-wrapper -->
   <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
+  
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->

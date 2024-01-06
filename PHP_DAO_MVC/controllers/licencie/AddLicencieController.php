@@ -15,7 +15,7 @@ class AddLicencieController {
         $contacts =$this->contactDAO->getAll();
         $categories =$this->categorieDAO->getAll();
         // Inclure la vue pour afficher le formulaire d'ajout de contact
-        include('/PHP_DAO_MVC/views/licencie/add_licencie.php');
+        include('../../views/licencie/add_licencie.php');
     }
     
    
@@ -39,7 +39,7 @@ class AddLicencieController {
                 // Gérer le cas où le contact n'est pas trouvé
                 echo "Erreur : Le contact n'a pas été trouvé.";
                 return;
-                header('Location: ../contact/IndexContactController.php');
+                header('Location: ../../contact/IndexContactController.php');
                 exit();
             }
     
@@ -67,7 +67,7 @@ class AddLicencieController {
           $categories = $this->categorieDAO->getAll();
     
         // Inclure la vue pour afficher le formulaire d'ajout
-        include('/PHP_DAO_MVC/views/licencie/add_licencie.php');
+        include('../../views/licencie/add_licencie.php');
     }
     
 }
@@ -75,12 +75,12 @@ class AddLicencieController {
 
 require_once("../../config/config.php");
 require_once("../../config/connexion.php");
-require_once("../../models/Licencie.php");
-require_once("../../models/dao/LicencieDAO.php");
-require_once("../../models/Contact.php");
-require_once("../../models/dao/ContactDAO.php");
-require_once("../../models/Categorie.php");
-require_once("../../models/dao/CategorieDAO.php");
+require_once("../../classes/models/Licencie.php");
+require_once("../../classes/dao/LicencieDAO.php");
+require_once("../../classes/models/Contact.php");
+require_once("../../classes/dao/ContactDAO.php");
+require_once("../../classes/models/Categorie.php");
+require_once("../../classes/dao/CategorieDAO.php");
 $licencieDAO=new LicencieDAO(new Connexion());
 $contactDAO=new ContactDAO(new Connexion());
 $categorieDAO=new CategorieDAO(new Connexion());

@@ -12,7 +12,7 @@ class AddEducateurController
 
     public function index(){
         $licences = $this->licencieDAO->getAll();
-        include('../../views/educateur/add_educateur.php');
+        include('../../views/educateurs/add_educateur.php');
     }
 
     public function addEducateur(){
