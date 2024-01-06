@@ -1,6 +1,6 @@
 <?php
 // Inclure le contrôleur pour récupérer les données des licenciés
-require_once("../../controllers/licencie/IndexLicencieController.php");
+require_once("../../controllers/educateur/IndexEducateurController.php");
 require_once("../../classes/models/Contact.php");
 
 ?>
@@ -44,7 +44,7 @@ require_once("../../classes/models/Contact.php");
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Licencies</li>
+              <li class="breadcrumb-item active">educateurs</li>
             </ol>
           </div>
         </div>
@@ -71,6 +71,7 @@ require_once("../../classes/models/Contact.php");
       <tr>
         
         <th>Numero licence</th>
+        <th>Nom</th>
         <th>Email</th>
         <th>Password</th>
         <th>Administrateur</th>
@@ -82,7 +83,7 @@ require_once("../../classes/models/Contact.php");
         <tr>
     
           <td><?php echo $educateur->getNumeroLicence(); ?></td>
-
+          <td><?php echo $educateur->getNom(); ?></td>
           <td><?php echo $educateur->getEmail(); ?></td>
 
           <td><?php echo $educateur->getEstAdministrateur()  == 1 ? 'oui' : 'non'; ?></td>

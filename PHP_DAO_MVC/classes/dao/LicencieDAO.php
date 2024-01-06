@@ -1,10 +1,10 @@
 <?php
-require_once("../models/Categorie.php");
-require_once("../models/Licencie.php");
-require_once("../models/Contact.php");
-require_once("../dao/CategorieDAO.php");
-require_once("../dao/LicencieDAO.php");
-require_once("../dao/ContactDAO.php");
+require_once("../../classes/models/Categorie.php");
+require_once("../../classes/models/Licencie.php");
+require_once("../../classes/models/Contact.php");
+require_once("../../classes/dao/CategorieDAO.php");
+require_once("../../classes/dao/LicencieDAO.php");
+require_once("../../classes/dao/ContactDAO.php");
 class LicencieDAO {
     private $connexion;
 
@@ -63,7 +63,7 @@ class LicencieDAO {
                 $licencie[] = new Licencie($row['id'],$row['numero_licencie'], $row['nom'], $row['prenom'], $contact,$categorie);
                 $licencies[] = $licencie;
             }
-            return $licencie;
+            return $licencies;
         } catch (PDOException $e) {
             // GÃ©rer les erreurs de rÃ©cupÃ©ration ici
             return [];

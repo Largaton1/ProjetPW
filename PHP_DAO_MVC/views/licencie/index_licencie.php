@@ -62,8 +62,10 @@ require_once("../../classes/models/Contact.php");
             <div class="card">
               <div class="card-header d-flex align-items-center">
                 <h3 class="card-title">Liste des licencies</h3>
-                <button type="button" class="btn btn-primary ml-auto justify-content-end" data-toggle="modal" data-target="#modal-lg" > Ajout</button>
+                <a href="/views/licencie/add_licence.php" class="btn btn-primary ml-auto justify-content-end" data-toggle="modal" data-target="#modal-lg">Ajout</a>
+
               </div>
+            
               <!-- /.card-header -->
               <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">

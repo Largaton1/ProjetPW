@@ -72,9 +72,9 @@
           <label for="licencie_id">Licencié</label>
           <select class="custom-select form-control-border" id="licencie_id" name="licencie_id">
             <option value = "">Sélectionner un licencié</option>
-            <?php foreach ($licences as $single_licencie): ?>
-              <option value="<?= htmlspecialchars($single_licencie->getNumeroLicence()) ?>" <?= ($single_licencie->getNumeroLicence() === $educateur->getNumeroLicence()) ? 'selected' : '' ?>>
-                <?= htmlspecialchars($single_licencie->getNom()) ?>
+            <?php foreach ($licences as $licencie): ?>
+              <option value="<?= htmlspecialchars($licencie->getNumeroLicence()) ?>" <?= ($single_licencie->getNumeroLicence() === $educateur->getNumeroLicence()) ? 'selected' : '' ?>>
+                <?= htmlspecialchars($licencie->getNom()) ?>
               </option>
             <?php endforeach; ?>
           </select>

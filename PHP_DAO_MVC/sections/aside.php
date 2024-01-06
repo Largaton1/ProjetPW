@@ -30,7 +30,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
+          <!-- <li class="nav-item menu-open">
             <a href="../../sections/data.php" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -39,10 +39,10 @@
               </p>
             </a>
           
-          </li>
+          </li> -->
           
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="../../controllers/licencie/IndexLicencieController.php" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Licencies
@@ -50,26 +50,12 @@
               
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/PHP_DAO_MVC/views/licencie/index_licencie.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Lister</p>
-                </a>
-              </li>
-             
-            </ul>
+           
            
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="../../controllers/educateur/IndexEducateurController.php" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Educateurs
@@ -77,9 +63,9 @@
               
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../views/educateurs/add_educateur.php" class="nav-link">
+                <a href="../../controllers/educateurs/IndexEducateurController" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ajouter</p>
                 </a>
@@ -91,12 +77,12 @@
                 </a>
               </li>
             
-            </ul>
+            </ul> -->
            
           </li>
          
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="../../controllers/categorie/IndexCategorieController.php" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Categories
@@ -104,7 +90,7 @@
               
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="/PHP_DAO_MVC/views/licencie/add_licencie.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -118,13 +104,13 @@
                 </a>
               </li>
               
-            </ul>
+            </ul> -->
            
           </li>
          
       
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="../../controllers/contact/IndexContactController.php" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Contact
@@ -132,7 +118,7 @@
               
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="views/licencie/add_licencie.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -146,7 +132,7 @@
                 </a>
               </li>
               
-            </ul>
+            </ul> -->
            
           </li>
          

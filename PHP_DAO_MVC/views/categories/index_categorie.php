@@ -33,7 +33,8 @@ require_once("../../classes/models/Categorie.php");
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+   <!-- Content Wrapper. Contains page content -->
+   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -44,7 +45,7 @@ require_once("../../classes/models/Categorie.php");
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">   Categories</li>
+              <li class="breadcrumb-item active">Licencies</li>
             </ol>
           </div>
         </div>
@@ -61,7 +62,7 @@ require_once("../../classes/models/Categorie.php");
 
             <div class="card">
               <div class="card-header d-flex align-items-center">
-                <h3 class="card-title">Liste des contacts</h3>
+                <h3 class="card-title">Liste des categories</h3>
                 <button type="button" class="btn btn-primary ml-auto justify-content-end" data-toggle="modal" data-target="#modal-lg" > Ajout</button>
               </div>
               <!-- /.card-header -->

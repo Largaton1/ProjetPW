@@ -9,7 +9,8 @@
 
         public function index() {
             $educateurs = $this->educateurDAO->getAll();
-            include('../../views/educateur/index_educateur.php');
+           
+            include('../../views/educateurs/index_educateur.php');
         }
     }
 

@@ -38,16 +38,16 @@ class HomeController {
     }
 }
 
-require_once("../config/config.php");
-require_once("../config/connexion.php");
-require_once("../classes/models/Categorie.php");
-require_once("../classes/dao/CategorieDAO.php");
-require_once("../classes/models/Contact.php");
-require_once("../classes/dao/ContactDAO.php");
-require_once("../classes/models/Licencie.php");
-require_once("../classes/dao/LicencieDAO.php");
-require_once("../classes/models/Educateur.php");
-require_once("../classes/dao/EducateurDAO.php");
+require_once("config/config.php");
+require_once("config/connexion.php");
+require_once("classes/models/Categorie.php");
+require_once("classes/dao/CategorieDAO.php");
+require_once("classes/models/Contact.php");
+require_once("classes/dao/ContactDAO.php");
+require_once("classes/models/Licencie.php");
+require_once("classes/dao/LicencieDAO.php");
+require_once("classes/models/Educateur.php");
+require_once("classes/dao/EducateurDAO.php");
 
 $CategorieDAO=new CategorieDAO(new Connexion());
 $ContactDAO=new ContactDAO(new Connexion());
