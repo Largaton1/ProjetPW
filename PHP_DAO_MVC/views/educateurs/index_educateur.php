@@ -25,10 +25,11 @@ require_once("../../classes/models/Contact.php");
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-
+<?php include("../../sections/navbar.php") ?>
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     
+
   <?php include("../../sections/aside.php") ?>
   </aside>
 
