@@ -75,6 +75,7 @@ require_once("../../classes/models/Contact.php");
         <th>Prenom</th>
         <th>Email</th>
         <th>Telephone</th>
+        <th>Categories</th>
         <th>Actions</th>
       </tr>
     </thead>

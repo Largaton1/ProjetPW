@@ -6,29 +6,10 @@
     <title>Modifier un éducateur</title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
-
-<!DOCTYPE html>
-<html>
-<head>
-<title>Ajout de catégorie</title>
-</head>
-
 <body>
 
 <?php
-session_start();
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "projetpw";
-
-// Vérifier si la session est active
-if (!isset($_SESSION['username'])) {
-    echo "Session non active";
-    header("Location: ../../views/login.php"); // Redirigez vers la page de connexion si l'utilisateur n'est pas connecté
-    exit();
-}
 
 require_once '../../classes/dao/EducateurDAO.php';
 require '../../config/connexion.php';
@@ -68,7 +49,7 @@ if ($educateurDAO->isAdmin($login)==true) {
         </select>
         <br><br>
         
-        <input type="submit" name="action" value="Modifier">
+        <input type="submit" class="btn btn-success" name="action" value="Modifier">
     </form>
 </body>
 </html>

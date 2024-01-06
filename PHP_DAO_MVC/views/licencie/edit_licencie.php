@@ -93,9 +93,6 @@
               </form>
             </div>
 
-    <?php
-    
-    ?>
   <!-- /.content-wrapper -->
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
