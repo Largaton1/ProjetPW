@@ -15,7 +15,7 @@ class CategorieDAO
             $stmt = $this->connexion->pdo->query($sql);
             $categories = [];
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $categories[] = new Categorie($row['categorie_id'], $row['nom'], $row['code_raccourci']);
+                $categories[] = new Categorie($row['categorie_id'], $row['nom_categorie'], $row['code_raccourci']);
             }
             return $categories;
         } catch (PDOException $e) {
@@ -26,14 +26,15 @@ class CategorieDAO
 
     public function getById($id)
     {
-        $sql = "SELECT * FROM categories WHERE categorie_id = :id";
+        $sql = "SELECT * FROM categories WHERE categorie_id = ?";
         $stmt = $this->connexion->pdo->prepare($sql);
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
+        // $stmt->bindParam(':id', $id);
+        // $stmt->execute();
+        $stmt->execute([$id]);
 
         if ($stmt->rowCount() === 1) {
             $row = $stmt->fetch();
-            return new Categorie($row['categorie_id'], $row['nom'], $row['code_raccourci']);
+            return new Categorie($row['categorie_id'], $row['nom_categorie'], $row['code_raccourci']);
         } else {
             return null;
         }
@@ -41,7 +42,7 @@ class CategorieDAO
 
     public function create(Categorie $categorie)
     {
-        $sql = "INSERT INTO categories (nom, code_raccourci) VALUES (:nom, :code)";
+        $sql = "INSERT INTO categories (nom_categorie, code_raccourci) VALUES (:nom, :code)";
         $stmt = $this->connexion->pdo->prepare($sql);
         $stmt->bindValue(':nom', $categorie->getNom());
         $stmt->bindValue(':code', $categorie->getCodeRaccourci());
@@ -52,7 +53,7 @@ class CategorieDAO
 
     public function update(Categorie $categorie)
     {
-        $sql = "UPDATE categories SET nom = :nom, code_raccourci = :code_raccourci WHERE id = :id";
+        $sql = "UPDATE categories SET nom_categorie = :nom, code_raccourci = :code_raccourci WHERE categorie_id = :id";
         $stmt = $this->connexion->pdo->prepare($sql);
         $stmt->bindParam(':id', $categorie->getIdCategorie());
         $stmt->bindParam(':nom', $categorie->getNom());

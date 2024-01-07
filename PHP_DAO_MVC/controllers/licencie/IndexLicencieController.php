@@ -1,11 +1,12 @@
 <?php
 class IndexLicencieController {
     private $licencieDAO;
+    
   
  
-    public function __construct(LicencieDAO $licencieDAO  ) {
+    public function __construct(LicencieDAO $licencieDAO ) {
         $this->licencieDAO = $licencieDAO;
-    
+      
     }
  
     public function index() {

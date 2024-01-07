@@ -1,12 +1,12 @@
 <?php
     class Categorie {
         private $id_categorie;
-        private $nom;
+        private $nom_categorie;
         private $code_raccourci;
 
-        public function __construct($id_categorie, $nom, $code_raccourci) {
+        public function __construct($id_categorie, $nom_categorie, $code_raccourci) {
             $this->id_categorie = $id_categorie;
-            $this->nom = $nom;
+            $this->nom_categorie = $nom_categorie;
             $this->code_raccourci = $code_raccourci;
         }
 
@@ -17,7 +17,7 @@
         }
         public function getNom() {
 
-            return $this->nom; 
+            return $this->nom_categorie; 
         }
         public function getCodeRaccourci() { 
 
@@ -28,8 +28,8 @@
         public function setIdCategorie($id_categorie) {
              $this->id_categorie = $id_categorie; 
             }
-        public function setNom($nom) { 
-            $this->nom = $nom;
+        public function setNom($nom_categorie) { 
+            $this->nom_categorie = $nom_categorie;
          }
         public function setCodeRaccourci($code_raccourci) {
              $this->code_raccourci = 

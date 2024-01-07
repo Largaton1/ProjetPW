@@ -2,17 +2,17 @@
 class Contact
 {
     private  $contact_id;
-    private $nom;
-    private $prenom;
+    private $nom_contact;
+    private $prenom_contact;
     private $email;
     private $telephone;
 
     // Constructeur
-    public function __construct($contact_id, $nom, $prenom, $email, $telephone)
+    public function __construct($contact_id, $nom_contact, $prenom_contact, $email, $telephone)
     {
         $this->contact_id = $contact_id;
-        $this->nom = $nom;
-        $this->prenom = $prenom;
+        $this->nom_contact = $nom_contact;
+        $this->prenom_contact = $prenom_contact;
         $this->email = $email;
         $this->telephone = $telephone;
     }
@@ -23,14 +23,14 @@ class Contact
         return $this->contact_id;
     }
 
-    public function getNom()
+    public function getNomContact()
     {
-        return $this->nom;
+        return $this->nom_contact;
     }
 
     public function getPrenom()
     {
-        return $this->prenom;
+        return $this->prenom_contact;
     }
 
     public function getEmail()
@@ -48,14 +48,14 @@ class Contact
         $this->contact_id = $id;
     }
 
-    public function setNom($nom)
+    public function setNom($nom_contact)
     {
-        $this->nom = $nom;
+        $this->nom_contact = $nom_contact;
     }
 
-    public function setPrenom($prenom)
+    public function setPrenom($prenom_contact)
     {
-        $this->prenom = $prenom;
+        $this->prenom_contact = $prenom_contact;
     }
 
     public function setEmail($email)

@@ -20,8 +20,8 @@ class LicencieDAO {
         $stmt->bindValue(':numero_licencie', $licencie->getNumeroLicencie());
         $stmt->bindValue(':nom', $licencie->getNom());
         $stmt->bindValue(':prenom', $licencie->getPrenom());
-        $stmt->bindValue(':contact_id',$licencie->getContact());
-        $stmt->bindValue(':categorie_id',$licencie->getCategorie());
+        $stmt->bindValue(':contact_id',$licencie->getContact()->getId());
+        $stmt->bindValue(':categorie_id',$licencie->getCategorie()->getIdCategorie());
         $stmt->execute();
         return $this->connexion->pdo->lastInsertId();
     }
@@ -60,16 +60,45 @@ class LicencieDAO {
                 $categorieDAO = new CategorieDAO($this->connexion);
                 $contact = $contactDAO->getById($row['contact_id']);
                 $categorie = $categorieDAO->getById($row['categorie_id']);
-                $licencie = new Licencie($row['licencie_id'],$row['numero_licencie'], $row['nom'], $row['prenom'], $contact,$categorie);
+            $licencie = new Licencie($row['licencie_id'],$row['numero_licencie'], $row['nom'], $row['prenom'], $contact,$categorie);
                 $licencies[] = $licencie;
                 
             }
-            return $licencies;
+            return $licencies    ;
         } catch (PDOException $e) {
             // GÃ©rer les erreurs de rÃ©cupÃ©ration ici
             return [];
         }
     }
+
+    // public function getAll()
+    // {
+    //     try {
+    //         $stmt = $this->connexion->pdo->query("SELECT l.licencie_id, l.numero_licencie, l.nom, l.prenom, c.nom_categorie, c.code_raccourci, ct.nom_contact, ct.email, ct.telephone FROM licencies l JOIN categories c ON l.categorie_id = c.categorie_id JOIN contacts ct ON l.contact_id = ct.contact_id;
+    //  ");
+         
+    //      $licencies = []; // Initialisation du tableau pour stocker les objets Licencie
+
+    //      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    //         // $contact = new Contact($row['contact_id'],$row['nom_contact'],$row['prenom_contact'], $row['email'], $row['telephone']);
+    //         // $categorie = new Categorie($row['categorie_id'],$row['nom_categorie'], $row['code_raccourci']);
+    //         $contactDAO = new ContactDAO($this->connexion);
+    //                   $categorieDAO = new CategorieDAO($this->connexion);
+    //                      $contact = $contactDAO->getById($row['contact_id']);
+    //                     $categorie = $categorieDAO->getById($row['categorie_id']);
+    //          // Création d'un nouvel objet Licencie avec les données récupérées de la requête
+    //           $licencie = new Licencie($row['licencie_id'],$row['numero_licencie'], $row['nom'], $row['prenom'], $contact,$categorie);
+             
+    //          // Ajout de l'objet Licencie créé au tableau des licenciés
+    //          $licencies[] = $licencie;
+    //          return $licencies;
+  
+    //      }
+         
+    //     } catch (PDOException $e) {
+    //         return [];
+    //     }
+    // }
 
 
     public function update(Licencie $licencie) {
