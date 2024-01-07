@@ -2,7 +2,7 @@
 // Inclure le contrôleur pour récupérer les données des licenciés
 require_once("../../controllers/licencie/IndexLicencieController.php");
 require_once("../../classes/models/Contact.php");
-
+require_once("../../classes/models/Categorie.php");
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ require_once("../../classes/models/Contact.php");
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | DataTables</title>
+  <title>Liste des licenciés</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -71,12 +71,11 @@ require_once("../../classes/models/Contact.php");
               <table id="example1" class="table table-bordered table-striped">
     <thead>
       <tr>
-        
-        <th>Numero licence</th>
+      <th>ID</th>
+        <th>Numero Licencié</th>
         <th>Nom</th>
         <th>Prenom</th>
-        <th>Email</th>
-        <th>Telephone</th>
+        <th>Contact</th>
         <th>Categories</th>
         <th>Actions</th>
       </tr>
@@ -85,15 +84,16 @@ require_once("../../classes/models/Contact.php");
       <?php foreach ($licencies as $licencie): ?>
         <tr>
     
-          <td><?php echo $licencie->getNumeroLicence(); ?></td>
+        <td><?php echo $licencie->getIdLicencie(); ?></td>
+          <td><?php echo $licencie->getNumeroLicencie(); ?></td>
           <td><?php echo $licencie->getNom(); ?></td>
           <td><?php echo $licencie->getPrenom(); ?></td>
-          <td><?php echo $licencie->getContact()->getEmail(); ?></td>
-          <td><?php echo $licencie->getContact()->getTelephone(); ?></td>
-          <td><?php echo $licencie->getCategorie()->getCodeRaccourci(); ?></td>
+     
+          <td><?php echo $licencie->getContact(); ?></td>
+          <td><?php echo $licencie->getCategorie()->getIdCategorie(); ?></td>
       
-          <td><a class="tooltips" href="delete-licence.php?Id=<?php echo $licencie->getId();  ?>"><i class="fa fa-trash" style="color:orangered"></i></a>
-          <a class="tooltips" href="edit-licencie.php?Id=<?php $licencie->getId();  ?>"><i class="fa fa-edit" style="color:rgb(18, 219, 18);"></i></a>
+          <td><a class="tooltips" href="delete-licence.php?Id=<?php echo $licencie->getIdLicencie();  ?>"><i class="fa fa-trash" style="color:orangered"></i></a>
+          <a class="tooltips" href="edit-licencie.php?Id=<?php $licencie->getIdLicencie();  ?>"><i class="fa fa-edit" style="color:rgb(18, 219, 18);"></i></a>
           </td>
         </tr>
       <?php endforeach; ?>

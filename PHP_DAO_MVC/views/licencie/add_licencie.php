@@ -51,7 +51,7 @@
               <form action="../../controllers/licencie/AddLicencieController.php" method="post">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="numero_licencie">Numero Licencie</label>
+                    <label for="numero_licencie">Numero Licencié</label>
                     <input type="text" class="form-control" id="numero_licencie" >
                   </div>
                   <div class="form-group">
@@ -76,7 +76,7 @@
                     <select class="custom-select form-control-border" id="categorie_id" name="categorie_id">
                       <option value = "">Selectionner une categorie</option>
                       <?php foreach ($categories as $categorie): ?>
-                      <option value="<?= $categorie->getId(); ?>"><?= $categorie->getNom();?></option>
+                      <option value="<?= $categorie->getIdCategorie(); ?>"><?= $categorie->getNom();?></option>
                   <?php endforeach; ?>
                     </select>
                   </div>

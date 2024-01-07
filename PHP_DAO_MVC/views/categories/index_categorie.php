@@ -10,7 +10,7 @@ require_once("../../classes/models/Categorie.php");
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | DataTables</title>
+  <title>Liste des categories</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -71,24 +71,20 @@ require_once("../../classes/models/Categorie.php");
     <thead>
       <tr>
        
+      <th>ID </th>
         <th>Nom </th>
-        <th>Code categorie</th>
-       
+        <th>Code raccourci</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>
       <?php foreach ($categories as $categorie): ?>
         <tr>
-    
-        
+        <td><?php echo $categorie->getIdCategorie(); ?></td>
           <td><?php echo $categorie->getNom(); ?></td>
           <td><?php echo $categorie->getCodeRaccourci(); ?></td>
-          
-          
-      
-          <td><a class="tooltips" href="delete-categorie.php?Id=<?php echo $categorie->getId();  ?>"><i class="fa fa-trash" style="color:orangered"></i></a>
-          <a class="tooltips" href="edit-categorie.php?Id=<?php $categorie->getId();  ?>"><i class="fa fa-edit" style="color:rgb(18, 219, 18);"></i></a>
+          <td><a class="tooltips" href="delete-categorie.php?Id=<?php echo $categorie->getIdCategorie();  ?>"><i class="fa fa-trash" style="color:orangered"></i></a>
+          <a class="tooltips" href="edit-categorie.php?Id=<?php $categorie->getIdCategorie();  ?>"><i class="fa fa-edit" style="color:rgb(18, 219, 18);"></i></a>
           </td>
         </tr>
       <?php endforeach; ?>

@@ -26,7 +26,7 @@ class CategorieDAO
 
     public function getById($id)
     {
-        $sql = "SELECT * FROM categories WHERE id = :id";
+        $sql = "SELECT * FROM categories WHERE categorie_id = :id";
         $stmt = $this->connexion->pdo->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
@@ -62,7 +62,7 @@ class CategorieDAO
 
     public function deleteById($id)
     {
-        $sql = "DELETE FROM categories WHERE id = :id";
+        $sql = "DELETE FROM categories WHERE categorie_id = :id";
         $stmt = $this->connexion->pdo->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();

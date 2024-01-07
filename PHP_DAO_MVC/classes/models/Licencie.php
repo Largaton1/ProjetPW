@@ -1,45 +1,45 @@
 <?php
-require_once 'Contact.php';
+require_once '../../classes/models/Contact.php';
 
-require_once 'Categorie.php';
+require_once '../../classes/models/Categorie.php';
 
 class Licencie
 {
-    private $id;
-    private $numero_licencie;
+    private $licencie_id;
+    private $numeroLicencie;
     private $nom;
     private $prenom;
     private $contact; 
     private $categorie;
 
-    public function __construct($id, $numero_licencie, $nom, $prenom, $contact,$categorie)
+    public function __construct($licencie_id, $numero_licencie, $nom, $prenom,  $contact,  $categorie)
     {
-        $this->id = $id;
-        $this->numero_licencie = $numero_licencie;
+        $this->licencie_id = $licencie_id;
+        $this->numeroLicencie = $numero_licencie;
         $this->nom = $nom;
-        $this->prenom = $prenom;    
+        $this->prenom = $prenom;
         $this->contact = $contact;
         $this->categorie = $categorie;
     }
 
-    public function getId()
+    public function getIdLicencie()
     {
-        return $this->id;
+        return $this->licencie_id;
     }
 
-    public function setId($id)
+    public function setIdLicencie($id)
     {
-        $this->id = $id;
+        $this->licencie_id = $id;
     }
 
     public function getNumeroLicencie()
     {
-        return $this->numero_licencie;
+        return $this->numeroLicencie;
     }
 
     public function setNumeroLicencie($numero_licencie)
     {
-        $this->numero_licencie = $numero_licencie;
+        $this->numeroLicencie = $numero_licencie;
     }
 
     public function getNom()
@@ -67,7 +67,7 @@ class Licencie
         return $this->contact;
     }
 
-    public function setContact($contact)
+    public function setContact(Contact $contact)
     {
         $this->contact = $contact;
     }
@@ -76,8 +76,18 @@ class Licencie
         return $this->categorie;
     }
 
-    public function setCategorie($categorie)
+    public function setCategorie( $categorie)
     {
         $this->categorie = $categorie;
     }
+    public function getNomLicencie()
+    {
+        return $this->nom.' '.$this->prenom;
+    }
+    
+
+    // public function getCodeRaccourci(Categorie $categorie) {
+    //     $this->code_raccourci = $code_raccourci;
+    // }
+        
 }
