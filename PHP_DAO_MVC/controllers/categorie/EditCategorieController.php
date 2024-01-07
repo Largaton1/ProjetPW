@@ -22,9 +22,7 @@ class EditCategorieController {
             
             $resultatMiseAJour = $this->categorieDAO->update($categorie);
             echo "Résultat de la mise à jour : ";
-            // var_dump($resultatMiseAJour);
-            // die();
-
+         
             //Appeler la méthode du modèlei(categorieDAO) pour mettre à jour li categorie
             if ($resultatMiseAJour) {
                 

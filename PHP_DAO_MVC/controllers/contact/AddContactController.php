@@ -14,14 +14,14 @@ class AddContactController {
     public function addContact() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Récupérer les données du formulaire
-            $nom = $_POST['nom'];
-            $prenom = $_POST['prenom'];
+            $nom = $_POST['nom_contact'];
+            $prenom = $_POST['prenom_contact'];
             $email = $_POST['email'];
             $telephone = $_POST['telephone'];
 
             // Valider les données du formulaire (ajoutez des validations si nécessaire)
 
-            // Créer un nouvel objet ContactModel avec les données du formulaire
+            // Créer un nouvel objet Contact avec les données du formulaire
             $nouveauContact = new Contact(0, $nom, $prenom, $email, $telephone);
 
             // Appeler la méthode du modèle (ContactDAO) pour ajouter le contact
@@ -33,14 +33,13 @@ class AddContactController {
             } else {
                 // Gérer les erreurs d'ajout de contact
                 echo "Erreur lors de l'ajout du contact.";
-                header('Location: ../../controllers/categorie/IndexCategorieController.php');
+                header('Location: ../../controllers/contact/IndexContactController.php');
                 exit();
             }
         }
 
         // Inclure la vue pour afficher le formulaire d'ajout de contact
-        include('../../views/contact/add_contact
-        .php');
+        include('../../views/contact/add_contact.php');
     }
 }
 

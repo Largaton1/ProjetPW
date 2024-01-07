@@ -69,7 +69,7 @@ require_once("../../classes/models/Contact.php");
               <table id="example1" class="table table-bordered table-striped">
     <thead>
       <tr>
-      <th>ID</th>
+        <th>ID</th>
         <th>Nom</th>
         <th>Prenom</th>
         <th>Email</th>
@@ -86,8 +86,8 @@ require_once("../../classes/models/Contact.php");
           <td><?php echo $contact->getPrenom(); ?></td>
           <td><?php echo $contact->getEmail(); ?></td>
           <td><?php echo $contact->getTelephone(); ?></td>
-          <td><a class="tooltips" href="delete-contact.php?Id=<?php echo $contact->getId();  ?>"><i class="fa fa-trash" style="color:orangered"></i></a>
-          <a class="tooltips" href="edit-contact.php?Id=<?php $contact->getId();  ?>"><i class="fa fa-edit" style="color:rgb(18, 219, 18);"></i></a>
+          <td><a class="tooltips" href="../../controllers/contact/DeleteContactController.php?Id=<?php echo $contact->getId();  ?>"><i class="fa fa-trash" style="color:orangered"></i></a>
+          <a class="tooltips" href="../../controllers/contact/EditContactController.php?Id=<?php echo $contact->getId();  ?>"><i class="fa fa-edit" style="color:rgb(18, 219, 18);"></i></a>
           </td>
         </tr>
       <?php endforeach; ?>

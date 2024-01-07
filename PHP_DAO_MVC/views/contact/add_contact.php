@@ -51,21 +51,21 @@
               <form action="../../controllers/contact/AddContactController.php" method="post">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="nom">Nom</label>
-                    <input type="text" class="form-control" id="nom" > 
+                    <label for="nom_contact">Nom</label>
+                    <input name="nom_contact" type="text" class="form-control" id="nom_contact" required > 
                   </div>
                   
                   <div class="form-group">
-                    <label for="prenom">Prenom</label>
-                    <input type="text" class="form-control" id="prenom" >
+                    <label for="prenom_contact">Prenom</label>
+                    <input name= "prenom_contact"type="text" class="form-control" id="prenom_contact" required >
                   </div>
                   <div class="form-group">
                     <label for="email">Email </label>
-                    <input type="text" class="form-control" id="email" >
+                    <input name="email" type="text" class="form-control" id="email" required>
                   </div>
                   <div class="form-group">
                     <label for="telephone">Téléphone </label>
-                    <input type="text" class="form-control" id="telephone" >
+                    <input name="telephone" type="text" class="form-control" id="telephone" required>
                   </div>
                   
                   

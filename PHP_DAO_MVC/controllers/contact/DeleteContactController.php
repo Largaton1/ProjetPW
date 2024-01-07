@@ -16,7 +16,7 @@ class DeleteContactController
             return;
         }
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            if ($this->contactDAO->deleteById($contactId)) {
+            if ($this->contactDAO->delete($contactId)) {
                 header('Location:IndexContactController.php');
                 exit();
             } else {
@@ -32,5 +32,5 @@ require_once("../../classes/models/Contact.php");
 require_once("../../classes/dao/ContactDAO.php");
 $contactDAO = new ContactDAO(new Connexion());
 $controller = new DeleteContactController($contactDAO);
-$controller->deleteContact($_GET['id']);
+$controller->deleteContact($_GET['Id']);
 ?>

@@ -40,11 +40,11 @@ class ContactDAO
  
     public function update(Contact $contact)
     {
-        $query = "UPDATE contacts SET nom_contact = :nom, prenom_contact = :prenom, email = :email, telephone = :telephone WHERE id = :id";
+        $query = "UPDATE contacts SET nom_contact = :nom_contact, prenom_contact = :prenom_contact, email = :email, telephone = :telephone WHERE contact_id = :contact_id";
         $stmt = $this->connexion->pdo->prepare($query);
-        $stmt->bindValue(':id', $contact->getId());
-        $stmt->bindValue(':nom', $contact->getNomContact());
-        $stmt->bindValue(':prenom', $contact->getPrenom());
+        $stmt->bindValue(':contact_id', $contact->getId());
+        $stmt->bindValue(':nom_contact', $contact->getNomContact());
+        $stmt->bindValue(':prenom_contact', $contact->getPrenom());
         $stmt->bindValue(':email', $contact->getEmail());
         $stmt->bindValue(':telephone', $contact->getTelephone());
         $stmt->execute();
@@ -54,9 +54,9 @@ class ContactDAO
  
     public function delete( $id)
     {
-        $query = "DELETE FROM contacts WHERE contact_id = :id";
+        $query = "DELETE FROM contacts WHERE contact_id = :contact_id";
         $stmt = $this->connexion->pdo->prepare($query);
-        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':contact_id', $id);
         $stmt->execute();
  
         return $stmt->rowCount();

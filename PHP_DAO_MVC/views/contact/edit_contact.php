@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Club sportif</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -40,37 +40,38 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <a href="../../controllers/contact/IndexContactController.php">Retour à la liste des licenciés</a>
+    <a href="../../controllers/contact/IndexContactController.php">Retour à la liste des contacts</a>
 
     <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Ajout d'un nouveau contact</h3>
+                <h3 class="card-title">Modifier un contact</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="../../controllers/contact/AddContactController.php" method="post">
+              <?php if ($contact): ?>
+              <form action="../../controllers/contact/EditContactController.php" method="post">
                 <div class="card-body">
 
                 <div class="form-group row">
-                <input type="hidden" name="id" value="<?php echo $contact->getId(); ?>">
+                <input type="hidden" name="contact_id" value="<?php echo $contact->getId(); ?>">
 
             </div>
                   <div class="form-group">
                     <label for="nom">Nom</label>
-                    <input type="text" class="form-control" id="nom"  value="<?php echo $contact->getNom(); ?> ">
+                    <input name="nom_contact" type="text" class="form-control" id="nom_contact"  value="<?php echo $contact->getNomContact(); ?> ">
                   </div>
                   
                   <div class="form-group">
                     <label for="prenom">Prenom</label>
-                    <input type="text" class="form-control" id="prenom" value="<?php echo $contact->getPrenom(); ?> ">
+                    <input name= "prenom_contact" type="text" class="form-control" id="prenom_contact" value="<?php echo $contact->getPrenom(); ?> ">
                   </div>
                   <div class="form-group">
                     <label for="email">Email </label>
-                    <input type="text" class="form-control" id="email" value="<?php echo $contact->getEmail(); ?> ">
+                    <input name="email" type="text" class="form-control" id="email" value="<?php echo $contact->getEmail(); ?> ">
                   </div>
                   <div class="form-group">
-                    <label for="telephone">Telephone </label>
-                    <input type="text" class="form-control" id="telephone" value="<?php echo $contact->getTelephone(); ?> " >
+                    <label for="telephone">Téléphone </label>
+                    <input name="telephone" type="text" class="form-control" id="telephone" value="<?php echo $contact->getTelephone(); ?> " >
                   </div>
                   
                   
@@ -78,14 +79,15 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" name="action">Ajouter</button>
+                  <button type="submit" class="btn btn-primary" name="action">Modifier</button>
                 </div>
               </form>
+              <?php else: ?>
+        <p>La catégorie n'a pas été trouvée.</p>
+    <?php endif; ?>
             </div>
 
-    <?php
     
-    ?>
   <!-- /.content-wrapper -->
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

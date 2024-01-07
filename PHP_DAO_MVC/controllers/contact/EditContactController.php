@@ -17,16 +17,16 @@ class EditContactController {
             $contact = $this->contactDAO->getById($id);
 
             if (!$contact) {
-                echo "The contact was not found.";
+                echo "The contact n'est pas trouvé.";
                 return;
             }
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                
-                $nom = $_POST['nom'];
-                $prenom = $_POST['prenom'];
+                $nom = $_POST['nom_contact'];
+                $prenom = $_POST['prenom_contact'];
                 $email = $_POST['email'];
-                $telephone = $_POST['$telephone'];
+                $telephone = $_POST['telephone'];
 
                 $contact->setNom($nom);
                 $contact->setPrenom($prenom);
@@ -35,11 +35,13 @@ class EditContactController {
 
                 if ($this->contactDAO->update($contact)) {
                     
-                    header('Location:IndexContactController.php');
+                    header('Location:../contact/IndexContactController.php');
                     exit();
                 } else {
                   
                     echo "Erreur de mise a jour";
+                    header('Location: ../contact/IndexContactController.php');
+                exit();
                 }
             }
         } catch (Exception $e) {
@@ -48,20 +50,19 @@ class EditContactController {
     }
 }
 
-
-
-$contactDAO = new ContactDAO(new Connexion());
-$controller = new EditContactController($contactDAO);
-if(!isset($_POST['action'])){
-    $controller->index($_GET["id"]);
-} else{
-    $id = $_POST['id'];
-    $controller->editContact($id);
-}
-
 require_once("../../config/config.php");
 require_once("../../config/connexion.php");
 require_once("../../classes/models/Contact.php");
 require_once("../../classes/dao/ContactDAO.php");
+$contactDAO = new ContactDAO(new Connexion());
+$controller = new EditContactController($contactDAO);
+if(!isset($_POST['action'])){
+    $controller->index($_GET["Id"]);
+} else{
+    $id = $_POST['contact_id'];
+    $controller->editContact($id);
+}
+
+
 
 ?>
