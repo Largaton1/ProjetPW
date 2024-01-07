@@ -42,10 +42,10 @@ class CategorieDAO
 
     public function create(Categorie $categorie)
     {
-        $sql = "INSERT INTO categories (nom_categorie, code_raccourci) VALUES (:nom, :code)";
+        $sql = "INSERT INTO categories (nom_categorie, code_raccourci) VALUES (:nom_categorie, :code_raccourci)";
         $stmt = $this->connexion->pdo->prepare($sql);
-        $stmt->bindValue(':nom', $categorie->getNom());
-        $stmt->bindValue(':code', $categorie->getCodeRaccourci());
+        $stmt->bindValue(':nom_categorie', $categorie->getNom());
+        $stmt->bindValue(':code_raccourci', $categorie->getCodeRaccourci());
         $stmt->execute();
 
         return $this->connexion->pdo->lastInsertId();

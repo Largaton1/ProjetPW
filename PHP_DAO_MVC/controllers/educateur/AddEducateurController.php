@@ -19,9 +19,9 @@ class AddEducateurController
         try {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Récupérer les données du formulaire
-                $numero_licence = $_POST['numero_licence'];
+                $numero_licence = $_POST['numero_licencie'];
                 $email = $_POST['email'];
-                $password = $_POST['password'];
+                $password = $_POST['mot_de_passe'];
                 $est_administrateur = $_POST['est_administrateur'];
 
                 // Valider les données du formulaire

@@ -70,8 +70,8 @@ require_once("../../classes/models/Contact.php");
               <table id="example1" class="table table-bordered table-striped">
     <thead>
       <tr>
-        
-        <th>Numero licence</th>
+      <th>ID</th>
+        <th>Numero licencie</th>
         <th>Email</th>
      
         <th>Administrateur</th>
@@ -81,7 +81,7 @@ require_once("../../classes/models/Contact.php");
     <tbody>
       <?php foreach ($educateurs as $educateur): ?>
         <tr>
-    
+        <td><?php echo $educateur->getIdEducateur(); ?></td>
           <td><?php echo $educateur->getNumeroLicence(); ?></td>
           
           <td><?php echo $educateur->getEmail(); ?></td>

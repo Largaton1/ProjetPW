@@ -14,13 +14,15 @@ class AddCategorieController {
     public function addCategorie() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Récupérer les données du formulaire
-            $nom = $_POST['nom'];
+            $nom = $_POST['nom_categorie'];
             $code = $_POST['code_raccourci'];
-            
-
+            // var_dump($nom);
+            // var_dump($code);
+            // die();
             // Créer un nouvel objet CategorieModel avec les données du formulaire
             $nouvelleCategorie = new Categorie(0, $nom, $code);
-
+           
+            
             // Appeler la méthode du modèle (CategorieDAO) pour ajouter le contact
             if ($this->categorieDAO->create($nouvelleCategorie)) {
                 // Rediriger vers la page d'accueil après l'ajout

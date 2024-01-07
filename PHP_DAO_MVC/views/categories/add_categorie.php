@@ -53,11 +53,11 @@
                 
                   <div class="form-group">
                     <label for="nom">Nom </label>
-                    <input type="text" class="form-control" id="nom" >
+                    <input name="nom_categorie" type="text" class="form-control" id="nom_categorie" required >
                   </div>
                   <div class="form-group">
-                    <label for="code">Code Raccourci</label>
-                    <input type="text" class="form-control" id="code" >
+                    <label for="code_raccourci">Code Raccourci</label>
+                    <input name= "code_raccourci" type="text" class="form-control" id="code_raccourci" required >
                   </div>
                   
                   

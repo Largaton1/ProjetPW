@@ -73,7 +73,7 @@ require_once("../../classes/models/Contact.php");
         <th>Nom</th>
         <th>Prenom</th>
         <th>Email</th>
-        <th>Telephone</th>
+        <th>Numero de téléphone</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -82,7 +82,7 @@ require_once("../../classes/models/Contact.php");
         <tr>
     
         <td><?php echo $contact->getId(); ?></td>
-          <td><?php echo $contact->getNom(); ?></td>
+          <td><?php echo $contact->getNomContact(); ?></td>
           <td><?php echo $contact->getPrenom(); ?></td>
           <td><?php echo $contact->getEmail(); ?></td>
           <td><?php echo $contact->getTelephone(); ?></td>
