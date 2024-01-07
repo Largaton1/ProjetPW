@@ -1,65 +1,97 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Supprimer une categorie</title>
-  <link href="../css/v2.css" rel="stylesheet">
-</head>
-
-<body>
+<?php require_once("../../classes/models/Categorie.php"); ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-<title>Ajout de catégorie</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supprimer catégorie</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="../../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="../../plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  
+  <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.min.css">
 </head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+  <?php include("../../sections/navbar.php") ?>
+  <!-- /.navbar -->
+  <?php include("../../sections/aside.php") ?>
+  <!-- Main Sidebar Container -->
+  
 
-<body>
+  <!-- Content Wrapper. Contains page content -->
+ 
+ 
+  <div class="content-wrapper">
+    <a href="../../controllers/categorie/IndexCategorieController.php">Retour à la liste des categories</a>
+    
+    <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Supprimer d'une categorie</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <?php if ($categorie): ?>
+                <p>Voulez-vous vraiment supprimer la categorie "<?php echo $categorie->getCodeRaccourci(); ?>: <?php echo $categorie->getNom(); ?>" ?</p>
+        <form action="../../controllers/categorie/DeleteCategorieController.php?Id=<?php echo $categorie->getIdCategorie(); ?>" method="post">
+            <input type="submit" value="Supprimer" class="btn btn-warning">
+        </form>
+        <?php else: ?>
+        <p>La catégorie n'a pas été trouvée.</p>
+    <?php endif; ?>
+        
+    </div>
+           
+</div>
+  <!-- /.content-wrapper -->
+  <!-- Control Sidebar -->
+  
+  <!-- /.control-sidebar -->
 
-<?php
-session_start();
+<!-- ./wrapper -->
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "projetpw";
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="../../plugins/jszip/jszip.min.js"></script>
+<script src="../../plugins/pdfmake/pdfmake.min.js"></script>
+<script src="../../plugins/pdfmake/vfs_fonts.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<!-- Page specific script -->
 
-// Vérifier si la session est active
-if (!isset($_SESSION['username'])) {
-    echo "Session non active";
-    header("Location: ../../views/login.php"); // Redirigez vers la page de connexion si l'utilisateur n'est pas connecté
-    exit();
-}
-
-require_once '../../classes/dao/EducateurDAO.php';
-require '../../config/connexion.php';
-
-$conn = new Connexion();
-$educateurDAO = new EducateurDAO($conn);
-
-$login=$_SESSION['username'];
-
-if ($educateurDAO->isAdmin($login)==true) {
-   
-?>
-
-<form action="../../controllers/suppcategorie.php" method="post">
-  <table>
-  <tr>
-  <td>Id de la categorie a supprimer</td>
-  <td> <input  type='number' id='keyw' placeholder='Tapez ici' name="id"> </td>
-  </tr>
-    <tr>
-      <td><input type="submit" name="supp" value="Supprimer"></td>
-    </tr>
-  </table>
-</form>
-
-<a href="../view/acceuil.php">Accueil</a> 
 
 </body>
 </html>
-<?php
-} else {
-  echo "Action reserver au admin";
-}
-?>

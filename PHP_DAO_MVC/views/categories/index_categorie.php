@@ -83,8 +83,8 @@ require_once("../../classes/models/Categorie.php");
         <td><?php echo $categorie->getIdCategorie(); ?></td>
           <td><?php echo $categorie->getNom(); ?></td>
           <td><?php echo $categorie->getCodeRaccourci(); ?></td>
-          <td><a class="tooltips" href="delete-categorie.php?Id=<?php echo $categorie->getIdCategorie();  ?>"><i class="fa fa-trash" style="color:orangered"></i></a>
-          <a class="tooltips" href="edit-categorie.php?Id=<?php $categorie->getIdCategorie();  ?>"><i class="fa fa-edit" style="color:rgb(18, 219, 18);"></i></a>
+          <td><a class="tooltips" href="../../controllers/categorie/DeleteCategorieController.php?Id=<?php echo $categorie->getIdCategorie();  ?>"><i class="fa fa-trash" style="color:orangered"></i></a>
+          <a class="tooltips" href="edit-categorie.php?Id=<?php echo $categorie->getIdCategorie();  ?>"><i class="fa fa-edit" style="color:rgb(18, 219, 18);"></i></a>
           </td>
         </tr>
       <?php endforeach; ?>

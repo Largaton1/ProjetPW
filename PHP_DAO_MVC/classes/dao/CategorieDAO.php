@@ -28,9 +28,9 @@ class CategorieDAO
     {
         $sql = "SELECT * FROM categories WHERE categorie_id = ?";
         $stmt = $this->connexion->pdo->prepare($sql);
-        // $stmt->bindParam(':id', $id);
-        // $stmt->execute();
-        $stmt->execute([$id]);
+        //  $stmt->bindParam(':id', $id);
+            //  $stmt->execute();
+         $stmt->execute([$id]);
 
         if ($stmt->rowCount() === 1) {
             $row = $stmt->fetch();
@@ -65,7 +65,8 @@ class CategorieDAO
     {
         $sql = "DELETE FROM categories WHERE categorie_id = :id";
         $stmt = $this->connexion->pdo->prepare($sql);
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
+         $stmt->bindParam(':id', $id);
+         $stmt->execute();
+        // $stmt->execute([$id]);
     }
 }

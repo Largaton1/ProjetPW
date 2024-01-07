@@ -56,11 +56,11 @@
                   </div>
                   <div class="form-group">
                     <label for="nom">Nom: </label>
-                    <input type="text" class="form-control" id="nom" >
+                    <input name="nom" type="text" class="form-control" id="nom" >
                   </div>
                   <div class="form-group">
                     <label for="prenom">Prenom</label>
-                    <input type="text" class="form-control" id="prenom" >
+                    <input name= "prenom" type="text" class="form-control" id="prenom" >
                   </div>
                   <div class="form-group">
                     <label for="contact">Contact:</label>
