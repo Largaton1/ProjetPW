@@ -51,15 +51,29 @@ class CategorieDAO
         return $this->connexion->pdo->lastInsertId();
     }
 
+    // public function update(Categorie $categorie)
+    // {
+    //     $sql = "UPDATE categories SET nom_categorie, code_raccourci WHERE categorie_id = ?";
+    //     $stmt = $this->connexion->pdo->prepare($sql);
+    // //  $stmt->execute([$id]);
+
+    //      $stmt->bindParam(':code_raccourci', $categorie->getCodeRaccourci());
+    //      $stmt->execute();
+    //  }
+
     public function update(Categorie $categorie)
-    {
-        $sql = "UPDATE categories SET nom_categorie = :nom, code_raccourci = :code_raccourci WHERE categorie_id = :id";
+{
+    try {
+        $sql = "UPDATE categories SET nom_categorie = ?, code_raccourci = ? WHERE categorie_id = ?";
         $stmt = $this->connexion->pdo->prepare($sql);
-        $stmt->bindParam(':id', $categorie->getIdCategorie());
-        $stmt->bindParam(':nom', $categorie->getNom());
-        $stmt->bindParam(':code_raccourci', $categorie->getCodeRaccourci());
-        $stmt->execute();
+        $stmt->execute([$categorie->getNom(), $categorie->getCodeRaccourci(), $categorie->getIdCategorie()]);
+        return true;
+    } catch (PDOException $e) {
+        // Gestion des erreurs PDO
+        return false;
     }
+}
+
 
     public function deleteById($id)
     {

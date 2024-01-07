@@ -1,11 +1,14 @@
+<?php require_once("../../classes/models/Categorie.php"); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Modifier catégorie</title>
 
   <!-- Google Font: Source Sans Pro -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
@@ -44,47 +47,46 @@
 
     <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Ajout une categorie</h3>
+                <h3 class="card-title">Modifier une categorie</h3>
               </div>
               <!-- /.card-header -->
-              <!-- form start -->
-              <form action="../../controllers/categorie/AddcategorieController.php" method="post">
-                <div class="card-body">
+              <!-- form start -->          
+    <?php if ($categorie): ?>
+      <form action="EditCategorieController.php?Id=<?php echo $categorie->getIdCategorie(); ?>" method="post">
+      <div class="card-body">
+      <div class="form-group">
+                <input type="hidden" name="categorie_id" value="<?php echo $categorie->getIdCategorie(); ?>">
 
-                <div class="form-group row">
-                <input type="hidden" name="id" value="<?php echo $categorie->getId(); ?>">
-
-            </div>
+      </div>
                   <div class="form-group">
                     <label for="nom">Nom</label>
-                    <input type="text" class="form-control" id="nom"  value="<?php echo $categorie->getNom(); ?> ">
+                    <input name= "nom_categorie" type="text" class="form-control" id="nom_categorie"  value="<?php echo $categorie->getNom(); ?>" required>
                   </div>
                   
                   <div class="form-group">
-                    <label for="prenom">Prenom</label>
-                    <input type="text" class="form-control" id="prenom" value="<?php echo $categorie->getCodeRaccourci(); ?> ">
+                    <label for="code_raccourci">Code raccourci</label>
+                    <input name= "code_raccourci" type="text" class="form-control" id="code_raccourci" value="<?php echo $categorie->getCodeRaccourci(); ?> " required>
                   </div>
 
                   
-                </div>
+                  </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" name="action">Ajouter</button>
+                  <button type="submit" name="action" class="btn btn-success">Modifier</button>
                 </div>
               </form>
-            </div>
-
-    <?php
-    
-    ?>
+        
+            <?php else: ?>
+        <p>La catégorie n'a pas été trouvée.</p>
+    <?php endif; ?>
+    </div>
+        </div>
   <!-- /.content-wrapper -->
   <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
+ 
   <!-- /.control-sidebar -->
-</div>
+<!-- </div> -->
 <!-- ./wrapper -->
 
 <!-- jQuery -->
