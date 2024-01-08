@@ -11,7 +11,7 @@ class EditEducateurController {
     public function index($id){
         $licence = $this->licencieDAO->getAll();
         $educateur = $this->educateurDAO->getById($id);
-        include('../../views/educateur/edit_educateur.php');
+        include('../../views/educateurs/edit_educateur.php');
     }
 
     public function editEducateur($id) {
@@ -27,18 +27,18 @@ class EditEducateurController {
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Récupérer les données du formulaire
-                $numero_licence = $_POST['numero_licence'];
+                // $numero_licence = $_POST['numero_licence'];
                 $email = $_POST['email'];
                 $est_administrateur = $_POST['est_administrateur'];
 
             
                 // Mettre à jour les détails du contact
-                $educateur->setNumeroLicence($numero_licence);
+              
                 $educateur->setEmail($email);
                 $educateur->setEstAdministrateur($est_administrateur  == 'oui' ? 1 : 0);
                 if ($this->educateurDAO->update($educateur)) {
                     // Rediriger vers la page de détails après la modification
-                    header('Location:HomeEducateurController.php');
+                    header('Location:../controllers/educateurs/EducateurController.php');
                     exit();
                 } else {
                     // Gérer les erreurs de mise à jour
@@ -61,11 +61,17 @@ require_once("../../classes/dao/LicencieDAO.php");
 $educateurDAO = new EducateurDAO(new Connexion());
 $licencieDAO = new LicencieDAO(new Connexion());
 $controller = new EditEducateurController($educateurDAO, $licencieDAO);
-if(!isset($_POST['action'])){
-    $controller->index($_GET["id"]);
-} else{
-    $id = $_POST['id'];
-    $controller->editEducateur($id);
-}
+// if(!isset($_POST['action'])){
+//     $controller->index($_GET["Id"]);
+// } else{
+//     $id = $_POST['Id'];
+//     $controller->editEducateur($id);
+// }
+$controller->editEducateur($_GET['Id']);
+$id = isset($_GET['educateur_id']) ? $_GET['educateur_id'] : null;
 
+if ($id === null) {
+    echo "L'ID n'est pas défini dans l'URL.";
+    return;
+}
 ?>

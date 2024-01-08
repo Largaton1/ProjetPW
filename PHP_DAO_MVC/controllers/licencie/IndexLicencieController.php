@@ -2,6 +2,7 @@
 class IndexLicencieController {
     private $licencieDAO;
     
+    
   
  
     public function __construct(LicencieDAO $licencieDAO ) {

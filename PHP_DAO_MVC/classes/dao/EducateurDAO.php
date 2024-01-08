@@ -9,7 +9,7 @@
         public function create(Educateur $educateur) {
             try {
                 $stmt = $this->connexion->pdo->prepare("INSERT INTO educateurs (licencie_id, email, mot_de_passe, est_administrateur) VALUES (?, ?, ?, ?)");
-                $stmt->execute([$educateur->getNumeroLicence(), $educateur->getEmail(), $educateur->getMotDePasse(), $educateur->getEstAdministrateur()]);
+                $stmt->execute([$educateur->getNumeroLicencie(), $educateur->getEmail(), $educateur->getMotDePasse(), $educateur->getEstAdministrateur()]);
                 return true;
             } catch (PDOException $e) {
                 print_r($e->getMessage());
@@ -19,7 +19,7 @@
 
         public function getById($id) {
             try {
-                $stmt = $this->connexion->pdo->prepare("SELECT * FROM educateur WHERE educateur_id = ?");
+                $stmt = $this->connexion->pdo->prepare("SELECT * FROM educateurs WHERE educateur_id = ?");
                 $stmt->execute([$id]);
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -67,7 +67,7 @@
         public function update(Educateur $educateur) {
             try {
                 $stmt = $this->connexion->pdo->prepare("UPDATE educateurs SET id_educateur = ?, licencie_id = ?, email = ?, mot_de_passe = ?, est_administrateur = ? WHERE educateur_id = ?");
-                $stmt->execute([$educateur->getIdEducateur(), $educateur->getNumeroLicence(), $educateur->getEmail(), $educateur->getMotDePasse(), $educateur->getEstAdministrateur(), $educateur->getIdEducateur()]);
+                $stmt->execute([$educateur->getIdEducateur(), $educateur->getNumeroLicencie(), $educateur->getEmail(), $educateur->getMotDePasse(), $educateur->getEstAdministrateur(), $educateur->getIdEducateur()]);
                 return true;
             } catch (PDOException $e) {
                 print_r($e->getMessage());

@@ -44,13 +44,14 @@ class EditLicencieController {
              $contact = $this->contactDAO->getById($id);
             $categorie = $this->categorieDAO->getById($id);
             // Valider les données du formulaire (ajoutez des validations si nécessaire)
- 
+
             // Mettre à jour les détails du licencié
             $licencie->setNumeroLicencie($numeroLicencie);
             $licencie->setNom($nom);
             $licencie->setPrenom($prenom);
             // Définir les objets Contact et Categorie dans le licencié
             $licencie->setContact($contact);
+          
             $licencie->setCategorie($categorie);
  
             // Appeler la méthode du modèle (LicencieDAO) pour mettre à jour le licencié
@@ -110,11 +111,18 @@ $controller = new EditLicencieController($licencieDAO, $contactDAO, $categorieDA
 //     echo "L'ID n'est pas défini dans l'URL.";
 //     return;
 // }
-if(!isset($_POST['action'])){
-    $controller->index($_GET["Id"]);
-} else{
-    $id = $_POST['licencie_id'];
-    $controller->update($id);
+// if(!isset($_POST['action'])){
+//     $controller->index($_GET["Id"]);
+// } else{
+//     $id = $_POST['licencie_id'];
+//     $controller->update($id);
+// }
+$controller->update($_GET['Id']);
+$id = isset($_GET['licencie_id']) ? $_GET['licencie_id'] : null;
+
+if ($id === null) {
+    echo "L'ID n'est pas défini dans l'URL.";
+    return;
 }
 
 

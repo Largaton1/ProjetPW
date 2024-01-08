@@ -2,6 +2,7 @@
 // Inclure le contrôleur pour récupérer les données des licenciés
 require_once("../../controllers/educateur/IndexEducateurController.php");
 require_once("../../classes/models/Contact.php");
+require_once("../../classes/models/Licencie.php");
 
 ?>
 
@@ -71,9 +72,10 @@ require_once("../../classes/models/Contact.php");
     <thead>
       <tr>
       <th>ID</th>
-        <th>Numero licencie</th>
-        <th>Email</th>
+        <th>Licencie ID</th>
      
+        <th>Email</th>
+        <th>Password</th>
         <th>Administrateur</th>
         <th>Actions</th>
       </tr>
@@ -82,14 +84,16 @@ require_once("../../classes/models/Contact.php");
       <?php foreach ($educateurs as $educateur): ?>
         <tr>
         <td><?php echo $educateur->getIdEducateur(); ?></td>
-          <td><?php echo $educateur->getNumeroLicence(); ?></td>
+        <td><?php echo $educateur->getIdLicencie(); ?></td>
+          
           
           <td><?php echo $educateur->getEmail(); ?></td>
+          <td><?php echo $educateur->getMotDePasse(); ?></td>
 
           <td><?php echo $educateur->getEstAdministrateur()  == 1 ? 'oui' : 'non'; ?></td>
       
-          <td><a class="tooltips" href="delete-educateur.php?Id=<?php echo $educateur->getIdEducateur();  ?>"><i class="fa fa-trash" style="color:orangered"></i></a>
-          <a class="tooltips" href="edit-educateur.php?Id=<?php $educateur->getIdEducateur();  ?>"><i class="fa fa-edit" style="color:rgb(18, 219, 18);"></i></a>
+          <td><a class="tooltips" href="../../controllers/educateur/DeleteEducateurController.php?Id=<?php echo $educateur->getIdEducateur();  ?>"><i class="fa fa-trash" style="color:orangered"></i></a>
+          <a class="tooltips" href="../../controllers/educateur/EditEducateurController.php?Id=<?php $educateur->getIdEducateur();  ?>"><i class="fa fa-edit" style="color:rgb(18, 219, 18);"></i></a>
           </td>
         </tr>
       <?php endforeach; ?>

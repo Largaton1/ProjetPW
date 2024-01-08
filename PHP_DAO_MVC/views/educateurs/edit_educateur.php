@@ -40,11 +40,11 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <a href="../../controllers/educateur/IndexEducateurController.php">Retour à la liste des licenciés</a>
+    <a href="../../controllers/educateur/IndexEducateurController.php">Retour à la liste des educateurs</a>
 
     <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Modifier d'un educateur</h3>
+                <h3 class="card-title">Modifier un educateur</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -52,7 +52,7 @@
     <form action="../../controllers/educateur/EditEducateurController.php" method="post">
       <div class="card-body">
         <div class="form-group row">
-          <input type="hidden" name="id" value="<?php echo $educateur->getId(); ?>">
+          <input type="hidden" name="educateur_id" value="<?php echo $educateur->getIdEducateur(); ?>">
         </div>
                   
         <div class="form-group">
@@ -63,8 +63,8 @@
         <div class="form-group">
           <label for="est_administrateur">Administrateur</label>
           <select class="custom-select form-control-border" name="est_administrateur" id="est_administrateur">
-            <option value="non" <?= $educateur->getEstAdministrateur() == 0 ? 'selected' : '' ?>>Non</option>
-            <option value="oui" <?= $educateur->getEstAdministrateur() == 1 ? 'selected' : '' ?>>Oui</option>
+          <option value="non" <?php if($educateur->getEstAdministrateur() == 0) echo 'selected'; ?>>Non</option>
+            <option value="oui" <?php if($educateur->getEstAdministrateur() == 1) echo 'selected'; ?>>Oui</option>
           </select>
         </div>
 
@@ -73,7 +73,7 @@
           <select class="custom-select form-control-border" id="licencie_id" name="licencie_id">
             <option value = "">Sélectionner un licencié</option>
             <?php foreach ($licences as $licencie): ?>
-              <option value="<?= htmlspecialchars($licencie->getNumeroLicence()) ?>" <?= ($single_licencie->getNumeroLicence() === $educateur->getNumeroLicence()) ? 'selected' : '' ?>>
+              <option value="<?= htmlspecialchars($licencie->getIdLicencie()) ?>" <?= ($single_licencie->getNumeroLicence() === $educateur->getNumeroLicencie()) ? 'selected' : '' ?>>
                 <?= htmlspecialchars($licencie->getNom()) ?>
               </option>
             <?php endforeach; ?>

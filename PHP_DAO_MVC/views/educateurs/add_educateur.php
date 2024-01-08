@@ -1,9 +1,19 @@
+<?php
+    require_once("../../config/config.php");
+
+    require_once("../../classes/models/Licencie.php");
+    require_once("../../classes/dao/LicencieDAO.php");
+
+    $LicencieDAO=new LicencieDAO(new Connexion());
+    $licencies = $LicencieDAO->getAll();
+?>
+	<body>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+  <title>Club sportif</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -52,11 +62,11 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email" >
+                    <input name="email" type="text" class="form-control" id="email" >
                   </div>
                   <div class="form-group">
-                    <label for="password">Password </label>
-                    <input type="password" class="form-control" id="password" >
+                    <label for="mot_de_passe">Password </label>
+                    <input name = "mot_de_passe" type="password" class="form-control" id="password" >
                   </div>
                   <div class="form-group">
                     <label for="est_administrateur">Administrateur</label>
@@ -67,11 +77,12 @@
                             </select>
                   </div>
                   <div class="form-group">
-                    <label for="numero_licence">Licencié :</label>
-        <select name="numero_licence" id="numero_licence">
+                    <label for="licencie">Licencié :</label>
+        <select name="licencie_id" >
+          
             <?php
             foreach ($licencies as $licencie): ?>
-            <option value="<?php echo $licencie->getId(); ?>"><?php echo $licencie->getNomLicencie(); ?></option>
+              <option value="<?php echo $licencie->getIdLicencie(); ?>"><?php echo $licencie->getNomLicencie(); ?></option>
         <?php endforeach; ?>
           
         </select>

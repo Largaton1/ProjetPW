@@ -1,44 +1,56 @@
 <?php
+require_once("../../classes/models/Licencie.php");
     class Educateur {
-        private $id_educateur;
-        private $numero_licence;
+        private $educateur_id;
+        private $numero_licencie;
+        private $licencie_id;
         private $email;
-        private $password;
+        private $mot_de_passe;
         private $est_administrateur;
+        
 
-        public function __construct($id_educateur, $numero_licence, $email, $password, $est_administrateur) {
-            if(is_int($id_educateur))
+        public function __construct($educateur_id, $licencie_id, $email, $mot_de_passe, $est_administrateur) {
+            if(is_int($educateur_id))
             {
-                $this->id_educateur = $id_educateur;
+                $this->educateur_id = $educateur_id;
             }
-            $this->numero_licence = $numero_licence;
+            
+            $this->licencie_id = $licencie_id;
             $this->email = $email;
-            $this->password = $password;
+            $this->mot_de_passe = $mot_de_passe;
             $this->est_administrateur = $est_administrateur;
         }
 
         // Getters
-        public function getIdEducateur() { return $this->id_educateur; }
-        public function getNumeroLicence() { return $this->numero_licence; }
+        public function getIdEducateur() { return $this->educateur_id; }
+        public function getNumeroLicencie() { return $this->numero_licencie; }
         public function getEmail() { return $this->email; }
-        public function getMotDePasse() { return $this->password; }
+        public function getMotDePasse() { return $this->mot_de_passe; }
         public function getEstAdministrateur() { return $this->est_administrateur; }
 
         // Setters
-        public function addEducateur($numero_licence, $email, $password, $est_administrateur){
-            $this->numero_licence = $numero_licence;
+        public function addEducateur($numero_licence, $email, $mot_de_passe, $est_administrateur){
+            $this->numero_licencie = $numero_licence;
             $this->email = $email;
-            $this->password = $password;
+            $this->mot_de_passe = $mot_de_passe;
             $this->est_administrateur = $est_administrateur;
         }
-        public function setIdEducateur($id_educateur) { 
-            $this->id_educateur = $id_educateur; }
-        public function setNumeroLicence($numero_licence) {
-             $this->numero_licence = $numero_licence; }
+        public function setIdEducateur($educateur_id) { 
+            $this->educateur_id = $educateur_id; }
+        public function setNumeroLicence($numero_licencie) {
+             $this->numero_licencie = $numero_licencie; }
         public function setEmail($email) {
              $this->email = $email; }
-        public function setPassword($password) { 
-            $this->password = $password; }
+        public function setPassword($mot_de_passe) { 
+            $this->mot_de_passe = $mot_de_passe; }
         public function setEstAdministrateur($est_administrateur) { 
             $this->est_administrateur = $est_administrateur; }
+
+        /**
+         * Get the value of licencie_id
+         */ 
+        public function getIdLicencie()
+        {
+            return $this->licencie_id; 
+        }
     }

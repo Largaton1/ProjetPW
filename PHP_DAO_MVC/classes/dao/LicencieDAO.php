@@ -106,14 +106,18 @@ class LicencieDAO {
         try {
             $sql = "UPDATE licencies SET numero_licencie=?, nom=?, prenom=?, contact_id=?, categorie_id=? WHERE licencie_id=?";
             $stmt = $this->connexion->pdo->prepare($sql);
-            
-            $stmt->execute([$licencie->getNumeroLicencie(), $licencie->getNom(), $licencie->getPrenom(), $licencie->getContact()->getId(), $licencie->getCategorie()->getIdCategorie(), $licencie->getIdLicencie()]);
+     
+            $contactId = $licencie->getContact() ? $licencie->getContact()->getId() : null;
+            $categorieId = $licencie->getCategorie() ? $licencie->getCategorie()->getIdCategorie() : null;
+     
+            $stmt->execute([$licencie->getNumeroLicencie(), $licencie->getNom(), $licencie->getPrenom(), $contactId, $categorieId, $licencie->getIdLicencie()]);
             return true;
         } catch (PDOException $e) {
             // Handle the error
             return false;
         }
-    }
+     }
+     
     
 
    

@@ -1,8 +1,10 @@
 <?php
 // Inclure le contrôleur pour récupérer les données des licenciés
 require_once("../../controllers/licencie/IndexLicencieController.php");
+
 require_once("../../classes/models/Contact.php");
 require_once("../../classes/models/Categorie.php");
+require_once("../../classes/dao/ContactDAO.php");
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +91,7 @@ require_once("../../classes/models/Categorie.php");
           <td><?php echo $licencie->getNom(); ?></td>
           <td><?php echo $licencie->getPrenom(); ?></td>
      
-          <td><?php echo $licencie->getContact()->getId()?></td>
+          <td><?php echo $licencie->getContact()->getId() ?></td>
           <td><?php echo $licencie->getCategorie()->getIdCategorie(); ?></td>
       
           <td><a class="tooltips" href="../../controllers/licencie/DeleteLicencieController.php?Id=<?php echo $licencie->getIdLicencie();  ?>"><i class="fa fa-trash" style="color:orangered"></i></a>

@@ -26,6 +26,7 @@ class Licencie
     {
         return $this->licencie_id;
     }
+  
 
     public function setIdLicencie($id)
     {

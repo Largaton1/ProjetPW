@@ -79,7 +79,7 @@
                 <select class="custom-select form-control-border" id="contact_id" name="contact_id">
                   <option value="">Selectionner un contact</option>
                   <?php foreach ($contacts as $contact) : ?>
-                    <option value="<?php echo $contact->getId(); ?>"><?php echo $contact->getNomContact(); ?></option>
+                    <option value="<?php echo $contact->getId(); ?>"><?php echo $contact->getNomContact(); ?><?php echo $contact->getPrenom(); ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -88,7 +88,7 @@
                 <select class="custom-select form-control-border" id="categorie_id" name="categorie_id">
                   <option value="">Selectionner une categorie</option>
                   <?php foreach ($categories as $categorie) : ?>
-                    <option value="<?php $categorie->getIdCategorie(); ?>"><? $categorie->getNom(); ?></option>
+                    <option value="<?php echo $categorie->getIdCategorie(); ?>"><?php echo $categorie->getNom(); ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
