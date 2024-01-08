@@ -32,32 +32,32 @@ class AddLicencieController {
     
             // Récupérer l'objet Contact correspondant à partir de l'ID
             
-            $contact =$this->categorieDAO->getById($contactId);
+            $contact =$this->contactDAO->getById($contactId);
                 // Récupérer l'objet categorie correspondant à partir de l'ID
             $categorie =$this->categorieDAO->getById($categorieId);
             if (!$contact) {
                 // Gérer le cas où le contact n'est pas trouvé
                 echo "Erreur : Le contact n'a pas été trouvé.";
                 return;
-                header('Location: ../../contact/IndexContactController.php');
-                exit();
+                // header('Location: ../../controllers/licencie/IndexLicencieController.php');
+                // exit();
             }
     
             // Vérifier si le contact est défini avant de créer le nouvel objet Licencie
             if ($contact) {
                 // Créer un nouvel objet Licencie avec les données du formulaire
-                $newLicencie = new Licencie(0, $numero_licencie, $nom, $prenom, $contact,$categorie);
+                $newLicencie = new Licencie(0, $numero_licencie, $nom, $prenom, $contact, $categorie);
     
                 // Appeler la méthode du modèle (LicencieDAO) pour ajouter le contact
                 if ($this->licencieDAO->create($newLicencie)) {
                     // Rediriger vers la page d'accueil après l'ajout
                     echo "Licencié ajouté";
-                    header('Location: ../licencie/IndexLicencieController.php');
+                    header('Location: ../../controllers/licencie/IndexLicencieController.php');
                     exit();
                 } else {
                     // Gérer les erreurs d'ajout 
                     echo "Erreur lors de l'ajout du licencié.";
-                    header('Location: ../licencie/IndexLicencieController.php');
+                    header('Location: ../../controllers/licencie/IndexLicencieController.php');
                     exit();
                 }
             }

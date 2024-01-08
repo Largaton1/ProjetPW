@@ -79,22 +79,5 @@ class ContactDAO
         }
     }
 
-    public function getByCriteria($nom, $prenom, $email, $telephone) {
-        $query = "SELECT * FROM licencies l
-                INNER JOIN contacts c ON l.contact_id = c.id
-                WHERE l.nom = :nom
-                AND l.prenom = :prenom
-                AND c.email = :email
-                AND c.telephone = :telephone";
-        
-        $stmt = $this->connexion->pdo->prepare($query);
-        $stmt->bindParam(':nom', $nom);
-        $stmt->bindParam(':prenom', $prenom);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':telephone', $telephone);
-
-        $stmt->execute();
-
-        return $stmt->fetch(PDO::FETCH_ASSOC); // Retourne le licencié s'il existe, sinon retourne false
-    }
+  
 }

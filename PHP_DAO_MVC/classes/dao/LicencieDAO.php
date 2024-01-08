@@ -15,13 +15,13 @@ class LicencieDAO {
     public function create(Licencie $licencie) {
         $contactDAO = new ContactDAO($this->connexion);
         $categorieDAO = new CategorieDAO($this->connexion);
-        $query = "INSERT INTO licencies (numero_licencie, nom, prenom, contact_id,categorie_id) VALUES (:numero_licencie, :nom, :prenom, :contact_id, :categorie_id)";
+        $query = "INSERT INTO licencies (numero_licencie, nom, prenom, contact_id, categorie_id) VALUES (:numero_licencie, :nom, :prenom, :contact_id, :categorie_id)";
         $stmt = $this->connexion->pdo->prepare($query);
         $stmt->bindValue(':numero_licencie', $licencie->getNumeroLicencie());
         $stmt->bindValue(':nom', $licencie->getNom());
         $stmt->bindValue(':prenom', $licencie->getPrenom());
         $stmt->bindValue(':contact_id',$licencie->getContact()->getId());
-        $stmt->bindValue(':categorie_id',$licencie->getCategorie()->getIdCategorie());
+        $stmt->bindValue(':categorie_id',$licencie->getCategorie()->getIdCategorie() );
         $stmt->execute();
         return $this->connexion->pdo->lastInsertId();
     }
@@ -39,10 +39,11 @@ class LicencieDAO {
                 $contact = $contactDAO->getById($row['contact_id']);
                 $categorie = $categorieDAO->getById($row['categorie_id']);
  
-                $licencie = new Licencie($row['licencie_id'],$row['numero_licencie'], $row['nom'], $row['prenom'], $contact,$categorie);
-                return $licencie;
+                $licencies = new Licencie($row['licencie_id'],$row['numero_licencie'], $row['nom'], $row['prenom'], $contact,$categorie);
+                return $licencies;
+                
             } else {
-                return null; // Aucun contact trouvÃ© avec cet ID
+                return null; // Aucun licencié trouvÃ© avec cet ID
             }
         } catch (PDOException $e) {
             // GÃ©rer les erreurs de rÃ©cupÃ©ration ici
@@ -64,7 +65,7 @@ class LicencieDAO {
                 $licencies[] = $licencie;
                 
             }
-            return $licencies    ;
+            return $licencies  ;
         } catch (PDOException $e) {
             // GÃ©rer les erreurs de rÃ©cupÃ©ration ici
             return [];
@@ -103,8 +104,10 @@ class LicencieDAO {
 
     public function update(Licencie $licencie) {
         try {
-            $stmt = $this->connexion->pdo->prepare("UPDATE licencies SET numero_licencie=?, nom=?, prenom=?, contact_id=?, categorie_id=? WHERE licencieid=?");
-            $stmt->execute([$licencie->getNumeroLicencie(), $licencie->getNom(), $licencie->getPrenom(), $licencie->getContact()->getId(), $licencie->getCategorie(), $licencie->getIdLicencie()]);
+            $sql = "UPDATE licencies SET numero_licencie=?, nom=?, prenom=?, contact_id=?, categorie_id=? WHERE licencie_id=?";
+            $stmt = $this->connexion->pdo->prepare($sql);
+            
+            $stmt->execute([$licencie->getNumeroLicencie(), $licencie->getNom(), $licencie->getPrenom(), $licencie->getContact()->getId(), $licencie->getCategorie()->getIdCategorie(), $licencie->getIdLicencie()]);
             return true;
         } catch (PDOException $e) {
             // Handle the error
@@ -117,7 +120,7 @@ class LicencieDAO {
     
     public function delete($id) {
         try {
-            $query = "DELETE FROM licencies WHERE id = :id";
+            $query = "DELETE FROM licencies WHERE licencie_id = :id";
         $stmt = $this->connexion->pdo->prepare($query);
         $stmt->bindValue(':id', $id);
         $stmt->execute();
@@ -130,3 +133,4 @@ class LicencieDAO {
     }
     
 }
+?>

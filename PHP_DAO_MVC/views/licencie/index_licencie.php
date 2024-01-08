@@ -89,11 +89,11 @@ require_once("../../classes/models/Categorie.php");
           <td><?php echo $licencie->getNom(); ?></td>
           <td><?php echo $licencie->getPrenom(); ?></td>
      
-          <td><?php echo $licencie->getContact()-> getId() ?></td>
-          <td><?php echo $licencie->getCategorie()-> getIdCategorie(); ?></td>
+          <td><?php echo $licencie->getContact()->getId()?></td>
+          <td><?php echo $licencie->getCategorie()->getIdCategorie(); ?></td>
       
-          <td><a class="tooltips" href="delete-licence.php?Id=<?php echo $licencie->getIdLicencie();  ?>"><i class="fa fa-trash" style="color:orangered"></i></a>
-          <a class="tooltips" href="edit-licencie.php?Id=<?php $licencie->getIdLicencie();  ?>"><i class="fa fa-edit" style="color:rgb(18, 219, 18);"></i></a>
+          <td><a class="tooltips" href="../../controllers/licencie/DeleteLicencieController.php?Id=<?php echo $licencie->getIdLicencie();  ?>"><i class="fa fa-trash" style="color:orangered"></i></a>
+          <a class="tooltips" href="../../controllers/licencie/EditLicencieController.php?Id=<?php echo $licencie->getIdLicencie();  ?>"><i class="fa fa-edit" style="color:rgb(18, 219, 18);"></i></a>
           </td>
         </tr>
       <?php endforeach; ?>

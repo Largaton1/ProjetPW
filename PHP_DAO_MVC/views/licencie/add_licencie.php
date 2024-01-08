@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -52,7 +53,7 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="numero_licencie">Numero Licencié</label>
-                    <input type="text" class="form-control" id="numero_licencie" >
+                    <input name= "numero_licencie" type="text" class="form-control" id="numero_licencie" >
                   </div>
                   <div class="form-group">
                     <label for="nom">Nom: </label>
@@ -67,7 +68,7 @@
                     <select class="custom-select form-control-border" id="contact_id" name="contact_id">
                       <option value = "">Selectionner un contact</option>
                       <?php foreach ($contacts as $contact): ?>
-                      <option value="<?= $contact->getId(); ?>"><?= $contact->getNom().' '.$contact->getPrenom(); ?></option>
+                      <option value="<?= $contact->getId(); ?>"><?= $contact->getNomContact().' '.$contact->getPrenom(); ?></option>
                   <?php endforeach; ?>
                     </select>
                   </div>

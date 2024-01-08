@@ -20,16 +20,16 @@ class DeleteLicencieController {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Supprimer le contact en appelant la méthode du modèle (ContactDAO)
-            if ($this->licencieDAO->deleteById($id) ) {
+            if ($this->licencieDAO->delete($id) ) {
                 // Rediriger vers la page d'accueil après la suppression
                 echo"contact supprimé";
-                header('Location: ../contact/IndexLicencieController.php');
+                header('Location: ../licencie/IndexLicencieController.php');
                 exit();
                 
             } else {
                 // Gérer les erreurs de suppression du contact
                 echo "Erreur lors de la suppression du contact.";
-                header('Location: ../contact/IndexLicencieController.php');
+                header('Location: ../licencie/IndexLicencieController.php');
                 exit();
             }
             
@@ -42,18 +42,25 @@ class DeleteLicencieController {
 
 require_once("../../config/config.php");
 require_once("../../config/connexion.php");
-require_once("../../models/Licencie.php");
-require_once("../../models/dao/LicencieDAO.php");
+require_once("../../classes/models/Licencie.php");
+require_once("../../classes/dao/LicencieDAO.php");
 
 $licencieDAO=new LicencieDAO(new Connexion());
 
 $controller=new DeleteLicencieController($licencieDAO);
-$id = isset($_GET['id']) ? $_GET['id'] : null;
-$controller->delete($id);
+$id = isset($_GET['lcencie_id']) ? $_GET['licencie_id'] : null;
+// $controller->delete($id);
 
+// if ($id === null) {
+//     echo "L'ID n'est pas défini dans l'URL.";
+//     return;
+// }
+$id = $_GET['Id'];
+$controller->delete($id);
 if ($id === null) {
     echo "L'ID n'est pas défini dans l'URL.";
     return;
 }
+?>
 
 ?>

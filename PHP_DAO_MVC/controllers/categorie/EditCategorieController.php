@@ -23,7 +23,7 @@ class EditCategorieController {
             $resultatMiseAJour = $this->categorieDAO->update($categorie);
             echo "Résultat de la mise à jour : ";
          
-            //Appeler la méthode du modèlei(categorieDAO) pour mettre à jour li categorie
+            //Appeler la méthode du modèle(categorieDAO) pour mettre à jour li categorie
             if ($resultatMiseAJour) {
                 
                 // Rediriger vers la page de détails di categorie après la modification
