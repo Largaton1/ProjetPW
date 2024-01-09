@@ -35,11 +35,11 @@
   </div>
 
   <!-- Navbar -->
- <?php include ("../../ProjetPW/PHP_DAO_MVC/sections/navbar.php");?>
+ <?php include ("../../PHP_DAO_MVC/sections/navbar.php");?>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <?php include ("../../ProjetPW/PHP_DAO_MVC/sections/aside.php");?>
+  <?php include ("../../PHP_DAO_MVC/sections/aside.php");?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

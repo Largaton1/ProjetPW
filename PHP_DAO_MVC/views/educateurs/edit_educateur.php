@@ -1,4 +1,7 @@
-<?php require_once("../../controllers/educateur/EditEducateurController.php"); ?>
+<?php 
+ require_once('../../controllers/require.php');
+require_once("../../controllers/educateur/EditEducateurController.php"); 
+?>
 <!DOCTYPE html>
 <html lang="fr">
 

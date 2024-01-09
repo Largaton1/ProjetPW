@@ -47,8 +47,7 @@ class EditEducateurController {
                 $educateur->setIdLicencie($licencie_id);
                 
                 $resultatMiseAJour = $this->educateurDAO->update($educateur);
-         var_dump($resultatMiseAJour);  
-         die();
+         
                 //Appeler la méthode du modèlei(categorieDAO) pour mettre à jour li categorie
                 if ($resultatMiseAJour) {
                     

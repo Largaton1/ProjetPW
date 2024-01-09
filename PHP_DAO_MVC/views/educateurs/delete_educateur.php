@@ -1,4 +1,7 @@
-<?php require_once("../../classes/models/Categorie.php"); ?>
+<?php  require_once('../../controllers/require.php');
+require_once("../../classes/models/Categorie.php");
+ require_once("../../config/config.php"); ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">

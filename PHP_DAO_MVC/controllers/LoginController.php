@@ -23,7 +23,7 @@ class LoginController
     public function connect(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['email'];
-            $password = $_POST['password'];
+            $password = $_POST['mot_de_passe'];
             // Validation du formulaire
             if (isset($email) &&  isset($password)) {
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -41,8 +41,8 @@ class LoginController
                 // Création d'une session et redirection vers la page d'accueil
                 session_start();
                 $_SESSION['loggedin'] = true;
-                echo"bj";
-                // header("Location:");
+          
+                header("Location:views/home.php");
             }
         }
     }
