@@ -14,7 +14,7 @@ class LoginController
         session_start();
         // Si l'utilisateur est déjà connecté, redirigez-le vers la page d'accueil des
         if (isset($_SESSION['email'])) {
-            header('Location:../views/home.php');
+            header('Location:../controllers/licencie/IndexLicencieController.php');
             exit();
         }
         // Redirection vers la page de login
@@ -51,7 +51,8 @@ class LoginController
                 session_start();
                 $_SESSION['loggedin'] = true;
           
-                header("Location:../views/home.php");
+                header('Location:../controllers/licencie/IndexLicencieController.php');
+
             }
         }
 
