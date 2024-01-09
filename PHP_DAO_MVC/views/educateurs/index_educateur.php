@@ -94,7 +94,7 @@ require_once("../../classes/models/Licencie.php");
                           <td><?php echo $educateur->getEstAdministrateur()  == 1 ? 'oui' : 'non'; ?></td>
 
                           <td><a class="tooltips" href="../../controllers/educateur/DeleteEducateurController.php?Id=<?php echo $educateur->getIdEducateur();  ?>"><i class="fa fa-trash" style="color:orangered"></i></a>
-                            <a class="tooltips" href="../../controllers/educateur/EditEducateurController.php?Id=<?php $educateur->getIdEducateur();?>"><i class="fa fa-edit" style="color:rgb(18, 219, 18);"></i></a>
+                            <a class="tooltips" href="../../controllers/educateur/EditEducateurController.php?Id=<?php echo $educateur->getIdEducateur();?>"><i class="fa fa-edit" style="color:rgb(18, 219, 18);"></i></a>
                           </td>
                         </tr>
                       <?php endforeach; ?>

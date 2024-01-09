@@ -6,7 +6,7 @@ require_once '../../classes/models/Categorie.php';
 class Licencie
 {
     private $licencie_id;
-    private $numeroLicencie;
+    private $numero_licencie;
     private $nom;
     private $prenom;
     private $contact; 
@@ -15,7 +15,7 @@ class Licencie
     public function __construct($licencie_id, $numero_licencie, $nom, $prenom,  $contact,  $categorie)
     {
         $this->licencie_id = $licencie_id;
-        $this->numeroLicencie = $numero_licencie;
+        $this->numero_licencie = $numero_licencie;
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->contact = $contact;
@@ -35,12 +35,12 @@ class Licencie
 
     public function getNumeroLicencie()
     {
-        return $this->numeroLicencie;
+        return $this->numero_licencie;
     }
 
     public function setNumeroLicencie($numero_licencie)
     {
-        $this->numeroLicencie = $numero_licencie;
+        $this->numero_licencie = $numero_licencie;
     }
 
     public function getNom()
@@ -92,3 +92,4 @@ class Licencie
     // }
         
 }
+?>

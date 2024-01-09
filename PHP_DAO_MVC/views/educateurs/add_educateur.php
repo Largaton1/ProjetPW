@@ -50,7 +50,7 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <a href="../../controllers/educateur/IndexEducateurController.php">Retour à la liste des licenciés</a>
+    <a href="../../controllers/educateur/IndexEducateurController.php">Retour à la liste des educateurs</a>
 
     <div class="card card-primary">
               <div class="card-header">
@@ -62,16 +62,16 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="email">Email</label>
-                    <input name="email" type="text" class="form-control" id="email" >
+                    <input name="email" type="text" class="form-control" id="email" required>
                   </div>
                   <div class="form-group">
                     <label for="mot_de_passe">Password </label>
-                    <input name = "mot_de_passe" type="password" class="form-control" id="password" >
+                    <input name = "mot_de_passe" type="password" class="form-control" id="password" required>
                   </div>
                   <div class="form-group">
                     <label for="est_administrateur">Administrateur</label>
                 
-          <select class="custom-select form-control-border" id="est_administrateur" name="est_administrateur">
+          <select class="custom-select form-control-border" id="est_administrateur" name="est_administrateur" required>
           <option value="non">Non</option>
             <option value="oui">Oui</option>
                             </select>
