@@ -49,7 +49,7 @@ border-bottom-right-radius: .3rem;
                   <h4 class="mt-1 mb-5 pb-1">CLUB SPORTIF </h4>
                 </div>
 
-                <form action="../../controllers/LoginController.php" method="post">
+                <form action="controllers/LoginController.php" method="post">
 
                   <div class="form-outline mb-4">
                     <input name="email" type="email" id="email" class="form-control"
@@ -58,7 +58,7 @@ border-bottom-right-radius: .3rem;
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input name = "mot_de_passe "type="password" id="mot_de_passe" class="form-control" />
+                    <input name = "mot_de_passe" type="password" id="mot_de_passe" class="form-control" />
                     <label class="form-label" for="mot_de_passe">Password</label>
                   </div>
 

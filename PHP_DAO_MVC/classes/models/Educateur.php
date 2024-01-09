@@ -1,5 +1,5 @@
 <?php
-require_once("../../classes/models/Licencie.php");
+// require_once("../../classes/models/Licencie.php");
     class Educateur {
         private $educateur_id;
         private $numero_licencie;

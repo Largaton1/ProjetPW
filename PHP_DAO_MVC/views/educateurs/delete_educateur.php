@@ -1,4 +1,4 @@
-<?php  require_once('../../controllers/require.php');
+<?php  
 require_once("../../classes/models/Categorie.php");
  require_once("../../config/config.php"); ?>
 

@@ -1,6 +1,6 @@
 <?php
 // Inclure le contrôleur pour récupérer les données des licenciés
-require_once('../../controllers/require.php');
+// require_once('../../controllers/require.php');
 require_once("../../controllers/educateur/IndexEducateurController.php");
 require_once("../../classes/models/Contact.php");
 require_once("../../classes/models/Licencie.php");

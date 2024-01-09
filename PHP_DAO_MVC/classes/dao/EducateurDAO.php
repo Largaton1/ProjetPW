@@ -114,10 +114,10 @@
             }
         }
         
-        public function getConnexion($email,$password) {
+        public function getConnexion($email,$mot_de_passe) {
             try {
                 $stmt = $this->connexion->pdo->prepare("SELECT * FROM educateurs WHERE email = ? AND mot_de_passe = ? AND est_administrateur=1 ");
-                $stmt->execute([$email,$password]);
+                $stmt->execute([$email,$mot_de_passe]);
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
     
                 if ($row) {
