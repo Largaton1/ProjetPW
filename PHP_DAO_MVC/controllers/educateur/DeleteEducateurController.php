@@ -6,9 +6,9 @@
             $this->educateurDAO =  $educateurDAO;
         }
 
-        public function deleteEducateur($educateurId) {
+        public function deleteEducateur($id) {
             // Récupérer le contact à supprimer en utilisant son ID
-            $educateur = $this->educateurDAO->getById($educateurId);
+            $educateur = $this->educateurDAO->getById($id);
 
             if (!$educateur) {
                 // L'educateur n'a pas été trouvé !
@@ -16,14 +16,16 @@
                 return;
             }
             if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-                if ($this->educateurDAO->deleteById($educateurId)) {
-                    header('Location:ListEducateurController.php');
+                if ($this->educateurDAO->deleteById($id)) {
+                    header('Location:../controllers/educateur/IndexEducateurController.php');
                     exit();
                 } else {
                     // Gérer les erreurs de suppression du contact
                     echo "Erreur lors de la suppression";
                 }
             }
+
+            include('../../views/educateurs/delete_educateur.php');
         }
     }
     require_once("../../config/config.php");
@@ -33,6 +35,11 @@
   
 $contactDAO = new EducateurDAO(new Connexion());
 $controller = new DeleteEducateurController($contactDAO);
-$controller->deleteEducateur($_GET['id']);
+$id = $_GET['Id'];
+$controller->deleteEducateur($id);
+if ($id === null) {
+    echo "L'ID n'est pas défini dans l'URL.";
+    return;
+}
 
 ?>

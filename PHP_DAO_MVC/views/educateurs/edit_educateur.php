@@ -1,3 +1,4 @@
+<?php require_once("../../classes/models/Educateur.php"); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -49,7 +50,8 @@
               <!-- /.card-header -->
               <!-- form start -->
              <!-- form start -->
-    <form action="../../controllers/educateur/EditEducateurController.php" method="post">
+             <?php if ($educateur): ?>
+    <form action="../../controllers/educateur/EditEducateurController.php?Id=<?php echo $educateur->getIdEducateur(); ?>" method="post">
       <div class="card-body">
         <div class="form-group row">
           <input type="hidden" name="educateur_id" value="<?php echo $educateur->getIdEducateur(); ?>">
@@ -73,7 +75,7 @@
           <select class="custom-select form-control-border" id="licencie_id" name="licencie_id">
             <option value = "">Sélectionner un licencié</option>
             <?php foreach ($licences as $licencie): ?>
-              <option value="<?= htmlspecialchars($licencie->getIdLicencie()) ?>" <?= ($single_licencie->getNumeroLicence() === $educateur->getNumeroLicencie()) ? 'selected' : '' ?>>
+              <option value="<?= htmlspecialchars($licencie->getIdLicencie()) ?>" <?= ($licencie->getNumeroLicence() === $educateur->getNumeroLicencie()) ? 'selected' : '' ?>>
                 <?= htmlspecialchars($licencie->getNom()) ?>
               </option>
             <?php endforeach; ?>
@@ -86,6 +88,9 @@
         <button type="submit" class="btn btn-success" name="action">Modifier</button>
       </div>
     </form>
+    <?php else: ?>
+        <p>L'educateur n'a pas été trouvée.</p>
+    <?php endif; ?> 
   </div>
   <!-- /.content-wrapper -->
   <!-- Control Sidebar -->

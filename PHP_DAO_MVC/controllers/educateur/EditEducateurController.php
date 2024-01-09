@@ -27,18 +27,23 @@ class EditEducateurController {
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Récupérer les données du formulaire
-                // $numero_licence = $_POST['numero_licence'];
+                $licencie_id = $_POST['$licencie_id'];
                 $email = $_POST['email'];
+                // $mot_de_passe = $_POST['mot_de_passe'];
+                // $hmot_de_passe = password_hash($mot_de_passe, PASSWORD_DEFAULT);
                 $est_administrateur = $_POST['est_administrateur'];
 
-            
+                // Valider les données du formulaire (ajoutez des validations si nécessaire)
+
                 // Mettre à jour les détails du contact
-              
+                $educateur->setNumeroLicence($licencie_id);
                 $educateur->setEmail($email);
+                // $educateur->setMotDePasse($hmot_de_passe);
                 $educateur->setEstAdministrateur($est_administrateur  == 'oui' ? 1 : 0);
+
                 if ($this->educateurDAO->update($educateur)) {
                     // Rediriger vers la page de détails après la modification
-                    header('Location:../controllers/educateurs/EducateurController.php');
+                    header('Location:../educateur/IndexEducateurController.php');
                     exit();
                 } else {
                     // Gérer les erreurs de mise à jour
@@ -61,17 +66,9 @@ require_once("../../classes/dao/LicencieDAO.php");
 $educateurDAO = new EducateurDAO(new Connexion());
 $licencieDAO = new LicencieDAO(new Connexion());
 $controller = new EditEducateurController($educateurDAO, $licencieDAO);
-// if(!isset($_POST['action'])){
-//     $controller->index($_GET["Id"]);
-// } else{
-//     $id = $_POST['Id'];
-//     $controller->editEducateur($id);
-// }
-$controller->editEducateur($_GET['Id']);
-$id = isset($_GET['educateur_id']) ? $_GET['educateur_id'] : null;
-
-if ($id === null) {
-    echo "L'ID n'est pas défini dans l'URL.";
-    return;
+if(!isset($_POST['action'])){
+    $controller->index($_GET["Id"]);
+} else{
+    $id = $_POST['educateur_id'];
+    $controller->editEducateur($id);
 }
-?>

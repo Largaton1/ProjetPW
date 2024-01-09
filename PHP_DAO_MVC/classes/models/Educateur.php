@@ -10,11 +10,11 @@ require_once("../../classes/models/Licencie.php");
         
 
         public function __construct($educateur_id, $licencie_id, $email, $mot_de_passe, $est_administrateur) {
-            if(is_int($educateur_id))
-            {
-                $this->educateur_id = $educateur_id;
-            }
-            
+            // if(is_int($educateur_id))
+            // {
+            //     $this->educateur_id = $educateur_id;
+            // }
+            $this->educateur_id = $educateur_id;
             $this->licencie_id = $licencie_id;
             $this->email = $email;
             $this->mot_de_passe = $mot_de_passe;
@@ -29,12 +29,7 @@ require_once("../../classes/models/Licencie.php");
         public function getEstAdministrateur() { return $this->est_administrateur; }
 
         // Setters
-        public function addEducateur($numero_licence, $email, $mot_de_passe, $est_administrateur){
-            $this->numero_licencie = $numero_licence;
-            $this->email = $email;
-            $this->mot_de_passe = $mot_de_passe;
-            $this->est_administrateur = $est_administrateur;
-        }
+       
         public function setIdEducateur($educateur_id) { 
             $this->educateur_id = $educateur_id; }
         public function setNumeroLicence($numero_licencie) {
@@ -53,4 +48,6 @@ require_once("../../classes/models/Licencie.php");
         {
             return $this->licencie_id; 
         }
+        public function setIdLicencie($licencie_id) {
+            $this->licencie_id = $licencie_id; }
     }
