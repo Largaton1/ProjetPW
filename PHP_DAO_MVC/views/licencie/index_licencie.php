@@ -65,7 +65,7 @@ require_once("../../classes/dao/ContactDAO.php");
               <div class="card-header d-flex align-items-center">
                 <h3 class="card-title">Liste des licencies</h3>
                 <a href="../../controllers/licencie/AddLicencieController.php" class="btn btn-primary ml-auto justify-content-end">Ajout</a>
-
+                <a href="../../controllers/licencie/AddLicencieController.php" class="btn btn-success ml-auto justify-content-between">Import</a>
               </div>
             
               <!-- /.card-header -->
