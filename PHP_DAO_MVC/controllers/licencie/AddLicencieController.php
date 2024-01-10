@@ -39,7 +39,7 @@ class AddLicencieController {
                 // Gérer le cas où le contact n'est pas trouvé
                 echo "Erreur : Le contact n'a pas été trouvé.";
                 return;
-                // header('Location: ../../controllers/licencie/IndexLicencieController.php');
+                // header('Location: ../../views/404.php');
                 // exit();
             }
     

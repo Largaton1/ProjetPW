@@ -57,20 +57,7 @@ class LoginController
         }
 
     }
-    public function logout()
-    {
-        session_start();
-        // Vérifier l'authentification avant la déconnexion
-        if (!isset($_SESSION['email'])) {
-            header('Location:views/index.php');
-            exit();
-        }
-
-        // Déconnexion : détruire la session et rediriger vers la page de connexion
-        session_destroy();
-        header('Location:views/index.php');
-        exit();
-    }
+  
 }
 require_once("../config/config.php");
 require_once("../config/connexion.php");
@@ -81,19 +68,12 @@ require_once("../classes/dao/EducateurDAO.php");
 $educateurDAO = new EducateurDAO(new Connexion());
 $controller = new LoginController($educateurDAO);
 
-// Vérification des actions à exécuter
-// if (!isset($_POST['action'])) {
-//     $controller->index();
-// } else {
-//     $controller->connect();
-// }
 
 if (!isset($_POST['action'])) {
-    //$controller->index();
-}elseif ($_POST['action'] === 'logout') {
-   $controller->logout();
-} 
-else {
+    $controller->index();
+} else {
     $controller->connect();
 }
+
+
 ?>
