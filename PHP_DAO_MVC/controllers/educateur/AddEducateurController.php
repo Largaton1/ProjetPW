@@ -35,6 +35,11 @@ class AddEducateurController
                     return;
                 }
 
+                // if(  1 == ($licencieDAO->checkIfEducateur($licencie_id))){
+                //     echo 'Cet educateur existe déjà !';
+                //     return;
+                // }
+
                 // Hasher le mot de passe
                 $hpassword = password_hash($password, PASSWORD_DEFAULT);
                 $educateur = new Educateur("", $licencie_id, $email, $hpassword, $est_administrateur  == "oui" ? 1 : 0);
