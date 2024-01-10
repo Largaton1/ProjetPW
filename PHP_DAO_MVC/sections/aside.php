@@ -85,7 +85,7 @@
             <a href="../../controllers/categorie/IndexCategorieController.php" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Categories
+                Catégories
                 <i class="fas fa-angle-left right"></i>
               
               </p>
@@ -113,7 +113,7 @@
             <a href="../../controllers/contact/IndexContactController.php" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Contact
+                Contacts
                 <i class="fas fa-angle-left right"></i>
               
               </p>
