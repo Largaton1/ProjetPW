@@ -19,6 +19,9 @@ class IndexLicencieController {
         include('../../views/licencie/index_licencie.php');
     
     }
+    public function importerLicenciés ($cheminFichier) {
+        $this->licencieDAO->importer($cheminFichier);
+      }
 }
  
 require_once("../../config/config.php");

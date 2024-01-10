@@ -135,6 +135,17 @@ class LicencieDAO {
             return false;
         }
     }
+
+    public function importer($cheminFichier) {
+        $file = fopen($cheminFichier, "r");
+        while (($data = fgetcsv($file, 10000, ",")) !== FALSE) {
+            $licencie = new Licencie('licencie_id','numero_licencie', 'nom', 'prenom', 'contact_id', 'categorie_id');
+            $licencie->setNom($data[0]);
+           
+            $this->create($licencie);
+        }
+        fclose($file);
+    }
     
 }
 ?>
