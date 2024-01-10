@@ -67,7 +67,7 @@ require_once("../../classes/models/Licencie.php");
               <div class="card">
                 <div class="card-header d-flex align-items-center">
                   <h3 class="card-title">Liste des educateurs</h3>
-                  <a href="../../controllers/educateur/AddEducateurController.php" class="btn btn-primary ml-auto justify-content-end"> Ajout</a>
+                  <a href="../../controllers/educateur/AddEducateurController.php" class="btn btn-primary ml-auto justify-content-end"> Ajout des éducateurs</a>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">

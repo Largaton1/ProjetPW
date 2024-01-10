@@ -63,7 +63,7 @@ require_once("../../classes/models/Categorie.php");
             <div class="card">
               <div class="card-header d-flex align-items-center">
                 <h3 class="card-title">Liste des categories</h3>
-                <a href="../../controllers/categorie/AddCategorieController.php"class="btn btn-primary ml-auto justify-content-end"  > Ajout</a>
+                <a href="../../controllers/categorie/AddCategorieController.php"class="btn btn-primary ml-auto justify-content-end"  > Ajout des catégories</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">

@@ -62,7 +62,7 @@ require_once("../../classes/models/Contact.php");
             <div class="card">
               <div class="card-header d-flex align-items-center">
                 <h3 class="card-title">Liste des contacts</h3>
-                <a href="../../controllers/contact/AddContactController.php" class="btn btn-primary ml-auto justify-content-end" > Ajout</a>
+                <a href="../../controllers/contact/AddContactController.php" class="btn btn-primary ml-auto justify-content-end" > Ajout des contacts</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
