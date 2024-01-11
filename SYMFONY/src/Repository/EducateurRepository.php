@@ -11,8 +11,7 @@ use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 
 /**
  * @extends ServiceEntityRepository<Educateur>
- *
- * @implements PasswordUpgraderInterface<Educateur>
+* @implements PasswordUpgraderInterface<Educateur>
  *
  * @method Educateur|null find($id, $lockMode = null, $lockVersion = null)
  * @method Educateur|null findOneBy(array $criteria, array $orderBy = null)
@@ -65,4 +64,3 @@ class EducateurRepository extends ServiceEntityRepository implements PasswordUpg
 //        ;
 //    }
 }
-    

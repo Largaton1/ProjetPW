@@ -21,11 +21,11 @@ class Licencie
     private ?string $prenom = null;
 
     #[ORM\ManyToOne(inversedBy: 'licencies')]
-    #[JoinColumn(name: 'id_categorie', referencedColumnName: 'id')]
+    #[JoinColumn(name: 'categorie_id', referencedColumnName: 'id')]
     private ?Categorie $categorie = null;
 
     #[ORM\ManyToOne(inversedBy: 'licencies')]
-    #[JoinColumn(name: 'id_contact', referencedColumnName: 'id')]
+    #[JoinColumn(name: 'contact_id', referencedColumnName: 'id')]
     private ?Contact $contact = null;
 
     public function getNumereLicence(): ?int

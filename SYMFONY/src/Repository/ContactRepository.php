@@ -21,17 +21,6 @@ class ContactRepository extends ServiceEntityRepository
         parent::__construct($registry, Contact::class);
     }
 
-    public function getContactsByCategory($categoryId)
-    {
-        return $this->createQueryBuilder('c')
-            ->innerJoin('c.licencies', 'l')
-            ->innerJoin('l.categorie', 'cat')
-            ->where('cat.id = :categoryId')
-            ->setParameter('categoryId', $categoryId)
-            ->getQuery()
-            ->getResult();
-    }
-
 //    /**
 //     * @return Contact[] Returns an array of Contact objects
 //     */
