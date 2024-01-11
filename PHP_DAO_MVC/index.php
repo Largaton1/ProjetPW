@@ -34,6 +34,9 @@ border-bottom-right-radius: .3rem;
 }
   </style>
 </head>
+<?php
+session_start();
+?>
 <body>
   <!-- Section: Design Block -->
   <main>

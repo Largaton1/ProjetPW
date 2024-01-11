@@ -23,6 +23,7 @@ class LoginController
     }
 
     public function connect(){
+        session_start();
         if (isset($_SESSION['email'])) {
             header('Location: educateur/IndexEducateurController.php');
             exit();
@@ -31,7 +32,7 @@ class LoginController
             $educateurs =$this->educateurDAO ->getAll();
             $email = $_POST['email'];
             $mot_de_passe= $_POST['mot_de_passe'];
-          
+            $_SESSION['username'] = $email;
         
             // Validation du formulaire
             if (isset($email) &&  isset($mot_de_passe)) {
