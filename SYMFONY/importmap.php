@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Returns the import map for this application.
+ * Returns the importmap for this application.
  *
  * - "path" is a path inside the asset mapper system. Use the
  *     "debug:asset-map" command to see the full list of paths.
  *
- * - "preload" set to true for any modules that are loaded on the initial
- *     page load to help the browser download them earlier.
+ * - "entrypoint" (JavaScript only) set to true for any module that will
+ *     be used as an "entrypoint" (and passed to the importmap() Twig function).
  *
  * The "importmap:require" command can be used to add new entries to this file.
  *
@@ -15,16 +15,16 @@
  */
 return [
     'app' => [
-        'path' => 'app.js',
-        'preload' => true,
+        'path' => './assets/app.js',
+        'entrypoint' => true,
     ],
     '@hotwired/stimulus' => [
-        'url' => 'https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3.2.2/+esm',
+        'version' => '3.2.2',
     ],
     '@symfony/stimulus-bundle' => [
-        'path' => '@symfony/stimulus-bundle/loader.js',
+        'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
     ],
     '@hotwired/turbo' => [
-        'url' => 'https://cdn.jsdelivr.net/npm/@hotwired/turbo@7.3.0/+esm',
+        'version' => '7.3.0',
     ],
 ];
