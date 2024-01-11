@@ -72,6 +72,20 @@ class LicencieDAO {
         }
     }
 
+
+    public function checkIfEducateur($id){
+        try {
+            $stmt = $this->connexion->pdo->query( "SELECT * FROM licencies WHERE licencie_id IN ( SELECT licencie_id FROM educateurs WHERE licencie_id = ?)");
+            $stmt->execute([$id]);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            return ($row['educateur_count']>0) ? 1 : 0;
+        } catch (PDOException $e) {
+            // Handle the error
+            return - 1;
+        }
+
+    }
+
     // public function getAll()
     // {
     //     try {
