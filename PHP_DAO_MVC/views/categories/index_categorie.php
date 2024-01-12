@@ -4,7 +4,9 @@ require_once("../../controllers/categorie/IndexCategorieController.php");
 require_once("../../classes/models/Categorie.php");
 
 ?>
-
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -17,7 +17,7 @@
             }
             if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 if ($this->educateurDAO->deleteById($id)) {
-                    header('Location:../controllers/educateur/IndexEducateurController.php');
+                    header('Location:IndexEducateurController.php');
                     exit();
                 } else {
                     // Gérer les erreurs de suppression du contact
