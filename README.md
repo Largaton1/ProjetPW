@@ -22,6 +22,11 @@ Vous devrez réaliser une mini application backend en PHP objet avec MVC et DAO 
 qui sont administrateurs.
 7)faire de l'import/export des licenciés
 
+### Vidéo
+Voici ci dessous le lien pour la vidéo
+
+https://drive.google.com/file/d/1LCyuac4qT98WotdDitkbyiKGItNqS9dC/view?usp=drivesdk
+
 Partie 2: Symfony
 
 Vous devrez réaliser la partie front end de cette application, à savoir que les éducateurs peuvent se connecter (8) à 
