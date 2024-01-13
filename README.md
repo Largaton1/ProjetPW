@@ -10,7 +10,7 @@ raccourci).
 Les éducateurs sont des licenciés et possède en plus un email et un mot de passe. Certains educateurs sont des 
 administrateurs.
 
-Partie 1: PHP DAO/MVC
+## Partie 1: PHP DAO/MVC
 
 1)Vous devrez coder les classes categorie, licencié, contact et éducateur.
 Vous devrez réaliser une mini application backend en PHP objet avec MVC et DAO qui permet de :
@@ -22,7 +22,12 @@ Vous devrez réaliser une mini application backend en PHP objet avec MVC et DAO 
 qui sont administrateurs.
 7)faire de l'import/export des licenciés
 
-Partie 2: Symfony
+### Vidéo
+Voici ci dessous le lien pour la vidéo
+
+https://drive.google.com/file/d/1LCyuac4qT98WotdDitkbyiKGItNqS9dC/view?usp=drivesdk
+
+## Partie 2: Symfony
 
 Vous devrez réaliser la partie front end de cette application, à savoir que les éducateurs peuvent se connecter (8) à 
 cette application pour :
