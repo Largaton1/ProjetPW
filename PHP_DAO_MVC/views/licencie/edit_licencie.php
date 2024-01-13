@@ -37,6 +37,30 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+
+<?php
+session_start();
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "projetpw";
+
+// Vérifier si la session est active
+if (!isset($_SESSION['username'])) {
+    echo "Session non active";
+    header("Location: ../../views/login.php"); // Redirigez vers la page de connexion si l'utilisateur n'est pas connecté
+    exit();
+}
+
+require_once '../../classes/dao/EducateurDAO.php';
+
+$conn = new Connexion();
+$educateurDAO = new EducateurDAO($conn);
+$login=$_SESSION['username'];
+if ($educateurDAO->isAdmin($login)==true) {
+   
+?>
   <div class="wrapper">
     <!-- Navbar -->
     <?php include("../../sections/navbar.php") ?>
@@ -138,6 +162,13 @@
     <!-- Page specific script -->
     </div>
     
+    <?php 
+
+}else {
+  echo "Action reservée au admin";
+}
+?>
+
 </body>
 
 </html>
