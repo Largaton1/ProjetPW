@@ -22,7 +22,7 @@ Vous devrez réaliser une mini application backend en PHP objet avec MVC et DAO 
 qui sont administrateurs.
 7)faire de l'import/export des licenciés
 
-Voici ci dessous les liens pour les videos
+Voici ci dessous le lien pour la vidéo
 
 Partie 1 : 
 
