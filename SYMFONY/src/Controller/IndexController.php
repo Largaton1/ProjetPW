@@ -25,7 +25,7 @@ class IndexController extends AbstractController
         $this->contactRepository = $contactRepository;
     }
     #[Route(path: '/index', name: 'app_index')]
-    public function IndexParCategory(Request $request): Response
+    public function IndexParCategories(Request $request): Response
     {
         $categories = $this->categorieRepository->findAll();
         $form = $this->createFormBuilder()
@@ -66,8 +66,14 @@ class IndexController extends AbstractController
 
     #[Route(path: '/index/licencie', name: 'app_index_licencie')]
     public function licencie(Request $request): Response {
-        $licencie = $request->query->get('licencie');
-        $categorie = $request->query->get('licencie');
+        $licencieId = $request->query->get('licencie');
+        $categorieId = $request->query->get('categorie');
+         // Récupérer les données du licencié en utilisant l'ID
+    $licencie = $this->licencieRepository->find($licencieId);
+    
+    // Récupérer les informations sur la catégorie en utilisant l'ID
+    $categorie = $this->categorieRepository->find($categorieId);
+
         return $this->render('index/licencie.html.twig',
             [
                 'licencie' => $licencie,
