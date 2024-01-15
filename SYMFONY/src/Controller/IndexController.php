@@ -24,13 +24,12 @@ class IndexController extends AbstractController
         $this->licencieRepository = $licencieRepository;
         $this->contactRepository = $contactRepository;
     }
-    #[Route(path: '/index/{entite}', name: 'app_index', methods:['GET'])]
+    #[Route(path: '/index/{entite}', name: 'app_index_licencie', methods:['GET'])]
     public function index(CategorieRepository $categorieRepository, Request $request): Response
     {
-        $categories = $this->categorieRepository->findAll();
+        $categories =$categorieRepository->findAllCategorie();
       $entite = $request->get('entite');
-        
-
+    
         return $this->render('index/index.html.twig', [
             'controller_name' => 'IndexController',
             'categories' => $categories,
@@ -39,13 +38,13 @@ class IndexController extends AbstractController
     }
 
 
-    #[Route('{id}/index_licencie_categorie', name: 'app_liste_licencie_categorie')]
+    #[Route('index_licencie_categorie/{id}', name: 'app_index_licencie_categorie')]
     
     public function indexLicencieParCategorie(LicencieRepository $licencieRepository,CategorieRepository $categorieRepository,int $id): Response
     {
         
       
-      $licenciesCategories = $licencieRepository->findAllLicenciesCategories($id);
+      $licenciesCategories = $licencieRepository->getLicenciesByCategories($id);
 
       $categorie = $categorieRepository->findOneCategorie($id);
       
@@ -64,11 +63,13 @@ class IndexController extends AbstractController
         ]);
     }
 
-    public function contactCategorie(ContactRepository $ContactRepository,CategorieRepository $categorieRepository,int $id): Response
+
+    #[Route('index_contact_categorie/{id}', name: 'app_index_contact_categorie')]
+    public function contactCategorie(ContactRepository $contactRepository,CategorieRepository $categorieRepository,int $id): Response
     {
         
       
-      $contactCategories = $ContactRepository->findAllContactsCategories($id);
+      $contactsCategories = $contactRepository->getContactsByCategories($id);
 
       $categorie = $categorieRepository->findOneCategorie($id);
       
@@ -80,7 +81,7 @@ class IndexController extends AbstractController
        
         return $this->render('index/contact.html.twig', [
             'controller_name' => 'IndexController',
-            'contactCategories' => $contactCategories,
+            'contactsCategories' => $contactsCategories,
             'libelleCategorie' => $libelleCategorie,
 
         ]);

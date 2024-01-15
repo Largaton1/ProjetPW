@@ -1,58 +1,53 @@
 {% extends 'base.html.twig' %}
-{% block content %}
- <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-           
-            <!-- /.card -->
 
-            <div class="card">
-              <div class="card-header d-flex align-items-center">
-                <h3 class="card-title">Liste des categories</h3>
+
+{% block body %}
+ 
+       
+<div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Liste des licencies de la categorie :<marquee><b> {{libellecategorie}}</b></marquee></h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-    <thead>
-      <tr>
-       
-     
-        <th>Nom </th>
-        <th>Code Raccourci</th>
-         <th>Actions</th>
-       
-      </tr>
-    </thead>
-    <tbody>
-      {% for categorie in categories %}
-                <tr>
-                    <td>{{ categorie.getNom() }}</td>
-                    <td>{{ categorie.getCodeRaccourci() }}</td>
-                 <td>
-                  <ul>
-                                {% if entite=='licencie' %}
-                                    <a class="nav-link"  href="{{ path('app_liste_licencie_categorie', { 'id': categorie.id }) }}"><span class="far fa-file-alt"></span></a>
-                               {% else %}
-                                    <a class="nav-link"  href="{{ path('app_liste_contacts_categorie', { 'id': categorie.id }) }}"><span class="far fa-file-alt"></span></a>
-                               
-                              {% endif %}
-                                          </ul>      
-                 </td>
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead> 
+                  <tr>
+                    <th>Numero licence</th>
+                    <th>Nom licencie</th>
+                    <th>Prenom licencie</th>
+                    <th>Nom du contact</th>
+                    <th>Prenom du contact</th>
+                    <th>Email du contact</th>
+                    <th>Telephone du  contact</th>
+                    <th>Code categorie</th>
+                    <th>Nom categorie</th>
+                   
+                  </tr>
+                  </thead>
+                  <tbody>
+                   {% for licenciesCategorie in licenciesCategories %}
+                  <tr>
+                    <td>{{licenciesCategorie.numero_licence}} </td>
+                    <td>{{licenciesCategorie.nom }} </td> 
+                    <td>{{licenciesCategorie.prenom }} </td> 
+                    <td>{{licenciesCategorie.nomcontact}} </td>
+                    <td>{{licenciesCategorie.prenomcontact }} </td> 
+                    <td>{{licenciesCategorie.emailcontact }} </td> 
+                    <td>{{licenciesCategorie.telcontact}} </td>
+                    <td>{{licenciesCategorie.codecateg }} </td> 
+                    <td>{{licenciesCategorie.nomcateg }} </td> 
+                     
+                  </tr>
+                    {% endfor %}
+                  </tbody>
+                  <tfoot>
                   
-                  
-                  
-            {% endfor %}
-    </tbody>
-
-  </table>
-                
+                  </tfoot>
+                </table>
               </div>
               <!-- /.card-body -->
+           
+         
             </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-      </div>
 {% endblock %}

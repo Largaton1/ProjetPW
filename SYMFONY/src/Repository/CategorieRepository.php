@@ -23,8 +23,10 @@ class CategorieRepository extends ServiceEntityRepository
     public function findAllCategorie(): array
     {
         $conn = $this->getEntityManager()->getConnection();
-
-        $sql = 'SELECT * FROM categorie c';
+        $sql = '
+        SELECT * FROM categorie c 
+       
+        ';
 
         $resultSet = $conn->executeQuery($sql);
 

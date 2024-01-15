@@ -39,6 +39,20 @@ class EducateurRepository extends ServiceEntityRepository implements PasswordUpg
         $this->getEntityManager()->flush();
     }
 
+    public function findAllEducateurOne(int $id): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT * FROM educateur c
+            WHERE c.id != :id
+            ';
+        $resultSet = $conn->executeQuery($sql, ['id' => $id]);
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $resultSet->fetchAllAssociative();
+    }
+
 //    /**
 //     * @return Educateur[] Returns an array of Educateur objects
 //     */
