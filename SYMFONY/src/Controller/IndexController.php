@@ -38,6 +38,32 @@ class IndexController extends AbstractController
         ]);
     }
 
+
+    #[Route('{id}/liste_licencie_categorie', name: 'app_liste_licencie_categorie')]
+    
+    public function indexLicencieParCategorie(LicencieRepository $LicencieRepository,CategorieRepository $categorieRepository,int $id): Response
+    {
+        
+      
+      $licenciesCategories = $LicencieRepository->findAllLicencieCategorie($id);
+
+      $categorie = $categorieRepository->findOneCategorie($id);
+      
+      if(count($categorie)>0)
+      {
+        $libelleCategorie=$categorie[0]['nom'];
+      }
+      
+       
+      
+        return $this->render('index/licencie.html.twig', [
+            'controller_name' => 'IndexController',
+            'licenciesCategories' => $licenciesCategories,
+            'libelleCategorie' => $libelleCategorie,
+
+        ]);
+    }
+
     #[Route(path: '/index/licencie', name: 'app_index_licencie')]
     public function licencie(Request $request): Response {
         $id = $request->query->get('licencie');
