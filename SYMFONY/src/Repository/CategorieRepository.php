@@ -20,21 +20,48 @@ class CategorieRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Categorie::class);
     }
+    public function findAllCategorie(): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT * FROM categorie c';
+
+        $resultSet = $conn->executeQuery($sql);
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $resultSet->fetchAllAssociative();
+    }
+
+    public function findOneCategorie(int $id): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql ='SELECT * FROM categorie c
+            WHERE c.id = :id';
+
+        $resultSet = $conn->executeQuery($sql, ['id' => $id]);
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $resultSet->fetchAllAssociative();
+    }
+
 
 //    /**
 //     * @return Categorie[] Returns an array of Categorie objects
 //     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+     public function findByExampleField($value): array
+{
+       
+    return $this->createQueryBuilder('c')
+       ->andWhere('c.code = :val')
+       ->setParameter('val', $value)
+       ->orderBy('c.id', 'ASC')
+        ->setMaxResults(10)
+        ->getQuery()
+        ->getResult()
+    ;
+}
+
 
 //    public function findOneBySomeField($value): ?Categorie
 //    {
