@@ -12,6 +12,8 @@ class Licencie
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    private ?int $id = null;
+    #[ORM\Column]
     private ?int $numero_licence = null;
 
     #[ORM\Column(length: 255)]
@@ -27,8 +29,12 @@ class Licencie
     #[ORM\ManyToOne(inversedBy: 'licencies')]
     #[JoinColumn(name: 'contact_id', referencedColumnName: 'id')]
     private ?Contact $contact = null;
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
-    public function getNumereLicence(): ?int
+    public function getNumeroLicence(): ?int
     {
         return $this->numero_licence;
     }

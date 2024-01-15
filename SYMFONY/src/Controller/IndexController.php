@@ -24,55 +24,30 @@ class IndexController extends AbstractController
         $this->licencieRepository = $licencieRepository;
         $this->contactRepository = $contactRepository;
     }
-    #[Route(path: '/index', name: 'app_index')]
-    public function IndexParCategories(Request $request): Response
+    #[Route(path: '/index', name: 'app_index', methods:['GET'])]
+    public function index(CategorieRepository $categorieRepository, Request $request): Response
     {
         $categories = $this->categorieRepository->findAll();
-        $form = $this->createFormBuilder()
-            ->add('liste', ChoiceType::class, [
-                'choices' => [
-                    'Licencié' => 'licencie',
-                    'Contact' => 'contact',
-                ],
-                'multiple' => false,
-                'expanded' => false,
-            ]) ->add('categorie', ChoiceType::class, [
-                'choices' => $categories,
-                'choice_label' => 'nom',
-                'choice_value' => 'id',
-                'multiple' => false,
-                'expanded' => false,
-            ]) ->getForm();
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
-            $list = $data['liste'];
-            $categorie = $data['categorie'];
-            if($list == 'contact') {
-                $contacts = $this->contactRepository->getContactsByCategory($categorie->getId());
-                return $this->render('index/contact.html.twig', ["contacts" => $contacts, "categorie" => $categorie]);
-            } else {
-                $licencie = $this->licencieRepository->findBy(["categorie" => $categorie->getId()]);
-                return $this->render('index/licencie.html.twig', ["licencie" => $licencie, "categorie" => $categorie]);
-            }
-        }
+      $entitie = $request->get('entitie');
+        
 
         return $this->render('index/index.html.twig', [
-            'form' => $form->createView(),
+            'controller_name' => 'IndexController',
+            'categories' => $categories,
+            'entitie'=>$entitie,
         ]);
     }
 
     #[Route(path: '/index/licencie', name: 'app_index_licencie')]
     public function licencie(Request $request): Response {
-        $licencieId = $request->query->get('licencie');
-        $categorieId = $request->query->get('categorie');
+        $id = $request->query->get('licencie');
+        $id = $request->query->get('categorie');
+        
          // Récupérer les données du licencié en utilisant l'ID
-    $licencie = $this->licencieRepository->find($licencieId);
+    $licencie = $this->licencieRepository->find($id);
     
     // Récupérer les informations sur la catégorie en utilisant l'ID
-    $categorie = $this->categorieRepository->find($categorieId);
+    $categorie = $this->categorieRepository->find($id);
 
         return $this->render('index/licencie.html.twig',
             [
