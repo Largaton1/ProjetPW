@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+ <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+           
+            <!-- /.card -->
+
+            <div class="card">
+              <div class="card-header d-flex align-items-center">
+                <h3 class="card-title">Liste des categories</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+    <thead>
+      <tr>
+       
+     
+        <th>Nom </th>
+        <th>Code Raccourci</th>
+         <th>Actions</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      {% for categorie in categories %}
+                <tr>
+                    <td>{{ categorie.nom}}</td>
+                    <td>{{ categorie.code_raccourci }}</td>
+                 <td>
+                  <ul>
+                                {% if entite=='licencie' %}
+                                    <a class="nav-link active"  href="{{ path('app_index_licencie_categorie', { 'id': categorie.id }) }}">Visualiser</a>
+                               {% else %}
+                                    <a class="nav-link active"  href="{{ path('app_index_contact_categorie', { 'id': categorie.id }) }}"><i class="fa-solid fa-circle-info"></i></a>
+                               
+                              {% endif %}
+                                          </ul>      
+                 </td>
+                  
+                  
+                  
+            {% endfor %}
+    </tbody>
+
+  </table>
+                
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+{% endblock %}
