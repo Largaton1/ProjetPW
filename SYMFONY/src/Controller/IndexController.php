@@ -42,7 +42,7 @@ class IndexController extends AbstractController
       
       if(count($categorie)>0)
       {
-        $libelleCategorie=$categorie[0]['nom'];
+        $libellecategorie=$categorie[0]['nom'];
       }
       
        
@@ -50,7 +50,7 @@ class IndexController extends AbstractController
         return $this->render('index/licencie.html.twig', [
             'controller_name' => 'IndexController',
             '$licenciescategories' => $licenciescategories,
-            'libelleCategorie' => $libelleCategorie,
+            'libellecategorie' => $libellecategorie,
 
         ]);
     }
@@ -61,20 +61,20 @@ class IndexController extends AbstractController
     {
         
       
-      $contactsCategories = $contactRepository->getContactsByCategories($id);
+      $contactscategories = $contactRepository->findAllContactsCategories($id);
 
       $categorie = $categorieRepository->findOneCategorie($id);
       
       if(count($categorie)>0)
       {
-        $libelleCategorie=$categorie[0]['nom'];
+        $libellecategorie=$categorie[0]['nom'];
       }
       
        
         return $this->render('index/contact.html.twig', [
             'controller_name' => 'IndexController',
-            'contactsCategories' => $contactsCategories,
-            'libelleCategorie' => $libelleCategorie,
+            'contactscategories' => $contactscategories,
+            'libellecategorie' => $libellecategorie,
 
         ]);
     }
