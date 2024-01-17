@@ -50,7 +50,7 @@ destiné.
 mailContact avec comme attributs: date d'envoi, objet, message, la collection des licenciés (en fait leur contact) 
 auquel ce message était destiné.
 
-
+![connexion](https://github.com/Largaton1/ProjetPW/assets/105814979/3c4beb38-3d47-4fec-af27-3025eb41e142)
 ![Liste des categories](https://github.com/Largaton1/ProjetPW/assets/105814979/33529bf6-07cd-4cad-a214-b615e038c9c9)
 ![Liste des licenciés par categories](https://github.com/Largaton1/ProjetPW/assets/105814979/b07e3491-5902-448e-bed7-3f96e7622671)
 ![Listes des contacts par catégorie](https://github.com/Largaton1/ProjetPW/assets/105814979/7ef20b06-2a97-48e7-96df-a67dfc302535)
