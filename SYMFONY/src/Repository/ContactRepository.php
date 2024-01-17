@@ -21,7 +21,7 @@ class ContactRepository extends ServiceEntityRepository
         parent::__construct($registry, Contact::class);
     }
 
-    public function getContactsByCategories(string $id): array
+    public function findAllContactsParCategories(string $id): array
     {
         $conn = $this->getEntityManager()->getConnection();
 
@@ -35,6 +35,20 @@ class ContactRepository extends ServiceEntityRepository
             ';
 
         $resultSet = $conn->executeQuery($sql, ['id' => $id]);
+
+        // returns an array of arrays (i.e. a raw data set)
+        return $resultSet->fetchAllAssociative();
+    }
+
+    public function findAllMailsContacts(): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT * FROM contacts c
+          
+            ';
+        $resultSet = $conn->executeQuery($sql);
 
         // returns an array of arrays (i.e. a raw data set)
         return $resultSet->fetchAllAssociative();
