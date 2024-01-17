@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
 
-{% block body %}
+{% block content %}
  
        
 <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Liste des licencies de la categorie :<marquee><b> {{libellecategorie}}</b></marquee></h3>
+
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -26,17 +26,12 @@
                   </tr>
                   </thead>
                   <tbody>
-                   {% for licenciesCategorie in licenciesCategories %}
+                   {% for licenciescategorie in licenciescategories %}
                   <tr>
-                    <td>{{licenciesCategorie.numero_licence}} </td>
-                    <td>{{licenciesCategorie.nom }} </td> 
-                    <td>{{licenciesCategorie.prenom }} </td> 
-                    <td>{{licenciesCategorie.nomcontact}} </td>
-                    <td>{{licenciesCategorie.prenomcontact }} </td> 
-                    <td>{{licenciesCategorie.emailcontact }} </td> 
-                    <td>{{licenciesCategorie.telcontact}} </td>
-                    <td>{{licenciesCategorie.codecateg }} </td> 
-                    <td>{{licenciesCategorie.nomcateg }} </td> 
+                    <td>{{licenciescategorie.numero_licence}} </td>
+                    <td>{{licenciescategorie.nom }} </td> 
+                    <td>{{licenciescategorie.prenom }} </td> 
+                  
                      
                   </tr>
                     {% endfor %}

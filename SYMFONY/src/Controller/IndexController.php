@@ -6,24 +6,16 @@ use App\Repository\CategorieRepository;
 use App\Repository\ContactRepository;
 use App\Repository\LicencieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class IndexController extends AbstractController
 {
-    private CategorieRepository $categorieRepository;
-    private LicencieRepository $licencieRepository;
-    private ContactRepository $contactRepository;
+  
 
-    
-    public function __construct(CategorieRepository $categorieRepository, LicencieRepository $licencieRepository, ContactRepository $contactRepository)
-    {
-        $this->categorieRepository = $categorieRepository;
-        $this->licencieRepository = $licencieRepository;
-        $this->contactRepository = $contactRepository;
-    }
+
     #[Route(path: '/index/{entite}', name: 'app_index_licencie', methods:['GET'])]
     public function index(CategorieRepository $categorieRepository, Request $request): Response
     {
@@ -40,11 +32,11 @@ class IndexController extends AbstractController
 
     #[Route('index_licencie_categorie/{id}', name: 'app_index_licencie_categorie')]
     
-    public function indexLicencieParCategorie(LicencieRepository $licencieRepository,CategorieRepository $categorieRepository,int $id): Response
+    public function indexLicencieParCategorie(LicencieRepository $licencieRepository, CategorieRepository $categorieRepository, int $id): Response
     {
         
       
-      $licenciesCategories = $licencieRepository->getLicenciesByCategories($id);
+      $licenciescategories = $licencieRepository->getLicenciesByCategories($id);
 
       $categorie = $categorieRepository->findOneCategorie($id);
       
@@ -57,7 +49,7 @@ class IndexController extends AbstractController
       
         return $this->render('index/licencie.html.twig', [
             'controller_name' => 'IndexController',
-            'licenciesCategories' => $licenciesCategories,
+            '$licenciescategories' => $licenciescategories,
             'libelleCategorie' => $libelleCategorie,
 
         ]);
