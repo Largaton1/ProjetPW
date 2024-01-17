@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+
+{% block content %}
+ 
+       
+<div class="card">
+             
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead> 
+                  <tr>
+                    <th>Nom </th>
+                    <th>Prenom </th>
+                    <th>Email </th>
+                    <th>Telephone</th>
+                    <th>Code categorie</th>
+                    <th>Nom categorie</th>
+                   
+                  </tr>
+                  </thead>
+                  <tbody>
+                   {% for contactscategorie in contactscategories %}
+                  <tr>
+                     <td>{{contactscategorie.nomcontact}} </td>
+                    <td>{{contactscategorie.prenomcontact }} </td> 
+                    <td>{{contactscategorie.emailcontact }} </td> 
+                    <td>{{contactscategorie.telephone}} </td>
+                    <td>{{contactscategorie.codecateg }} </td> 
+                    <td>{{contactscategorie.nomcateg }} </td> 
+                     
+                  </tr>
+                    {% endfor %}
+                  </tbody>
+                  <tfoot>
+                  
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+           
+         
+            </div>
+{% endblock %}

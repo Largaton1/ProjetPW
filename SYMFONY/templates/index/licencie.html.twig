@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+
+{% block content %}
+ 
+       
+<div class="card">
+              <div class="card-header">
+
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead> 
+                  <tr>
+                    <th>Numero licence</th>
+                    <th>Nom licencie</th>
+                    <th>Prenom licencie</th>
+                    <th>Nom du contact</th>
+                    <th>Prenom du contact</th>
+                    <th>Email du contact</th>
+                    <th>Telephone du  contact</th>
+                    <th>Code categorie</th>
+                    
+                   
+                  </tr>
+                  </thead>
+                  <tbody>
+                   {% for licenciescategorie in licenciescategories %}
+                  <tr>
+                    <td>{{licenciescategorie.numero_licence}} </td>
+                    <td>{{licenciescategorie.nom }} </td> 
+                    <td>{{licenciescategorie.prenom }} </td> 
+                   <td>{{licenciescategorie.emailcontact }} </td> 
+                    <td>{{licenciescategorie.telephone }} </td> 
+                     <td>{{licenciescategorie.codecateg }} </td> 
+                     
+                  </tr>
+                    {% endfor %}
+                  </tbody>
+                  <tfoot>
+                  
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+           
+         
+            </div>
+{% endblock %}
