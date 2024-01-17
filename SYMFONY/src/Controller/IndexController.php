@@ -49,7 +49,7 @@ class IndexController extends AbstractController
       
         return $this->render('index/licencie.html.twig', [
             'controller_name' => 'IndexController',
-            '$licenciescategories' => $licenciescategories,
+            'licenciescategories' => $licenciescategories,
             'libellecategorie' => $libellecategorie,
 
         ]);

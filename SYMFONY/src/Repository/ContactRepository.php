@@ -25,14 +25,16 @@ class ContactRepository extends ServiceEntityRepository
     {
         $conn = $this->getEntityManager()->getConnection();
 
+
+            
         $sql = '
-            SELECT l.numero_licence,l.nom,l.prenom,p.code AS codecateg,p.nom AS nomcateg,
-            ct.nom AS nomcontact,ct.prenom AS prenomcontact,ct.email AS emailcontact,ct.numero_tel AS telephone
-             FROM categorie p join licencie l on p.id=l.categorie_id
-             join contact ct on l.contact_id=ct.id 
-            WHERE p.id = :id
-           
-            ';
+        SELECT l.numero_licence,l.nom,l.prenom,p.code_raccourci AS codecateg,p.nom AS nomcateg,
+        ct.nom AS nomcontact,ct.prenom AS prenomcontact,ct.email AS emailcontact,ct.numero_tel AS telephone
+         FROM categorie p join licencie l on p.id=l.id
+         join contact ct on l.id=ct.id 
+        WHERE p.id = :id
+       
+        ';
 
         $resultSet = $conn->executeQuery($sql, ['id' => $id]);
 
@@ -45,7 +47,7 @@ class ContactRepository extends ServiceEntityRepository
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = '
-            SELECT * FROM contacts c
+            SELECT * FROM contact c
           
             ';
         $resultSet = $conn->executeQuery($sql);

@@ -1,13 +1,11 @@
 {% extends 'base.html.twig' %}
 
 
-{% block body %}
+{% block content %}
  
        
 <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Liste des contacts de la categorie :<marquee><b> {{libellecategorie}}</b></marquee></h3>
-              </div>
+             
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -23,14 +21,14 @@
                   </tr>
                   </thead>
                   <tbody>
-                   {% for licenciesCategorie in licenciesCategories %}
+                   {% for contactscategorie in contactscategories %}
                   <tr>
-                    <td>{{licenciesCategorie.nomcontact}} </td>
-                    <td>{{licenciesCategorie.prenomcontact }} </td> 
-                    <td>{{licenciesCategorie.emailcontact }} </td> 
-                    <td>{{licenciesCategorie.telcontact}} </td>
-                    <td>{{licenciesCategorie.codecateg }} </td> 
-                    <td>{{licenciesCategorie.nomcateg }} </td> 
+                     <td>{{contactscategorie.nomcontact}} </td>
+                    <td>{{contactscategorie.prenomcontact }} </td> 
+                    <td>{{contactscategorie.emailcontact }} </td> 
+                    <td>{{contactscategorie.telephone}} </td>
+                    <td>{{contactscategorie.codecateg }} </td> 
+                    <td>{{contactscategorie.nomcateg }} </td> 
                      
                   </tr>
                     {% endfor %}
