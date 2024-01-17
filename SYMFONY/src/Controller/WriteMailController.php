@@ -19,7 +19,7 @@ class WriteMailController extends AbstractController
         $entite = $request->get('entite');
         $user = $this->getUser();
         
-       $recupIdEdu=$user->getUserIdentifier();
+    //    $recupIdEdu=$user->getId();
        if($entite=='educateur')
        {
         $educateurs = $educateurRepository->findAllEducateurOne($recupIdEdu);
@@ -28,7 +28,7 @@ class WriteMailController extends AbstractController
        else{
         $educateurs = $contactRepository->findAllMailsContacts();
        }
-        return $this->render('write_mail/index.html.twig', [
+        return $this->render('ecrire_mail/index.html.twig', [
             'controller_name' => 'WriteMailController',
             'educateurs'=>$educateurs,
             'entite'=>$entite
