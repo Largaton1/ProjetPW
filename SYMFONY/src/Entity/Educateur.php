@@ -34,6 +34,8 @@ class Educateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[ORM\ManyToOne(inversedBy: 'educateurs')]
+    private ?Licencie $licencie = null;
     public function getId(): ?int
     {
         return $this->id;
@@ -107,5 +109,17 @@ class Educateur implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getLicencies(): ?Licencie
+    {
+        return $this->licencie;
+    }
+
+    public function setLicencies(?Licencie $licencie): static
+    {
+        $this->licencie = $licencie;
+
+        return $this;
     }
 }

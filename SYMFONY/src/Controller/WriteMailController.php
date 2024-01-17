@@ -19,10 +19,10 @@ class WriteMailController extends AbstractController
         $entite = $request->get('entite');
         $user = $this->getUser();
         
-    //    $recupIdEdu=$user->getId();
+     $IdEducateur=$user->getId();
        if($entite=='educateur')
        {
-        $educateurs = $educateurRepository->findAllEducateurOne($recupIdEdu);
+        $educateurs = $educateurRepository->findAllEducateurOne($IdEducateur);
  
        }
        else{

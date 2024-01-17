@@ -14,9 +14,9 @@ class HomeController extends AbstractController
     {
         $this->categorieRepository= $categorieRepository;
     }
-    #[Route('/home', name: 'app_home')]
+    #[Route('/connexion', name: 'app_login')]
     public function index(): Response
     {
-        return $this->render('base.html.twig');
+        return $this->render('login/login.html.twig');
     }
 }
