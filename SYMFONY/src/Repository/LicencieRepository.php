@@ -22,7 +22,7 @@ class LicencieRepository extends ServiceEntityRepository
     }
 
 
-    public function getLicenciesByCategories(string $id): array
+    public function findAllLicencieCategorie(string $id): array
     {
         $conn = $this->getEntityManager()->getConnection();
 

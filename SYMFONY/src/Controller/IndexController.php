@@ -36,7 +36,7 @@ class IndexController extends AbstractController
     {
         
       
-      $licenciescategories = $licencieRepository->getLicenciesByCategories($id);
+      $licenciescategories = $licencieRepository->findAllLicencieCategorie($id);
 
       $categorie = $categorieRepository->findOneCategorie($id);
       
