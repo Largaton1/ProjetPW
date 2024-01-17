@@ -61,7 +61,7 @@ class IndexController extends AbstractController
     {
         
       
-      $contactscategories = $contactRepository->findAllContactsCategories($id);
+      $contactscategories = $contactRepository->findAllContactsParCategories($id);
 
       $categorie = $categorieRepository->findOneCategorie($id);
       
