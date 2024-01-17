@@ -57,7 +57,7 @@ class IndexController extends AbstractController
 
 
     #[Route('index_contact_categorie/{id}', name: 'app_index_contact_categorie')]
-    public function contactCategorie(ContactRepository $contactRepository,CategorieRepository $categorieRepository,int $id): Response
+    public function indexContactParCategorie(ContactRepository $contactRepository,CategorieRepository $categorieRepository,int $id): Response
     {
         
       
